@@ -1,0 +1,110 @@
+- @title = 'Say hello'
+- @description = 'Contact me if you need help with your Web project—I’m waiting for you.'
+%article
+  #contact
+    = img 'contact.png'
+    = img 'iphone.png'
+    %h2 Nico Around the Web
+    %ul
+      %li
+        %a(href="http://www.hagenburger.net")><
+          %span www.
+          %span><
+            hagenburger
+            %span> .net
+      %li
+        %a(href="http://hagenburger.bit.ly")><
+          %span
+          %span><
+            hagenburger
+            %span><
+              \.
+              %strong> bit.ly
+      %li
+        %a(href="http://www.facebook.com/hagenburger")><
+          %span><
+            %strong><
+              facebook
+            \.com/
+          hagenburger
+      %li
+        %a(href="http://twitter.com/hagenburger")><
+          %span><
+            %strong><
+              twitter
+            \.com/
+          %span><
+            hagenburger
+            %span.follow>&= "<<< follow me here"
+      %li
+        %a(href="http://www.xing.com/profile/nico_hagenburger")><
+          %span><
+            %strong><
+              xing
+            \.com/profile/nico_
+          hagenburger
+      %li
+        %a(href="http://www.linkedin.com/in/hagenburger")><
+          %span><
+            %strong><
+              linkedin
+            \.com/in/
+          hagenburger
+      %li
+        %a(href="http://www.slideshare.net/hagenburger")><
+          %span><
+            %strong><
+              slideshare
+            \.com/
+          hagenburger
+      %li
+        %a(href="http://www.flickr.com/photos/hagenburger")><
+          %span><
+            %strong><
+              flickr
+            \.com/photos/
+          hagenburger
+      %li
+        %a(href="http://github.com/hagenburger")><
+          %span><
+            %strong><
+              github
+            \.com/
+          %span><
+            hagenburger
+            %span.follow>&= "<<< fork me there"
+  #imprint
+    :markdown
+      ## Imprint/Impressum
+      
+      Address/Anschrift
+      : Hagenburger GmbH,
+        Kadiner Straße 20 A,
+        10243 Berlin,
+        Germany
+      
+      Executive director/Geschäftsführer
+      : Nico Hagenburger
+      
+      Register
+      : Amtsgericht Charlottenburg, HRB 107726 B
+      
+      EU Vat ID/Umsatzsteuer-Identifikationsnummer
+      : DE255468709
+      
+      Place of jurisdiction/Gerichtsstand
+      : Berlin, Germany
+      
+-# content_for :jquery do
+  var html = '';
+  var p = '+' + '4' + '9 17' + '1 30' + '303' + '20'
+  html += '<dt>Phone/Telefon</' + 'dt><dd><a href="tel:' + p.replace(/ /g, '') + '" rel="phone">' + p + '</a></' + 'dd>';
+  var n = 'nico', h = 'hagenburger', t = 'net', e = n + '@' + h + '.' + t;
+  html += '<dt>E-mail address/E-Mail-Adresse</' + 'dt><dd><a href="mai' + 'lto:' + e + '">' + e + '</' + 'a></dd>';
+  $('dl').append(html);
+  $('body').append('<div id="phone">Call me:<strong>' + p + '<strong></div>');
+  var phone = $('#phone');
+  $('a[rel="phone"]').click(function() { if (!navigator.userAgent.match(/iphone/i)) { phone.fadeIn(); return false; } });
+  var hidePhone = function() { phone.fadeOut(); };
+  $(document).click(hidePhone);
+  $(document).keydown(hidePhone);

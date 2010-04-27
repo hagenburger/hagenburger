@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html data-date="2009-08-30" lang="en">
+  <!--
+    Hey, isn't this the best intended source you've ever seen?
+    And it's HTML5 - so it must be awesome.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta content="Ever wondered how Heroku “deploying” works? It’s very easy to do by yourself." name="description">
+    <title>How to auto deploy Rails apps after Git push ···· Nico Hagenburger</title>
+    <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
+    <link href="../stylesheets/hagenburger.css" rel="stylesheet" type="text/css">
+    <script src="../hagenburger.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="nico-hagenburger">
+      <header>
+        <a href="/" id="logo"><img alt="Nico Hagenburger — Ruby on Rails, Haml, Sass, HTML5" src="../images/nico-hagenburger-ruby-on-rails.png"></a>
+        <nav><a href="/">Home</a><a href="../BLOG.html">Blog</a><a href="../CONTACT.html">Contact</a><a href="../PORTFOLIO.html">Portfolio</a></nav>
+        <div><strong>Hi, I’m Nico Hagenburger</strong><br>My pleasure is designing<br>clean, simple websites<br>and developing web applications in Ruby on Rails.</div>
+      </header>
+      <div id="content">
+        <article class="post" data-slug="howto-auto-deploy-rails-apps-after-git-push">
+          <h1>How to auto deploy Rails apps after Git push</h1>
+          <p>For my most recent project, I had to share a git repository with another Rails developer. He also had to make deploys on my server. As my server has many projects, I though about having another way than giving him access via SSH for cap deploy.</p>
+          <p>I remembered <a href="http://www.heroku.com">Heroku</a> automatically deploys Rails apps after commits. So here’s how you can have the same functionality with pure Git.</p>
+          <h2 id="configuration-of-ssh-and-users">Configuration of SSH And Users</h2>
+          <p>I’m assuming the following configuration:</p>
+          <dl>
+            <dt>Git repository</dt>
+            <dd>/home/git/awesome-rails-app.git</dd>
+            <dt>Deploy path</dt>
+            <dd>/var/www/awesome-rails-app</dd>
+            <dt>Git user</dt>
+            <dd>git</dd>
+            <dt>Deploy user</dt>
+            <dd>deploy</dd>
+            <dt>Authentication</dt>
+            <dd>with SSH keys</dd>
+          </dl>
+          <p>First, create a SSH key for the user git (unless you already did so) and add it for for the deploy user and vice versa:</p>
+          <pre><code># log in as git:&#x000A;ssh-keygen -t rsa&#x000A;# log in as deploy:&#x000A;cat /home/git/.ssh/id_rsa.pub &gt;&gt; /home/deploy/authorized_keys&#x000A;ssh-keygen -t rsa&#x000A;# log in as git:&#x000A;cat /home/deploy/.ssh/id_rsa.pub &gt;&gt; /home/git/authorized_keys</code></pre>
+          <h2 id="installing-the-git-hook">Installing the Git Hook</h2>
+          <p>Git offers <a href="http://book.git-scm.com/5_git_hooks.html">some hooks</a>, where you can add your own code. The most interestion hook for having a deploy is “post-receive”. Just add the deploy command:</p>
+          <pre><code># File: /home/git/awesome-rails-app.git/hooks/post-receive&#x000A;#!/bin/sh&#x000A;cd /var/www/awesome-rails-app/current &amp;&amp; cap deploy:migrations&#x000A;## If Git isn’t on the same server as the application:&#x000A;# ssh deploy@deploy-server.com \&#x000A;#   &#39;cd /var/www/awesome-rails-app/current &amp;&amp; cap deploy:migrations&#39;&#x000A;## Don’t forget to add the SSH keys.</code></pre>
+          <p>Make this file executable:</p>
+          <pre><code>chmod +x /home/git/awesome-rails-app.git/hooks/post-receive</code></pre>
+          <h2 id="finish">Finish</h2>
+          <p>Now it should work:</p>
+          <pre><code># on your local mashine:&#x000A;git push origin master</code></pre>
+          <p>You’ll see all commands of the cap deploy:migrations process in your console.</p>
+          <p>This post was inspired by <a href="http://www.elctech.com/articles/deploy-automatically-after-a-new-git-push-like-heroku">this post</a>. After you finished the automatical deploy, there is some other interesting homework: auto test before commits, integration your bug tracker, &#8230;</p>
+        </article>
+        <div id="twitter">
+          <a href="http://twitter.com/hagenburger">Follow me on twitter: @hagenburger</a>
+        </div>
+      </div>
+    </div>
+    <footer>© Nico Hagenburger/Hagenburger GmbH 2000—2010 · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)</footer>
+  </body>
+  <!--
+    You've just read it till the end.
+    If you're that fascinated, you definitely have to hire me.
+  -->
+</html>

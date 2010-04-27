@@ -1,0 +1,146 @@
+$content-width: 420px
+
+@mixin article-box
+  -moz-box-shadow: #fff 0 0 50px
+  -webkit-box-shadow: #fff 0 0 50px
+  box-shadow: #fff 0 0 50px
+
+article
+  @include section
+  dl
+    @include clearfix
+    dt
+      clear: both
+      float: left
+      font-weight: normal
+      padding-right: 10px
+      text-align: right
+      width: 415px
+      &:after
+        content: ":"
+    dd
+      float: left
+      width: 415px
+
+.posts,
+.post
+  @include margin-bottom(2)
+  h1,
+  h2,
+  p,
+  ul,
+  ol,
+  .more,
+  table,
+  dl,
+  figcaption,
+  time
+    margin: 0 auto
+    width: $content-width
+    @include margin-bottom
+  time
+    font-weight: normal
+    @include no-margin-bottom
+  h2 a
+    font-weight: bold
+    &:hover
+      color: $pink
+  dl
+    dt
+      width: 150px
+    dd
+      width: 260px
+
+.posts
+  h2
+    @include no-margin-bottom
+  p,
+  h1
+    @include margin-bottom(2)
+
+.post
+  p,
+  pre,
+  h1,
+  h2,
+  ol,
+  li,
+  dl
+    @include margin-bottom
+  h2,
+  h3
+    @include margin-top(2)
+  pre
+    background: lighten($background-color, 25%)
+    background: rgba($background-color, 0.5)
+    padding: 20px 210px
+    @include article-box
+    code
+      @include down(1px)
+  p, td
+    code
+      background: lighten($background-color, 7%)
+      font-size: 12px
+      line-height: 18px
+      margin: 0 1px
+      padding: 2px 3px
+      white-space: nowrap
+      @include border-radius(2px)
+  table
+    width: 428px
+  th
+    font-weight: normal
+  td, th
+    padding: 0 4px
+    vertical-align: top
+  tr:nth-child(odd) td
+    background: lighten($background-color, 25%)
+    background: rgba($background-color, 0.6)
+  ol
+    $padding-left: 50px
+    padding-left: $padding-left
+    width: $content-width - $padding-left
+    li
+      list-style: decimal
+      @include no-margin-bottom
+  figure
+    background: lighten($turquoise, 25%)
+    background: rgba($turquoise, 0.5)
+    display: block
+    padding: 20px 0
+    text-align: center
+    @include margin-bottom
+    @include article-box
+    img,
+    &.slideshare div
+      background: white
+      -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 15px
+      -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 15px
+      box-shadow: rgba(0, 0, 0, 0.5) 0 0 15px
+    &.slideshare
+      background: $pink
+      div
+        height: 314px
+        margin: 3px auto
+        overflow: hidden
+        width: 420px
+        object
+          height: 364px
+          left: -2px
+          position: relative
+          top: -2px
+          width: 424px
+  figcaption
+    color: darken($turquoise, 20%)
+    margin: 20px auto 0 !important
+
+.result
+  background: $green
+  color: white
+  padding: 20px 210px
+  @include margin-bottom
+  @include article-box
+  @include clearfix
+  p
+    font-weight: normal
+    margin: 0

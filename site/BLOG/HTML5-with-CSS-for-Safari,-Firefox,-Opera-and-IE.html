@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html data-date="2009-03-09" lang="en">
+  <!--
+    Hey, isn't this the best intended source you've ever seen?
+    And it's HTML5 - so it must be awesome.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta content="Create cross-browser HTML5 documents. Down to IE6 and Firefox 2.0" name="description">
+    <title>HTML5/XHTML5 with CSS for Safari, Firefox, Opera &amp; IE ···· Nico Hagenburger</title>
+    <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
+    <link href="../stylesheets/hagenburger.css" rel="stylesheet" type="text/css">
+    <script src="../hagenburger.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="nico-hagenburger">
+      <header>
+        <a href="/" id="logo"><img alt="Nico Hagenburger — Ruby on Rails, Haml, Sass, HTML5" src="../images/nico-hagenburger-ruby-on-rails.png"></a>
+        <nav><a href="/">Home</a><a href="../BLOG.html">Blog</a><a href="../CONTACT.html">Contact</a><a href="../PORTFOLIO.html">Portfolio</a></nav>
+        <div><strong>Hi, I’m Nico Hagenburger</strong><br>My pleasure is designing<br>clean, simple websites<br>and developing web applications in Ruby on Rails.</div>
+      </header>
+      <div id="content">
+        <article class="post" data-slug="html5-xhtml5-with-css-for-safari-firefox-opera-ie">
+          <h1>HTML5/XHTML5 with CSS for Safari, Firefox, Opera & IE</h1>
+          <p>As I started a new <a href="http://www.hagenburger.net/topics/wordpress">WordPress theme</a>, the time was right to do this in <strong><a href="http://www.w3.org/TR/html5/">XHTML5</a></strong>.</p>
+          <h2 id="1-the-xhtml5-headerhead">1. The XHTML5 header/head</h2>
+          <p>The <strong>doctype</strong> is much easier now. And it’s the first time for me to write it by hand and not via copy ’n’ paste. The doctype is as simple as:</p>
+          <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+          <h2 id="2-structuring-the-content-withheader-nav-article-and-footer">2. Structuring the content with<br />“header”, “nav”, “article” and “footer”</h2>
+          <p>Most of the (X)HTML pages have a header, a navigation and a footer. In between there’s the content. We used to classify them by giving them IDs:</p>
+          <pre><code>&lt;div id=&quot;head&quot;&gt;&#x000A;  &lt;ul id=&quot;nav&quot;&gt;[...]&lt;/ul&gt;&#x000A;&lt;/div&gt;&#x000A;&lt;div id=&quot;content&quot;&gt;&#x000A;  [...]&#x000A;&lt;/div&gt;&#x000A;&lt;ul id=&quot;footer&gt;[...]&lt;/ul&gt;</code></pre>
+          <p>XHTML5 introduced <strong>special tags</strong> for this areas—so they will be more accessible for people and search engines:</p>
+          <pre><code>&lt;header&gt;&#x000A;  &lt;nav&gt;[...]&lt;/nav&gt;&#x000A;&lt;/header&gt;&#x000A;&lt;article&gt;&#x000A;  [...]&#x000A;&lt;/article&gt;&#x000A;&lt;footer&gt;[...]&lt;/footer&gt;</code></pre>
+          <p>Looks cooler. But what about the <strong>browsers?</strong> Peter Kröner did <a href="http://www.peterkroener.de/html5-was-geht-heute-schon-was-geht-nicht-der-grosse-ueberblick:">some tests</a> Safari, Firefox 3.0 and Opera don’t have any problems. Firefox 2.0 has some but most people already use 3.0 and up. But styling in Internet Explorer isn’t possible because IE handle those tags as inline elements—they can’t have children.</p>
+          <p>One solution is to use the XHTML5 semantic elements and some DIV overhead to make them work in IE:</p>
+          <pre><code>&lt;div id=&quot;header&quot;&gt;&lt;header&gt;&#x000A;  &lt;div id=&quot;nav&quot;&gt;&lt;nav&gt;[...]&lt;/nav&gt;&lt;/div&gt;&#x000A;&lt;/header&gt;&lt;/div&gt;&#x000A;&lt;div id=&quot;article&quot;&gt;&lt;article&gt;&#x000A;  [...]&#x000A;&lt;/article&gt;&lt;/div&gt;&#x000A;&lt;div id=&quot;footer&quot;&gt;&lt;footer&gt;[...]&lt;/footer&gt;&lt;/div&gt;</code></pre>
+          <p>That’s semi cool. After searching the web, I found a tricky solution for IE. If you create those elements via JavaScript, they’ll also work in Internet Explorer. But who want’s to create a whole website in JavaScript? But there’s an IE bug, no let’s call it “feature”. If you create only one <code>&lt;header&gt;</code> element via JavaScript, all others will work fine with CSS. Even if you don’t add it to the DOM tree. Even in IE6. Just call:</p>
+          <pre><code>document.createElement(&#39;header&#39;);</code></pre>
+          <h2 id="3-putting-it-all-together">3. Putting it all together</h2>
+          <p>The prototype XHTML5 which will work in Safari, Firefox 3.0 and up, Opera and even Internet Explorer would look like this:</p>
+          <pre><code>&lt;!DOCTYPE html&gt;&#x000A;&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;en&quot; xml:lang=&quot;en&quot;&gt;&#x000A;  &lt;head&gt;&#x000A;     &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;&#x000A;     &lt;title&gt;My first XHTML5 website&lt;/title&gt;&#x000A;     &lt;script type=&quot;text/javascript&quot;&gt;&#x000A;       document.createElement(&#39;header&#39;);&#x000A;       document.createElement(&#39;nav&#39;);&#x000A;       document.createElement(&#39;article&#39;);&#x000A;       document.createElement(&#39;section&#39;);&#x000A;       document.createElement(&#39;footer&#39;);&#x000A;     &lt;/script&gt;&#x000A;  &lt;/head&gt;&#x000A;  &lt;body&gt;&#x000A;    &lt;header&gt;&#x000A;      [Welcome to my XHTML5 test page](/)&#x000A;      &lt;nav&gt;&#x000A;         &lt;a href=&quot;/&gt;Home&lt;/a&gt;&#x000A;         &lt;a href=&quot;/about&gt;About&lt;/a&gt;&#x000A;      &lt;/nav&gt;&#x000A;    &lt;/header&gt;&#x000A;    &lt;article&gt;&#x000A;       &lt;section&gt;&#x000A;          &lt;h2&gt;XHTML5 section 1&lt;/h2&gt;&#x000A;          &lt;p&gt;[...]&lt;/p&gt;&#x000A;       &lt;/section&gt;&#x000A;       &lt;section&gt;&#x000A;          &lt;h2&gt;XHTML5 section 2&lt;/h2&gt;&#x000A;          &lt;p&gt;[...]&lt;/p&gt;&#x000A;       &lt;/section&gt;&#x000A;    &lt;/article&gt;&#x000A;    &lt;footer&gt;&#x000A;       This XHTML5 test page has been created by Nico Hagenburger&#x000A;    &lt;/footer&gt;&#x000A;  &lt;/body&gt;&#x000A;&lt;/html&gt;</code></pre>
+          <p>Some remarks:</p>
+          <ul>
+          <li>I’ve used both <code>lang</code> and <code>xml:lang</code> because I had some problems with Google, when I used <code>xml:lang</code> only.</li>
+          <li>You could use conditional comments for MSIE</li>
+          </ul>
+          <h2 id="4-css-styling-of-html5-elements">4. CSS styling of HTML5 elements</h2>
+          <p>Just do it the way you would expect it—after calling <code>document.createElement</code> you can use this CSS even in IE 6.0 and IE 7.0.</p>
+          <pre><code>header&#x000A;{&#x000A;  background: yellow;&#x000A;  display: block; /** inline is the default **/&#x000A;}&#x000A;header a&#x000A;{&#x000A;  color: red;&#x000A;}</code></pre>
+          <h2 id="summary">Summary</h2>
+          <p>HTML5/XHTML5 works quite well, makes your code more readable, accessible and your website is made as state of the art. The code will work in most browsers:</p>
+          <table><thead><tr><th>Browser</th><th>Does is work?</th></tr></thead><tbody><tr><td>Safari 3.1+</td><td><em>yes</em></td>
+          </tr><tr><td>Firefox 2.0</td><td><em>yes</em> with HTTP header “Content-type: application/xhtml+xml”</td>
+          </tr><tr><td>Firefox 3.0+</td><td><em>yes</em></td>
+          </tr><tr><td>Opera 9.0+</td><td><em>yes</em></td>
+          </tr><tr><td>Chrome 4.0</td><td><em>yes</em></td>
+          </tr><tr><td>MSIE 6.0</td><td><em>yes</em> with JavaScript only</td>
+          </tr><tr><td>MSIE 7.0</td><td><em>yes</em> with JavaScript only</td>
+          </tr><tr><td>MSIE 8.0</td><td><em>yes</em> with JavaScript only</td>
+          </tr></tbody></table>
+          <h2 id="update-firefox-20-april-3rd-2009">Update: Firefox 2.0 (April 3rd, 2009)</h2>
+          <p>I found a solution to solve it in Firefox 2.0 (I think it is working for Firefox 1.0 and 1.5, too). You need to set the HTTP header to “Content-type: application/xhtml+xml”. But be careful. IE will not work with this solution and the document <strong>must</strong> be valid. Here’s a simple PHP code for doing this:</p>
+          <pre><code>if (strpos($_SERVER[&#39;HTTP_USER_AGENT&#39;], &#39;Firefox/&#39;)) {&#x000A;  header(&quot;Content-type: application/xhtml+xml&quot;);&#x000A;}</code></pre>
+          <h2 id="update-april-9th-2009">Update (April 9th, 2009)</h2>
+          <p>I’ve added the “content-type” meta tag as suggested by “blabberstar.com” (see comments).</p>
+        </article>
+        <div id="twitter">
+          <a href="http://twitter.com/hagenburger">Follow me on twitter: @hagenburger</a>
+        </div>
+      </div>
+    </div>
+    <footer>© Nico Hagenburger/Hagenburger GmbH 2000—2010 · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)</footer>
+  </body>
+  <!--
+    You've just read it till the end.
+    If you're that fascinated, you definitely have to hire me.
+  -->
+</html>

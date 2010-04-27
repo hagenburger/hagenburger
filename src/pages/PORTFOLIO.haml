@@ -1,0 +1,143 @@
+- @title = 'Portfolio'
+- @description = 'The portfolio of Nico Hagenburger—webdesign, logos, concepts and Ruby, JavaScript, HTML5, Haml and Sass development'
+%article
+  #portfolio-carousel
+    %figure
+      = img 'portfolio/moviepilot.png'
+      %figcaption
+        %span
+          After being more than two years online, I rebuild the whole frontend of moviepilot with Haml, Sass and Compass.
+          It’s much more lightweight now, has 30%+ less tags and 50%+ less classes and is much faster now.
+          As another aspect I brought much more consistency to the plattform and introdused RedGreenGrid as a global baseline grid.
+        %span
+          %strong My role:
+          Haml, Sass, HTML5, Ruby on Rails, JavaScript, Photoshop, Frontend Speed-Up, RSpec, RedGreenGrid
+        %span= link 'www.moviepilot.de', 'http://www.moviepilot.de'
+    %figure
+      = img 'portfolio/teehaus-chen-che-berlin.png'
+      %figcaption
+        %span
+          I don’t like coffee and I’m very addicted to tea—so I was very pleased to create the website for my favorite tea house Chén Chè while drinking blue flower tea.
+        %span
+          %strong My role:
+          Design, HTML5, Haml, Sass, jQuery
+        %span= link 'www.chenche-berlin.de', 'http://www.chenche-berlin.de'
+    %figure
+      = img 'portfolio/twittwoch.png'
+      %figcaption
+        %span
+          Twittwoch is a monthly convention I’m running with Stefan Wolpers and others.
+          The Twittwoch website is a WordPress blog combined with a Ruby on Rails application for signing up for the events.
+        %span
+          %strong My role:
+          HTML5, CSS, WordPress Theme, Ruby on Rails, Haml, Sass, Twitter API, Photoshop, Logo, Design
+    %figure
+      = img 'portfolio/stefans-eis-rezepte.png'
+      %figcaption
+        %span
+          Own Project with Stefan for delicious ice cream recipies for home we created in our office.
+          Special thanks to Manniac for drawing the #{ link "comic character", "http://www.manniac.de" }.
+        %span
+          %strong My role:
+          HTML, CSS, WordPress Theme, WordPress Plugins, Logo, Design
+        %span= link 'www.stefans-eis-rezepte.de', 'http://www.stefans-eis-rezepte.de'
+    %figure
+      = img 'portfolio/susuh.png'
+      %figcaption
+        %span Susuh needed a frontend for extremely fast loading times with minimal file sizes, tags, few HTTP requests
+        %span
+          %strong My role:
+          Haml, Sass, HTML5, Ruby on Rails, JavaScript, Photoshop, Frontend Speed-Up, RSpec, RedGreenGrid
+        %span= link 'www.susuh.de', 'http://www.susuh.de'
+    %figure
+      = img 'portfolio/fructus-gmbh.png'
+      %figcaption
+        %span Fructus is the company of Christoph Kappes. The website had to be exactly the same as the design for all browsers including Internet Explorer 6.0. 
+        %span
+          %strong My role:
+          HTML5, CSS, WordPress Theme, WordPress Plugins
+        %span= link 'www.fructus-gmbh.de', 'http://www.fructus-gmbh.de'
+    %figure
+      = img 'portfolio/qype-design.png'
+      %figcaption
+        %span Qype got a complete redesign, new concepts and the beginning of the internationalization.  
+        %span
+          %strong My role:
+          Design, Photoshop, Concepts, HTML, CSS, Ruby on Rails
+    %figure
+      = img 'portfolio/stadtbahn-blog.png'
+      %figcaption
+        %span Just an own project about Berlin livestyle between the subway stations.
+        %span
+          %strong My role:
+          HTML5, CSS, WordPress Theme, WordPress Plugins, Design, Logo
+        %span= link 'www.stadtbahn-blog.de', 'http://www.stadtbahn-blog.de'
+  #logos
+    %h2 Logo Design
+    %figure= img 'logos/tan-vuong-hair-and-make-up.png', :alt => 'Tan Vuong – Logo design by Nico Hagenburger'
+    %figure= img 'logos/twittwoch.png', :alt => 'Twittwoch e. V. – Logo design by Nico Hagenburger'
+    %figure= img 'logos/susuh.png', :alt => 'Susuh – Logo design by Nico Hagenburger'
+    %figure= img 'logos/13-stock.png', :alt => '13. Stock Online Relations – Logo design by Nico Hagenburger'
+    %figure= img 'logos/stadtbahn-blog.png', :alt => 'Stadtbahn-Blog – Logo design by Nico Hagenburger'
+    %figure= img 'logos/barcamp-wroclaw-breslau.png', :alt => 'Barcamp Wrocław – Logo design by Nico Hagenburger'
+  - c = []
+  - c << ['RUG-B — Ruby User Group Berlin', 'Haml, Sass, HTML5, Design, Photoshop', '2010', 'http://rug-b.github.com']
+  - c << ['Jovoto GmbH', 'Sass, HTML5, jQuery', '2010', 'internal project']
+  - c << ['Teehaus Chén Chè/Anthô GmbH', 'Design, Photography, Sass, HTML5, jQuery', '2010', 'http://www.chenche-berlin.de']
+  - c << ['SOZIALHELDEN e. V.', 'Haml, Sass, HTML5, Ruby on Rails, Open Street Map', '2010', 'http://www.wheelmap.org']
+  - c << ['AMOOMA GmbH', 'Haml, Sass, HTML5, Ruby on Rails, RedGreenGrid', '2010', 'http://www.amoocon.de']
+  - c << ['moviepilot GmbH', 'Haml, Sass, HTML5, Ruby on Rails, JavaScript, Photoshop, RSpec, RedGreenGrid', '2009, 2010', 'http://www.moviepilot.de']
+  - c << ['friendticker/servtag GmbH (via DIS AG)', 'Ruby on Rails, Cucumber, jQuery, Speed-up', '2009, 2010', 'http://www.friendticker.com']
+  -# c << ['André Cantarel', 'HTML5, CSS, PHP, jQuery', '2009, 2010']
+  -# c << ['Mokkapan Phongphit', 'HTML5, CSS, Photoshop, Design', '2009, 2010']
+  - c << ['eventurecat GmbH', 'HTML5, CSS, HTML, Sass, WordPress, Design, Photoshop', '2009, 2010', 'http://www.eventurecat.com']
+  -# c << ['Certitude GmbH', 'HTML5, CSS, HTML, Sass, WordPress, Design, Photoshop', '2009']
+  - c << ['atoms&bits festival', 'Haml, Sass, Ruby on Rails, Twitter API, PayPal API, Cucumber', '2009', 'http://spenden.atomsandbits.org']
+  - c << ['Tan Vuong Hair & Make-Up', 'Design, Logo, Photoshop, InDesign', '2009', 'http://www.tanvuong.de']
+  - c << ['palomar5 e. V.', 'Haml, Sass, Compass, Ruby on Rails, Cucumber', '2009']
+  - c << ['Twittwoch e. V.', 'HTML5, CSS, Ruby on Rails, Design, Photoshop, Logo', '2009']
+  - c << ['1000joboersen UG', 'Consulting', '2009']
+  -# c << ['Spekunauten GmbH', 'Photoshop', '2009']
+  - c << ['Fructus GmbH', 'HTML5, CSS, WordPress Theme, WordPress Plugins', '2009', 'http://www.fructus-gmbh.de']
+  - c << ['KI*KA – Kinderkanal/MDR (via 13. Stock Online Relations GmbH & Co. KG)', 'Community Design Consulting', '2009']
+  - c << ['Santa Fe Natural Tobacco Company: Germany GmbH (via 13. Stock Online Relations GmbH & Co. KG)', 'HTML, CSS, Design, Photoshop', '2009']
+  - c << ['dailyme.tv GmbH', 'HTML, CSS, Ruby on Rails, Photoshop, Design, Concepts, Tests', '2008, 2009', 'http://www.dailyme.tv']
+  -# c << ['The Greens in the European Parliament (via Jarlssen GmbH)', 'HTML, CSS, PHP, Photoshop, Logo', '2008, 2009']
+  - c << ['13. Stock Online Relations GmbH & Co. KG', 'Design, Logo', '2008', 'http://www.13stock.de']
+  - c << ['Clipgenerator/Trivid GmbH', 'HTML, CSS, JavaScript, Design, Photoshop', '2008', 'http://www.clipgenerator.com']
+  -# c << ['jam fineartprint', 'HTML, CSS, PHP, JavaScript', '2008']
+  - c << ['Susuh GmbH', 'HTML5, CSS, Ruby on Rails, jQuery, Design, Photoshop, Logo', '2007, 2008, 2009', 'http://www.susuh.de']
+  - c << ['sport-id/Net-ID GmbH', 'HTML, CSS, WordPress Theme', '2007']
+  - c << ['Deutschlandreporter.de (via Jarlssen GmbH)', 'Design, Photoshop', '2007', 'http://www.deutschlandreporter.de']
+  - c << ['Cellity AG', 'HTML, CSS, JavaScript, WordPress Theme', '2007', 'aquired by Nokia']
+  - c << ['Qype GmbH (via Jarlssen GmbH)', 'HTML, CSS, Ruby on Rails, Photoshop, Design, Concepts', '2006, 2007']
+  - c << ['ComBOTS AG', 'HTML, CSS, Ruby on Rails, JSF, JavaScript, Cocoon, Design, Photoshop, Style Guide', '2006, 2007']
+  -# c << ['Zwei Burgen Immobilien GmbH', 'Logo', '2006']
+  -# c << ['Bistro El Dry', 'Design, Photoshop, InDesign', '2006']
+  -# c << ['Emerson Trust GmbH & Co. KG (via Jarlssen GmbH)', 'HTML, CSS, PHP, Photoshop', '2006']
+  - c << ['Reckitt Benckiser Deutschland GmbH', 'HTML, CSS, PHP', '2006']
+  -# c << ['Sunrise Medical GmbH & Co. KG', 'Consulting', '2006']
+  - c << ['ekaabo GmbH', 'Design, Photoshop', '2006']
+  -# c << ['grafiXXL', 'Design, Logo, Photoshop', '2006']
+  - c << ['WEB.DE GmbH (via kuehlhaus AG)', 'HTML, CSS, Photoshop', '2005, 2006']
+  -# c << ['Perkeo Apotheke', 'HTML, CSS, PHP, Design, Photoshop', '2005']
+  - c << ['Dr. Haidrun Wietler', 'HTML, CSS, PHP, Design, Photoshop', '2005', 'http://www.wietler.com']
+  #clients
+    %h2 Selected Clients and Projects
+    %table
+      %thead
+        %tr
+          %th Client, Skills
+          %th Year
+      %tbody
+        - c.each do |client, skills, years, link_or_info|
+          %tr
+            %td<
+              %strong>&= client
+              - if link_or_info =~ /http:\/\/(.+)$/
+                = " · #{ link($1, link_or_info) }"
+              - elsif link_or_info
+                = " · #{ link_or_info }"
+              %br>
+              &= skills
+            %td&= years

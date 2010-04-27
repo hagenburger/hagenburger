@@ -1,0 +1,148 @@
+- @date = Time.mktime(2010, 4, 26)
+- @description = 'Enhance your textarea or input fields with the HTML5 attribute “placeholder” like <input placeholder="Post something"> and make it work in all Browsers with jQuery.'
+%article.post
+  %h1= @title = 'HTML5 Input Fields With Placeholders and jQuery for All Browsers'
+  :markdown
+    [HTML5](HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html) added some new features for `input` and `textarea` fields.
+    One is inspired by Safari’s search box: `placeholder`
+    This adds an default text if the textfield is empty:
+    
+        <input type="text" placeholder="Fill me …">
+        
+    jQuery Fix for All Browsers
+    ---------------------------
+    
+    Currently the placeholder works with the latest [Webkit](http://webkit.org/) (Safari nightly build) and Chrome only.
+    In Safari 4.0 placeholders won’t appear in textareas.
+    For all other browsers, the following short jQuery fix will help you.
+    `$('[placeholder]')` selects all HTML elements with an placeholder attribute (textarea, input, and other elements).
+    
+        $('[placeholder]').focus(function() {
+          var input = $(this);
+          if (input.val() == input.attr('placeholder')) {
+            input.val('');
+            input.removeClass('placeholder');
+          }
+        }).blur(function() {
+          var input = $(this);
+          if (input.val() == '') {
+            input.addClass('placeholder');
+            input.val(input.attr('placeholder'));
+          }
+        }).blur();
+    
+    Don’t forget the last `blur()` call.
+    This one initializes the fields.
+    
+    *Update:* [Robin](http://twitter.com/rmehner) mentioned in the comments, that this would post the placeholder values to the form action script.
+    Of course, this isn’t what we want.
+    By adding a pre-submit clearing this problem is solved:
+    
+        $('[placeholder]').parents('form').submit(function() {
+          $(this).find('[placeholder]').each(function() {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+              input.val('');
+            }
+          })
+        });
+    
+    You’ll find the whole [code at github](http://gist.github.com/379601).
+    
+    CSS Styling
+    -----------
+    
+    While the placeholder is visible, the text field gets an additional `.placeholder` class.
+    To make it look beautifully add a some CSS for a grey placeholder text:
+    
+        .placeholder
+        {
+          color: #aaa;
+        }
+    
+    Result
+    ------
+    
+    Here’s the result—it’s tested and works in Safari, Firefox, Opera, Chrome and even Internet Explorer:
+
+  .result#with-jquery
+    %form
+      %p Input field:
+      %fieldset
+        %input(placeholder="Fill me …" type="text")
+        %input(placeholder="Fill me …" type="text" value="Already filled, clear to see placeholder")
+      %p Textarea:
+      %fieldset
+        %textarea(placeholder="Start writing a book …")
+        %textarea(placeholder="Start writing a book …") Already filled, clear to see placeholder
+      
+  :markdown
+    CSS Styling of the HTML5 Attribute Placeholder
+    ----------------------------------------------
+    
+    But there’s one more thing:
+    Webkit users can even style their placeholder text.
+    There’s an temporarily pseudo element selector called `-webkit-input-placeholder`:
+    
+        ::-webkit-input-placeholder
+        {
+          color: red;
+          font-weight: bold;
+        }
+    
+    This one is pure *HTML5* and *CSS*.
+    You should see bold red text for the placeholders (left side) and normal black text if there’s user input (right side).
+    It works in Webkit and Chrome only and partially in Safari:
+
+  .result#pure-html5
+    %form
+      %p Input field:
+      %fieldset
+        %input(placeholder="Fill me …" type="text")
+        %input(placeholder="Fill me …" type="text" value="Already filled, clear to see placeholder")
+      %p Textarea:
+      %fieldset
+        %textarea(placeholder="Start writing a book …")
+        %textarea(placeholder="Start writing a book …") Already filled, clear to see placeholder
+      
+  %style(type="text/css")
+    :sass
+      @import config/colors.sass
+      .result
+        input,
+        textarea
+          border: 1px darken($green, 10%) solid
+          font-weight: normal
+          float: left
+          padding: 2px
+          width: 199px
+          &:first-child
+            margin-right: 10px
+      .placeholder
+        color: #aaa
+      #pure-html5 ::-webkit-input-placeholder
+        color: red
+        font-weight: bold
+    
+  :javascript
+    $('#with-jquery [placeholder]').focus(function() {
+      var input = $(this);
+      if (input.val() == input.attr('placeholder')) {
+        input.val('');
+        input.removeClass('placeholder');
+      }
+    }).blur(function() {
+      var input = $(this);
+      if (input.val() == '') {
+        input.addClass('placeholder');
+        input.val(input.attr('placeholder'));
+      }
+    }).blur().parents('form').submit(function() {
+      $(this).find('[placeholder]').each(function() {
+        var input = $(this);
+        if (input.val() == input.attr('placeholder')) {
+          input.val('');
+        }
+      })
+    });
+    
