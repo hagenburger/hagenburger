@@ -2,3 +2,4 @@
 .sass-cache
 src/pages/BLOG/_*.haml
 site/.htaccess
+tmp
