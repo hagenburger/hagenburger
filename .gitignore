@@ -3,3 +3,4 @@
 src/pages/BLOG/_*.haml
 site/.htaccess
 tmp
+_*
