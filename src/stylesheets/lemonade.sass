@@ -1,0 +1,121 @@
+@import compass
+
+$lemonade-blue: #008186
+$lemonade-green: #00ac60
+
+
+img.lemonade
+  margin: -80px 110px -60px
+
+
+pre
+  padding: 20px !important
+
+
+.lemonade-intro
+  float: left
+  margin-right: 50px
+
+  h1
+    color: $lemonade-blue
+    margin-left: 90px
+    text-align: right
+
+  p
+    margin-left: 210px
+    text-align: justify
+    width: 300px
+
+  pre
+    margin-left: 190px
+    width: 300px
+
+
+.lemonade-info
+  float: left
+  padding-top: 40px
+  text-transform: uppercase
+  width: 150px
+  
+  h2
+    background: sprite-image("lemonade/e.png", 55px, 6px) no-repeat
+    margin-top: 10px
+    padding-top: 10px
+ 
+  p,
+  h2
+    color: $lemonade-green
+    width: auto
+
+
+.lemonade-example
+  clear: both
+  
+  img
+    background: sprite-image("lemonade/transparency.png")
+    margin: 0 15px
+    +box-shadow(rgba(black, 0.5), 0, 0, 5px)
+
+
+.lemonade-before,
+.lemonade-after
+  color: $lemonade-green
+
+  h2
+    margin-left: 20px
+
+  pre
+    padding: 20px !important
+    width: 490px
+
+.lemonade-before:after
+  background: sprite-image("lemonade/arrow.png")
+  content: " "
+  display: block
+  height: 220px
+  margin: -61px 0 0 70px
+  position: absolute
+  width: 220px
+ 
+.lemonade-before:before
+  background: sprite-image("lemonade/images-before.png")
+  content: " "
+  display: block
+  height: 270px
+  margin: 10px 0 0 330px
+  position: absolute
+  width: 260px
+  z-index: 100
+ 
+.lemonade-after:before
+  background: sprite-image("lemonade/images-after.png")
+  content: " "
+  display: block
+  height: 290px
+  margin: -10px 0 0 280px
+  position: absolute
+  width: 210px
+  z-index: 100
+ 
+.lemonade-after
+  color: $lemonade-blue
+  margin-left: 310px
+
+
+.lemonade-example-1
+  background: sprite-image("lemonade/example-1/blue-10x10.png", 20px, 9px) yellow no-repeat
+  padding: 5px 10px 5px 35px
+
+
+.lemonade-example-2-a-just-to-generate-the-sprite
+  background: sprite-image("lemonade/example-2-a/pink-30x30.png") yellow no-repeat
+.lemonade-example-2-a
+  background: sprite-image("lemonade/example-2-a/blue-10x10.png", 20px, 9px) yellow no-repeat
+  padding: 5px 10px 5px 35px
+
+.lemonade-example-2-b-just-to-generate-the-sprite
+  background: sprite-image("lemonade/example-2-b/pink-30x30.png") yellow no-repeat
+.lemonade-example-2-b
+  background: sprite-image("lemonade/example-2-b/blue-10x10.png", 20px, 9px, 20px) yellow no-repeat
+  padding: 5px 10px 5px 35px
+

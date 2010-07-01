@@ -9,7 +9,7 @@
 article p,
 article li,
 dt, dd,
-h4, h5, h6,
+h3, h4, h5, h6,
 footer,
 nav,
 .more,
@@ -33,7 +33,6 @@ figcaption,
   font-size: 14px
 
 h2,
-h3,
 #twitter
   @include helvetica-16
   @include normal
@@ -44,7 +43,7 @@ h1,
 #welcome p,
 h2:before,
 #portfolio:before,
-article div h2,
+.page h2,
 #phone,
 body:before
   +helvetica-37
@@ -66,3 +65,8 @@ pre
 
 code
   @include monospace
+
+sup
+  font-size: 10px
+  line-height: 10px
+  vertical-align: 4px

@@ -1,7 +1,8 @@
 - @date = Time.mktime(2010, 4, 26)
-- @description = 'Enhance your textarea or input fields with the HTML5 attribute “placeholder” like <input placeholder="Post something"> and make it work in all Browsers with jQuery.'
+- @description = 'Enhance your textarea or input fields with the HTML5 attribute “placeholder” and make it work in all Browsers with jQuery.'
+- @keywords = %w(HTML5 placeholder jQuery input textarea browser fix)
 %article.post
-  %h1= @title = 'HTML5 Input Fields With Placeholders and jQuery for All Browsers'
+  %h1= @title = 'HTML5 Placeholder Input Fields Fixed with jQuery'
   :markdown
     [HTML5](HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html) added some new features for `input` and `textarea` fields.
     One is inspired by Safari’s search box: `placeholder`
@@ -12,7 +13,7 @@
     jQuery Fix for All Browsers
     ---------------------------
     
-    Currently the placeholder works with the latest [Webkit](http://webkit.org/) (Safari nightly build) and Chrome only.
+    Currently the *placeholder* works with the latest [Webkit](http://webkit.org/) (Safari nightly build) and Chrome only.
     In Safari 4.0 placeholders won’t appear in textareas.
     For all other browsers, the following short jQuery fix will help you.
     `$('[placeholder]')` selects all HTML elements with an placeholder attribute (textarea, input, and other elements).
@@ -34,7 +35,7 @@
     Don’t forget the last `blur()` call.
     This one initializes the fields.
     
-    *Update:* [Robin](http://twitter.com/rmehner) mentioned in the comments, that this would post the placeholder values to the form action script.
+    *Update:* [Robin](http://twitter.com/rmehner) mentioned in the comments, that this would post the *placeholder* values to the form action script.
     Of course, this isn’t what we want.
     By adding a pre-submit clearing this problem is solved:
     

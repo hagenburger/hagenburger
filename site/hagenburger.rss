@@ -3,13 +3,21 @@
     <title>Nico Hagenburger</title>
     <link>http://www.hagenburger.net</link>
     <description>I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml and Sass.</description>
-    <lastBuildDate>Mon Apr 26 00:00:00 +0200 2010</lastBuildDate>
+    <lastBuildDate>Fri May 14 00:00:00 +0200 2010</lastBuildDate>
     <generator>Staticmatic fork by Nico Hagenburger</generator>
     <language>en</language>
     <item>
-      <title>HTML5 Input Fields With Placeholders and jQuery for All Browsers</title>
+      <title>Generate CSS Sprites on the Fly with Lemonade</title>
+      <link>http://www.hagenburger.net/BLOG/Lemonade-CSS-Sprites-for-Sass-Compass.html</link>
+      <description>Generate CSS sprites on the fly with this Sass/Compass plugin: `background: sprite-image(&quot;icons/go.png&quot;)`—an you’re done.</description>
+      <author>Nico Hagenburger</author>
+      <guid>BLOG/Lemonade-CSS-Sprites-for-Sass-Compass.html</guid>
+      <pubDate>Fri May 14 00:00:00 +0200 2010</pubDate>
+    </item>
+    <item>
+      <title>HTML5 Placeholder Input Fields Fixed with jQuery</title>
       <link>http://www.hagenburger.net/BLOG/HTML5-Input-Placeholder-Fix-With-jQuery.html</link>
-      <description>Enhance your textarea or input fields with the HTML5 attribute “placeholder” like &lt;input placeholder=&quot;Post something&quot;&gt; and make it work in all Browsers with jQuery.</description>
+      <description>Enhance your textarea or input fields with the HTML5 attribute “placeholder” and make it work in all Browsers with jQuery.</description>
       <author>Nico Hagenburger</author>
       <guid>BLOG/HTML5-Input-Placeholder-Fix-With-jQuery.html</guid>
       <pubDate>Mon Apr 26 00:00:00 +0200 2010</pubDate>
@@ -17,7 +25,7 @@
     <item>
       <title>How to auto deploy Rails apps after Git push</title>
       <link>http://www.hagenburger.net/BLOG/How-to-auto-deploy-Rails-apps-after-Git-push.html</link>
-      <description>Ever wondered how Heroku “deploying” works? It’s very easy to do by yourself.</description>
+      <description>Ever wondered how Heroku “deploying” Rails apps via Git works? It’s very easy to setup Git.</description>
       <author>Nico Hagenburger</author>
       <guid>BLOG/How-to-auto-deploy-Rails-apps-after-Git-push.html</guid>
       <pubDate>Sun Aug 30 00:00:00 +0200 2009</pubDate>
@@ -41,7 +49,7 @@
     <item>
       <title>4 Useful HTML5 Browser Support Overviews</title>
       <link>http://www.hagenburger.net/BLOG/4-useful-HTML5-browser-support-overviews.html</link>
-      <description>Great tables about HTML support, attributes and elements</description>
+      <description>Great tables about HTML5 support in browsers, attributes and elements</description>
       <author>Nico Hagenburger</author>
       <guid>BLOG/4-useful-HTML5-browser-support-overviews.html</guid>
       <pubDate>Sat May 16 00:00:00 +0200 2009</pubDate>
