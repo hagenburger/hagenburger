@@ -3,16 +3,24 @@
     <title>Nico Hagenburger</title>
     <link>http://www.hagenburger.net</link>
     <description>I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml and Sass.</description>
-    <lastBuildDate>Fri May 14 00:00:00 +0200 2010</lastBuildDate>
+    <lastBuildDate>Wed Jul 07 00:00:00 +0200 2010</lastBuildDate>
     <generator>Staticmatic fork by Nico Hagenburger</generator>
     <language>en</language>
     <item>
+      <title>3 Steps to Make Better &amp; Faster Frontends</title>
+      <link>http://www.hagenburger.net/BLOG/3-Steps-to-Make-Better-And-Faster-Frontends.html</link>
+      <description>Enhance your frontend development with SCSS/Sass, Compass and Lemonade—use variables, color functions CSS3 and CSS sprites.</description>
+      <author>Nico Hagenburger</author>
+      <guid>BLOG/3-Steps-to-Make-Better-And-Faster-Frontends.html</guid>
+      <pubDate>Wed Jul 07 00:00:00 +0200 2010</pubDate>
+    </item>
+    <item>
       <title>Generate CSS Sprites on the Fly with Lemonade</title>
       <link>http://www.hagenburger.net/BLOG/Lemonade-CSS-Sprites-for-Sass-Compass.html</link>
-      <description>Generate CSS sprites on the fly with this Sass/Compass plugin: `background: sprite-image(&quot;icons/go.png&quot;)`—an you’re done.</description>
+      <description>Generate CSS sprites on the fly with this Sass/Compass plugin: `background: sprite-image(&quot;icons/go.png&quot;)`—and you’re done.</description>
       <author>Nico Hagenburger</author>
       <guid>BLOG/Lemonade-CSS-Sprites-for-Sass-Compass.html</guid>
-      <pubDate>Fri May 14 00:00:00 +0200 2010</pubDate>
+      <pubDate>Thu Jul 01 00:00:00 +0200 2010</pubDate>
     </item>
     <item>
       <title>HTML5 Placeholder Input Fields Fixed with jQuery</title>

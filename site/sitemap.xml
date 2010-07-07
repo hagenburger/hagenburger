@@ -24,8 +24,14 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>http://www.hagenburger.net/BLOG/3-Steps-to-Make-Better-And-Faster-Frontends.html</loc>
+    <lastmod>2010-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://www.hagenburger.net/BLOG/Lemonade-CSS-Sprites-for-Sass-Compass.html</loc>
-    <lastmod>2010-05-14</lastmod>
+    <lastmod>2010-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

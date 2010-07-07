@@ -1,9 +1,9 @@
 @import redgreengrid/redgreengrid
 @import redgreengrid/fonts/20/helvetica
 
-@include rgg-development
++rgg-development
 
-@mixin normal
+=normal
   font-family: "ff-dagny-web-pro-1", "ff-dagny-web-pro-2", "Helvetica Neue", Helvetica, Arial, sans-serif
 
 article p,
@@ -27,15 +27,15 @@ figcaption,
 .author,
 .dsq-options,
 #dsq-content-stub
-  @include helvetica-13
-  @include normal
+  +helvetica-13
+  +normal
   font-weight: lighter
   font-size: 14px
 
 h2,
 #twitter
-  @include helvetica-16
-  @include normal
+  +helvetica-16
+  +normal
   bottom: 1px
   font-size: 16px
 
@@ -52,6 +52,10 @@ body:before
   font-weight: bold
   font-size: 35px
 
+h1 small
+  font-weight: 200
+  +normal
+
 #welcome p
   font-weight: 200
 
@@ -61,10 +65,10 @@ body:before
 pre
   line-height: 20px
   font-size: 12px
-  @include monospace
+  +monospace
 
 code
-  @include monospace
+  +monospace
 
 sup
   font-size: 10px

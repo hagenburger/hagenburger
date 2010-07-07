@@ -1,63 +1,64 @@
 /* line 7 */
 img.lemonade {
+  height: 320px;
   margin: -80px 110px -60px;
 }
 
-/* line 11 */
+/* line 12 */
 pre {
   padding: 20px !important;
 }
 
-/* line 15 */
+/* line 16 */
 .lemonade-intro {
   float: left;
   margin-right: 50px;
 }
-/* line 19 */
+/* line 20 */
 .lemonade-intro h1 {
   color: #008186;
   margin-left: 90px;
   text-align: right;
 }
-/* line 24 */
+/* line 25 */
 .lemonade-intro p {
   margin-left: 210px;
   text-align: justify;
   width: 300px;
 }
-/* line 29 */
+/* line 30 */
 .lemonade-intro pre {
   margin-left: 190px;
   width: 300px;
 }
 
-/* line 34 */
+/* line 35 */
 .lemonade-info {
   float: left;
   padding-top: 40px;
   text-transform: uppercase;
   width: 150px;
 }
-/* line 40 */
+/* line 41 */
 .lemonade-info h2 {
-  background: url('/images/lemonade.png?1278406530') 55px 6px no-repeat;
+  background: url('/images/lemonade.png?1278495298') 55px 6px no-repeat;
   margin-top: 10px;
   padding-top: 10px;
 }
-/* line 45 */
+/* line 46 */
 .lemonade-info p,
 .lemonade-info h2 {
   color: #00ac60;
   width: auto;
 }
 
-/* line 51 */
+/* line 52 */
 .lemonade-example {
   clear: both;
 }
-/* line 54 */
+/* line 55 */
 .lemonade-example img {
-  background: url('/images/lemonade.png?1278406530') 0 -26px;
+  background: url('/images/lemonade.png?1278495298') 0 -26px;
   margin: 0 15px;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
@@ -65,26 +66,26 @@ pre {
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
 }
 
-/* line 60 */
+/* line 61 */
 .lemonade-before,
 .lemonade-after {
   color: #00ac60;
 }
-/* line 64 */
+/* line 65 */
 .lemonade-before h2,
 .lemonade-after h2 {
   margin-left: 20px;
 }
-/* line 67 */
+/* line 68 */
 .lemonade-before pre,
 .lemonade-after pre {
   padding: 20px !important;
   width: 490px;
 }
 
-/* line 71 */
+/* line 72 */
 .lemonade-before:after {
-  background: url('/images/lemonade.png?1278406530') 0 -218px;
+  background: url('/images/lemonade.png?1278495298') 0 -218px;
   content: " ";
   display: block;
   height: 220px;
@@ -93,9 +94,9 @@ pre {
   width: 220px;
 }
 
-/* line 80 */
+/* line 81 */
 .lemonade-before:before {
-  background: url('/images/lemonade.png?1278406530') 0 -438px;
+  background: url('/images/lemonade.png?1278495298') 0 -438px;
   content: " ";
   display: block;
   height: 270px;
@@ -105,9 +106,9 @@ pre {
   z-index: 100;
 }
 
-/* line 90 */
+/* line 91 */
 .lemonade-after:before {
-  background: url('/images/lemonade.png?1278406530') 0 -708px;
+  background: url('/images/lemonade.png?1278495298') 0 -708px;
   content: " ";
   display: block;
   height: 290px;
@@ -117,36 +118,36 @@ pre {
   z-index: 100;
 }
 
-/* line 100 */
+/* line 101 */
 .lemonade-after {
   color: #008186;
   margin-left: 310px;
 }
 
-/* line 105 */
+/* line 106 */
 .lemonade-example-1 {
-  background: url('/images/lemonade/example-1.png?1278406526') 20px 9px yellow no-repeat;
+  background: url('/images/lemonade/example-1.png?1278495288') 20px 9px yellow no-repeat;
   padding: 5px 10px 5px 35px;
 }
 
-/* line 110 */
+/* line 111 */
 .lemonade-example-2-a-just-to-generate-the-sprite {
-  background: url('/images/lemonade/example-2-a.png?1278406526') yellow no-repeat;
+  background: url('/images/lemonade/example-2-a.png?1278495288') yellow no-repeat;
 }
 
-/* line 112 */
+/* line 113 */
 .lemonade-example-2-a {
-  background: url('/images/lemonade/example-2-a.png?1278406526') 20px -21px yellow no-repeat;
+  background: url('/images/lemonade/example-2-a.png?1278495288') 20px -21px yellow no-repeat;
   padding: 5px 10px 5px 35px;
 }
 
-/* line 116 */
+/* line 117 */
 .lemonade-example-2-b-just-to-generate-the-sprite {
-  background: url('/images/lemonade/example-2-b.png?1278406526') yellow no-repeat;
+  background: url('/images/lemonade/example-2-b.png?1278495288') yellow no-repeat;
 }
 
-/* line 118 */
+/* line 119 */
 .lemonade-example-2-b {
-  background: url('/images/lemonade/example-2-b.png?1278406526') 20px -41px yellow no-repeat;
+  background: url('/images/lemonade/example-2-b.png?1278495288') 20px -41px yellow no-repeat;
   padding: 5px 10px 5px 35px;
 }

@@ -202,23 +202,29 @@ body:before {
 }
 
 /* line 55, ././src/stylesheets/global/_typography.sass */
+h1 small {
+  font-weight: 200;
+  font-family: "ff-dagny-web-pro-1", "ff-dagny-web-pro-2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* line 59, ././src/stylesheets/global/_typography.sass */
 #welcome p {
   font-weight: 200;
 }
 
-/* line 61, ././src/stylesheets/global/_typography.sass */
+/* line 65, ././src/stylesheets/global/_typography.sass */
 pre {
   line-height: 20px;
   font-size: 12px;
   font-family: "Courier New", Courier, monospace;
 }
 
-/* line 66, ././src/stylesheets/global/_typography.sass */
+/* line 70, ././src/stylesheets/global/_typography.sass */
 code {
   font-family: "Courier New", Courier, monospace;
 }
 
-/* line 69, ././src/stylesheets/global/_typography.sass */
+/* line 73, ././src/stylesheets/global/_typography.sass */
 sup {
   font-size: 10px;
   line-height: 10px;
@@ -580,7 +586,7 @@ article dl dd {
   height: 364px;
   left: -2px;
   position: relative;
-  top: -2px;
+  top: -6px;
   width: 424px;
 }
 /* line 134, ././src/stylesheets/partials/_article.sass */
