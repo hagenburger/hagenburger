@@ -11,7 +11,7 @@
       %meta(name="keywords" content="#{ @keywords.map{ |keyword| keyword.downcase }.join(',') }")
     %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
     %link(rel="alternate" type="application/rss+xml" href="#{ current_page_relative_path }hagenburger.rss")
-    %link(rel="stylesheet" href="#{ current_page_relative_path }stylesheets/hagenburger.css")
+    %link(rel="stylesheet" href="#{ current_page_relative_path }stylesheets/hagenburger.css?2")
     - if @stylesheet
       %link(rel="stylesheet" href="#{ current_page_relative_path }stylesheets/#{ @stylesheet }.css")
     = javascripts_compressed('hagenburger', 'typekit', 'jquery', 'jquery.easing.1.3', 'analytics', 'application').gsub('t><s', "t>\n<s")
