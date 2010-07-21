@@ -552,7 +552,8 @@ article dl dd {
   margin-bottom: 0 !important;
 }
 /* line 107, ././src/stylesheets/partials/_article.sass */
-.post figure {
+.post figure,
+.post .image {
   background: #7ee8ad;
   background: rgba(35, 195, 107, 0.5);
   display: block;
@@ -563,39 +564,49 @@ article dl dd {
   -webkit-box-shadow: white 0 0 50px;
   box-shadow: white 0 0 50px;
 }
-/* line 115, ././src/stylesheets/partials/_article.sass */
-.post figure img, .post figure.slideshare div {
+/* line 116, ././src/stylesheets/partials/_article.sass */
+.post figure img, .post figure.slideshare div,
+.post .image img,
+.post .image.slideshare div {
   background: white;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
   box-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
 }
-/* line 121, ././src/stylesheets/partials/_article.sass */
-.post figure.slideshare {
+/* line 122, ././src/stylesheets/partials/_article.sass */
+.post figure.slideshare,
+.post .image.slideshare {
   background: #c322bd;
 }
-/* line 123, ././src/stylesheets/partials/_article.sass */
-.post figure.slideshare div {
+/* line 124, ././src/stylesheets/partials/_article.sass */
+.post figure.slideshare div,
+.post .image.slideshare div {
   height: 314px;
   margin: 3px auto;
   overflow: hidden;
   width: 420px;
 }
-/* line 128, ././src/stylesheets/partials/_article.sass */
-.post figure.slideshare div object {
+/* line 129, ././src/stylesheets/partials/_article.sass */
+.post figure.slideshare div object,
+.post .image.slideshare div object {
   height: 364px;
   left: -2px;
   position: relative;
   top: -6px;
   width: 424px;
 }
-/* line 134, ././src/stylesheets/partials/_article.sass */
+/* line 135, ././src/stylesheets/partials/_article.sass */
+.post figure img:after,
+.post .image img:after {
+  content: attr(title);
+}
+/* line 137, ././src/stylesheets/partials/_article.sass */
 .post figcaption {
   color: #136d3c;
   margin: 20px auto 0 !important;
 }
 
-/* line 138, ././src/stylesheets/partials/_article.sass */
+/* line 141, ././src/stylesheets/partials/_article.sass */
 .result {
   background: #7dc322;
   color: white;
@@ -611,7 +622,7 @@ article dl dd {
 .result {
   display: block;
 }
-/* line 145, ././src/stylesheets/partials/_article.sass */
+/* line 148, ././src/stylesheets/partials/_article.sass */
 .result p {
   font-weight: normal;
   margin: 0;

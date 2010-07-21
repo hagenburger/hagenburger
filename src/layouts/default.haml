@@ -11,9 +11,9 @@
       %meta(name="keywords" content="#{ @keywords.map{ |keyword| keyword.downcase }.join(',') }")
     %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
     %link(rel="alternate" type="application/rss+xml" href="#{ current_page_relative_path }hagenburger.rss")
-    %link(rel="stylesheet" type="text/css" href="#{ current_page_relative_path }stylesheets/hagenburger.css")
+    %link(rel="stylesheet" href="#{ current_page_relative_path }stylesheets/hagenburger.css")
     - if @stylesheet
-      %link(rel="stylesheet" type="text/css" href="#{ current_page_relative_path }stylesheets/#{ @stylesheet }.css")
+      %link(rel="stylesheet" href="#{ current_page_relative_path }stylesheets/#{ @stylesheet }.css")
     = javascripts_compressed('hagenburger', 'typekit', 'jquery', 'jquery.easing.1.3', 'analytics', 'application').gsub('t><s', "t>\n<s")
   %body
     #nico-hagenburger
@@ -36,8 +36,9 @@
         = yield
         - if current_page =~ /BLOG\/.+\.html/
           = partial '../pages/twitter'
-    %footer<
-      © Nico Hagenburger/Hagenburger GmbH 2000—#{Time.now.year} · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)
+    %footer
+      %small<
+        © Nico Hagenburger/Hagenburger GmbH 2000—#{Time.now.year} · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)
     - if @jquery
       :javascript
         $(function(){#{ @jquery }})

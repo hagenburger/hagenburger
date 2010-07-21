@@ -11,7 +11,7 @@ module JavaScriptHelper
         end
       end
     end
-    tag(:script, :type => 'text/javascript', :src => "#{ current_page_relative_path }#{ destination }") { '' }
+    tag(:script, :src => "#{ current_page_relative_path }#{ destination }") { '' }
   end
   
 end

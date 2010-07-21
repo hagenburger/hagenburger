@@ -104,7 +104,8 @@ article
     li
       list-style: decimal
       @include no-margin-bottom
-  figure
+  figure,
+  .image
     background: lighten($turquoise, 25%)
     background: rgba($turquoise, 0.5)
     display: block
@@ -131,6 +132,8 @@ article
           position: relative
           top: -6px
           width: 424px
+    img:after
+      content: attr(title)
   figcaption
     color: darken($turquoise, 20%)
     margin: 20px auto 0 !important

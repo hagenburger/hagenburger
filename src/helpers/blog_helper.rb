@@ -45,10 +45,16 @@ module BlogHelper
     end
   end
   
-  def blog_img src, alt = nil
+  def figure src, alt = nil
     tag(:figure) do
       tag(:img, :src => src, :alt => alt || src.gsub('-', ' ').gsub(/\.\w+$/, '')) +
       (alt ? tag(:figcaption) { alt } : '')
+    end
+  end
+  
+  def article_img src, alt = nil
+    tag(:div, :class => 'image') do
+      tag(:img, :src => src, :alt => alt || src.gsub('-', ' ').gsub(/\.\w+$/, ''))
     end
   end
 
