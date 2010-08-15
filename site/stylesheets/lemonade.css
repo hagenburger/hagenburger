@@ -60,10 +60,10 @@ pre {
 .lemonade-example img {
   background: url('/images/lemonade.png?1278510731') 0 -26px;
   margin: 0 15px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
-  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px 0;
+  -o-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px 0;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px 0;
 }
 
 /* line 61 */

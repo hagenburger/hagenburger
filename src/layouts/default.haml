@@ -37,6 +37,9 @@
         - if current_page =~ /BLOG\/.+\.html/
           = partial '../pages/twitter'
     %footer
+      #github
+        %h2
+          = link "Fork me on Github!", "http://github.com/hagenburger"
       %small<
         © Nico Hagenburger/Hagenburger GmbH 2000—#{Time.now.year} · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)
     - if @jquery
