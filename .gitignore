@@ -4,3 +4,4 @@ src/pages/BLOG/_*.haml
 site/.htaccess
 tmp
 _*
+*.sprite_info.yml

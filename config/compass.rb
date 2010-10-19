@@ -3,7 +3,6 @@ puts "Site root is: " + File.expand_path(ROOT)
 
 require "redgreengrid" # version > 0.3.2
 require "lemonade"
-require "css3-ribbons"
  
 output_style = :compressed
 project_path = ROOT               # must be set for Compass to work 
