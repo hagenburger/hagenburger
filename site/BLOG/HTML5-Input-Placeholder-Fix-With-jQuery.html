@@ -1,133 +1,21 @@
-<!DOCTYPE html>
-<html data-date="2010-04-26" lang="en">
-  <!--
-    Hey, isn't this the best intended source you've ever seen?
-    And it's HTML5 - so it must be awesome.
-  -->
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta content="Enhance your textarea or input fields with the HTML5 attribute “placeholder” and make it work in all Browsers with jQuery." name="description">
-    <meta content="html5,placeholder,jquery,input,textarea,browser,fix" name="keywords">
-    <title>HTML5 Placeholder Input Fields Fixed with jQuery</title>
-    <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
-    <link href="../stylesheets/hagenburger.css?2" rel="stylesheet">
-    <script src="../hagenburger.js"></script>
+    <style type="text/css">
+      body { font-family: helvetica, verdana, arial; font-size: 10pt;}
+    </style>
   </head>
   <body>
-    <div id="nico-hagenburger">
-      <header>
-        <a href="/" id="logo"><img alt="Nico Hagenburger — HTML5, placeholder, jQuery, input, textarea, browser, fix" src="../images/nico-hagenburger-ruby-on-rails.png"></a>
-        <nav><a href="/">Home</a><a href="../BLOG.html">Blog</a><a href="../CONTACT.html">Contact</a><a href="../PORTFOLIO.html">Portfolio</a></nav>
-        <div><strong>Hi, I’m Nico Hagenburger</strong><br>My pleasure is designing<br>clean, simple websites<br>and developing web applications in Ruby on Rails.</div>
-      </header>
-      <div id="content">
-        <article class="post">
-          <h1>HTML5 Placeholder Input Fields Fixed with jQuery</h1>
-          <p><a href="HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html">HTML5</a> added some new features for <code>input</code> and <code>textarea</code> fields. One is inspired by Safari’s search box: <code>placeholder</code> This adds an default text if the textfield is empty:</p>
-          <pre><code>&lt;input type=&quot;text&quot; placeholder=&quot;Fill me …&quot;&gt;</code></pre>
-          <h2 id="jquery-fix-for-all-browsers">jQuery Fix for All Browsers</h2>
-          <p>Currently the <em>placeholder</em> works with the latest <a href="http://webkit.org/">Webkit</a> (Safari nightly build) and Chrome only. In Safari 4.0 placeholders won’t appear in textareas. For all other browsers, the following short jQuery fix will help you. <code>$(&#39;[placeholder]&#39;)</code> selects all HTML elements with an placeholder attribute (textarea, input, and other elements).</p>
-          <pre><code>$(&#39;[placeholder]&#39;).focus(function() {&#x000A;  var input = $(this);&#x000A;  if (input.val() == input.attr(&#39;placeholder&#39;)) {&#x000A;    input.val(&#39;&#39;);&#x000A;    input.removeClass(&#39;placeholder&#39;);&#x000A;  }&#x000A;}).blur(function() {&#x000A;  var input = $(this);&#x000A;  if (input.val() == &#39;&#39;) {&#x000A;    input.addClass(&#39;placeholder&#39;);&#x000A;    input.val(input.attr(&#39;placeholder&#39;));&#x000A;  }&#x000A;}).blur();</code></pre>
-          <p>Don’t forget the last <code>blur()</code> call. This one initializes the fields.</p>
-          <p><em>Update:</em> <a href="http://twitter.com/rmehner">Robin</a> mentioned in the comments, that this would post the <em>placeholder</em> values to the form action script. Of course, this isn’t what we want. By adding a pre-submit clearing this problem is solved:</p>
-          <pre><code>$(&#39;[placeholder]&#39;).parents(&#39;form&#39;).submit(function() {&#x000A;  $(this).find(&#39;[placeholder]&#39;).each(function() {&#x000A;    var input = $(this);&#x000A;    if (input.val() == input.attr(&#39;placeholder&#39;)) {&#x000A;      input.val(&#39;&#39;);&#x000A;    }&#x000A;  })&#x000A;});</code></pre>
-          <p>You’ll find the whole <a href="http://gist.github.com/379601">code at github</a>.</p>
-          <h2 id="css-styling">CSS Styling</h2>
-          <p>While the placeholder is visible, the text field gets an additional <code>.placeholder</code> class. To make it look beautifully add a some CSS for a grey placeholder text:</p>
-          <pre><code>.placeholder&#x000A;{&#x000A;  color: #aaa;&#x000A;}</code></pre>
-          <h2 id="result">Result</h2>
-          <p>Here’s the result—it’s tested and works in Safari, Firefox, Opera, Chrome and even Internet Explorer:</p>
-          <div class="result" id="with-jquery">
-            <form>
-              <p>Input field:</p>
-              <fieldset>
-                <input placeholder="Fill me …" type="text">
-                <input placeholder="Fill me …" type="text" value="Already filled, clear to see placeholder">
-              </fieldset>
-              <p>Textarea:</p>
-              <fieldset>
-                <textarea placeholder="Start writing a book …"></textarea>
-                <textarea placeholder="Start writing a book …">Already filled, clear to see placeholder</textarea>
-              </fieldset>
-            </form>
-          </div>
-          <h2 id="css-styling-of-the-html5-attribute-placeholder">CSS Styling of the HTML5 Attribute Placeholder</h2>
-          <p>But there’s one more thing: Webkit users can even style their placeholder text. There’s an temporarily pseudo element selector called <code>-webkit-input-placeholder</code>:</p>
-          <pre><code>::-webkit-input-placeholder&#x000A;{&#x000A;  color: red;&#x000A;  font-weight: bold;&#x000A;}</code></pre>
-          <p>This one is pure <em>HTML5</em> and <em>CSS</em>. You should see bold red text for the placeholders (left side) and normal black text if there’s user input (right side). It works in Webkit and Chrome only and partially in Safari:</p>
-          <div class="result" id="pure-html5">
-            <form>
-              <p>Input field:</p>
-              <fieldset>
-                <input placeholder="Fill me …" type="text">
-                <input placeholder="Fill me …" type="text" value="Already filled, clear to see placeholder">
-              </fieldset>
-              <p>Textarea:</p>
-              <fieldset>
-                <textarea placeholder="Start writing a book …"></textarea>
-                <textarea placeholder="Start writing a book …">Already filled, clear to see placeholder</textarea>
-              </fieldset>
-            </form>
-          </div>
-          <style type="text/css">
-            .result input,
-            .result textarea {
-              border: 1px #61981a solid;
-              font-weight: normal;
-              float: left;
-              padding: 2px;
-              width: 199px; }
-              .result input:first-child,
-              .result textarea:first-child {
-                margin-right: 10px; }
-            
-            .placeholder {
-              color: #aaaaaa; }
-            
-            #pure-html5 ::-webkit-input-placeholder {
-              color: red;
-              font-weight: bold; }
-          </style>
-          <script type="text/javascript">
-            //<![CDATA[
-              $('#with-jquery [placeholder]').focus(function() {
-                var input = $(this);
-                if (input.val() == input.attr('placeholder')) {
-                  input.val('');
-                  input.removeClass('placeholder');
-                }
-              }).blur(function() {
-                var input = $(this);
-                if (input.val() == '') {
-                  input.addClass('placeholder');
-                  input.val(input.attr('placeholder'));
-                }
-              }).blur().parents('form').submit(function() {
-                $(this).find('[placeholder]').each(function() {
-                  var input = $(this);
-                  if (input.val() == input.attr('placeholder')) {
-                    input.val('');
-                  }
-                })
-              });
-            //]]>
-          </script>
-        </article>
-        <div id="twitter">
-          <a href="http://twitter.com/hagenburger">Follow me on twitter: @hagenburger</a>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <a href="http://github.com/hagenburger" id="github">
-        <span>Fork me on GitHub!</span>
-        <span>Get free lemonade!</span>
-      </a>
-      <small>© Nico Hagenburger/Hagenburger GmbH 2000—2010 · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)</small>
-    </footer>
+    <h1>
+      StaticMatic::TemplateError
+      in
+      ./src/pages/BLOG/HTML5-Input-Placeholder-Fix-With-jQuery.haml
+    </h1>
+    <p>
+      File to import not found or unreadable: config/colors.sass.
+      Load path: /Users/nh/Projekte/blackcolors-staticmatic/src/stylesheets
+    </p>
+    1: - @date = Time.mktime(2010, 4, 26)<br/>2: - @description = 'Enhance your textarea or input fields with the HTML5 attribute “placeholder” and make it work in all Browsers with jQuery.'<br/>3: - @keywords = %w(HTML5 placeholder jQuery input textarea browser fix)<br/>4: %article.post<br/>
+    <h2>Backtrace</h2>
+    (sass):1<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/import_node.rb:120:in `import'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/import_node.rb:25:in `imported_file'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/import_node.rb:49:in `css_import?'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/import_node.rb:71:in `_perform'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/node.rb:213:in `perform'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/root_node.rb:37:in `perform'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/node.rb:351:in `perform_children'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/node.rb:351:in `map'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/node.rb:351:in `perform_children'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/node.rb:342:in `perform!'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/root_node.rb:59:in `perform!'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/node.rb:330:in `_perform'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/node.rb:213:in `perform'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/root_node.rb:37:in `perform'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/tree/root_node.rb:29:in `render'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/engine.rb:265:in `_render'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/sass-558073858e9b/lib/sass/engine.rb:236:in `render'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/filters.rb:297:in `render'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/filters.rb:71:in `render_with_options'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/filters.rb:115:in `compile'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/filters.rb:99:in `instance_eval'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/filters.rb:99:in `compile'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/filters.rb:80:in `internal_compile'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/precompiler.rb:470:in `close_filtered'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/precompiler.rb:431:in `send'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/precompiler.rb:431:in `close'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/precompiler.rb:199:in `process_indent'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/precompiler.rb:199:in `times'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/precompiler.rb:199:in `process_indent'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/precompiler.rb:170:in `precompile'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/haml-81a85b1906b0/lib/haml/engine.rb:121:in `initialize'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/render.rb:110:in `new'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/render.rb:110:in `generate_html_from_template_source'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/render.rb:26:in `generate_html'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/render.rb:40:in `generate_html_with_layout'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/build.rb:13:in `build_html'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/build.rb:10:in `each'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/build.rb:10:in `build_html'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/mixins/build.rb:5:in `build'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/base.rb:71:in `send'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/../lib/staticmatic/base.rb:71:in `run'<br/>/Users/nh/.rvm/gems/ruby-1.9.2-p0@staticmatic-nh/bundler/gems/staticmatic-781d31abfcab/bin/staticmatic:16<br/>/usr/bin/staticmatic:19:in `load'<br/>/usr/bin/staticmatic:19
   </body>
-  <!--
-    You've just read it till the end.
-    If you're that fascinated, you definitaly have to hire me.
-  -->
 </html>

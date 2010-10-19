@@ -1,7 +1,41 @@
+### OS
 .DS_Store
+Thumbs.db
+
+### TEXTMATE
+*.tmproj
+tmtags
+
+### LOGS
+*.log
+
+### EMACS
+*~
+\#*
+.\#*
+
+### VIM
+*.swp
+
+### PROJECT::GENERAL
+coverage
+rdoc
+pkg
+.bundle
+
+### CACHES
 .sass-cache
+*.cache
+
+### TMP
+tmp
+
+### BUNDLER
+.bundle
+
+### PROJECT
+
 src/pages/BLOG/_*.haml
 site/.htaccess
-tmp
 _*
 *.sprite_info.yml

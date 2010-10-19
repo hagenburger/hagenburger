@@ -6,19 +6,19 @@ GIT
       sass (~> 3.1.0)
 
 GIT
-  remote: ../staticmatic
+  remote: http://github.com/hagenburger/sass.git
+  revision: 558073858e9b01c7c075e855337a9764598397d2
+  specs:
+    sass (3.1.0.alpha.0)
+
+GIT
+  remote: http://github.com/hagenburger/staticmatic.git
   revision: 781d31abfcabd35ed528f9e06fda5178fed7b679
   specs:
     staticmatic (0.11.0.alpha.9)
       compass (>= 0.10.0)
       haml (>= 2.0.0)
       rack (>= 1.0)
-
-GIT
-  remote: http://github.com/hagenburger/sass.git
-  revision: 558073858e9b01c7c075e855337a9764598397d2
-  specs:
-    sass (3.1.0.alpha.0)
 
 GIT
   remote: http://github.com/nex3/haml.git
