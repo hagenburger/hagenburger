@@ -1,0 +1,48 @@
+GIT
+  remote: ../compass
+  revision: 8a59e34ec861a2ad980aab448d16e2bd80cc5718
+  specs:
+    compass (0.11.alpha.0.8a59e34)
+      sass (~> 3.1.0)
+
+GIT
+  remote: ../staticmatic
+  revision: 781d31abfcabd35ed528f9e06fda5178fed7b679
+  specs:
+    staticmatic (0.11.0.alpha.9)
+      compass (>= 0.10.0)
+      haml (>= 2.0.0)
+      rack (>= 1.0)
+
+GIT
+  remote: http://github.com/hagenburger/sass.git
+  revision: 558073858e9b01c7c075e855337a9764598397d2
+  specs:
+    sass (3.1.0.alpha.0)
+
+GIT
+  remote: http://github.com/nex3/haml.git
+  revision: 81a85b1906b0e0f16c26d8f85d2c5cf3a30ef1d1
+  branch: haml-only
+  specs:
+    haml (3.1.0.alpha.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    maruku (0.6.0)
+      syntax (>= 1.0.0)
+    rack (1.2.1)
+    redgreengrid (0.3.2)
+    syntax (1.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass!
+  haml!
+  maruku (~> 0.6.0)
+  redgreengrid (~> 0.3.2)
+  sass!
+  staticmatic!
