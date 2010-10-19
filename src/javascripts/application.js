@@ -98,7 +98,7 @@ $(function() {
   if (post.length == 1) {
     $('#content').append('<article id="' + disqus_container_id + '"></article>');
     
-    var date = $('html').attr('data-date').split('-');
+    var date = $('meta[name="date"]').attr('content').split('-');
     var year = date[0], month = date[1], day = date[2];
     if (year < 2010) {
       var slug = post.attr('data-slug') || location.href.replace(/^.+BLOG\/(.+)\.html$/, '$1');
