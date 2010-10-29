@@ -30,11 +30,16 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    closure-compiler (0.3.3)
+    jammit (0.5.3)
+      closure-compiler (>= 0.1.0)
+      yui-compressor (>= 0.9.1)
     maruku (0.6.0)
       syntax (>= 1.0.0)
     rack (1.2.1)
     redgreengrid (0.3.2)
     syntax (1.0.0)
+    yui-compressor (0.9.1)
 
 PLATFORMS
   ruby
@@ -42,6 +47,7 @@ PLATFORMS
 DEPENDENCIES
   compass!
   haml!
+  jammit (~> 0.5.3)
   maruku (~> 0.6.0)
   redgreengrid (~> 0.3.2)
   sass!

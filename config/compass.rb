@@ -3,7 +3,7 @@ puts "Site root is: " + File.expand_path(ROOT)
 
 require "redgreengrid" # version > 0.3.2
 
-output_style     = :compressed
+output_style     = ARGV[0] == 'build' ? :compressed : :expanded
 project_path     = ROOT
 sass_dir         = "../src/stylesheets"
 http_path        = "../"
