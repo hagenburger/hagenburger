@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--
+    Hey, isn't this the best intended source you've ever seen?
+    And it's HTML5 - so it must be awesome.
+  -->
+  <head>
+    <meta charset="utf-8">
+    <meta content="Some tweaks to optimize the script tags provided by Typekit to improve loading and beauty." name="description">
+    <meta content="staticmatic,asset,packaging,css,javascript,yui" name="keywords">
+    <meta content="2010-10-31" name="date">
+    <title>A Better Typekit Integration ··· Nico Hagenburger</title>
+    <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
+    <link href="../stylesheets/hagenburger.css?4" rel="stylesheet">
+    <script src="../javascripts/hagenburger.js"></script>
+  </head>
+  <body>
+    <div id="nico-hagenburger">
+      <header>
+        <a href="/" id="logo"><img alt="Nico Hagenburger — staticmatic, asset, packaging, css, javascript, yui" src="../images/nico-hagenburger-ruby-on-rails.png"></a>
+        <nav><a href="/">Home</a><a href="../BLOG.html">Blog</a><a href="../CONTACT.html">Contact</a><a href="../PORTFOLIO.html">Portfolio</a></nav>
+        <div><strong>Hi, I’m Nico Hagenburger</strong><br>My pleasure is designing<br>clean, simple websites<br>and developing web applications in Ruby on Rails.</div>
+      </header>
+      <div id="content">
+        <article class="post">
+          <h1>
+            A Better Typekit Integration
+          </h1>
+          <p>Usually your <a href="http://www.typekit.com">Typekit</a> integration looks like this:</p>
+          <pre><code><b>&lt;<em>script</em></b> <b>type</b>=&quot;text/javascript&quot; <b>src</b>=&quot;http://use.typekit.com/nbn2flh.js&quot;<b>&gt;</b><b>&lt;/<em>script</em>&gt</b>&#x000A;<b>&lt;<em>script</em></b> <b>type</b>=&quot;text/javascript&quot;<b>&gt;</b><em>try</em>{<b>Typekit</b>.load();}<em>catch</em>(e){}<b>&lt;/<em>script</em>&gt</b></code></pre>
+          <p>Only two lines, but they could be better. Btw. Typekit is just an example, most suggestions will also improve other includes.</p>
+          <h2 id="1-protocol-independend-link">1. Protocol Independend Link</h2>
+          <p>If your websites uses SSL encryption, you may want to include the HTTPS version of the Typekit includes. An old trick has become very popular the recent weeks, after <a href="http://paulirish.com/">Paul Irish</a> <a href="http://github.com/paulirish/html5-boilerplate/commit/afaf14304e55dac23b2f4c38b6c5f67a7ddb70c8">removed 5 bytes in html5-boilerplate</a>. Typekit delivers both—the HTTP and HTTPS version of the JavaScript file. We can remove the protocol:</p>
+          <pre><code><b>&lt;<em>script</em></b> <b>type</b>=&quot;text/javascript&quot; <b>src</b>=&quot;//use.typekit.com/nbn2flh.js&quot;<b>&gt;</b><b>&lt;/<em>script</em>&gt</b>&#x000A;<b>&lt;<em>script</em></b> <b>type</b>=&quot;text/javascript&quot;<b>&gt;</b><em>try</em>{<b>Typekit</b>.load();}<em>catch</em>(e){}<b>&lt;/<em>script</em>&gt</b></code></pre>
+          <p>5 bytes saved. Hooray.</p>
+          <h2 id="2-html5-doest-require-a-type">2. HTML5 Does’t Require a Type</h2>
+          <p>As <code>text/javascript</code> is default in <a href="HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html">HTML5</a>, we can remove it. It will work across all browser.</p>
+          <pre><code><b>&lt;<em>script</em></b> <b>src</b>=&quot;//use.typekit.com/nbn2flh.js&quot;<b>&gt;</b><b>&lt;/<em>script</em>&gt</b>&#x000A;<b>&lt;<em>script</em></b><b>&gt;</b><em>try</em>{<b>Typekit</b>.load();}<em>catch</em>(e){}<b>&lt;/<em>script</em>&gt</b></code></pre>
+          <p>46 bytes saved. Double hooray.</p>
+          <h2 id="3-load-script-asynchrony">3. Load Script Asynchrony</h2>
+          <p>Sometimes (very few times) the script needs a little bit longer due to high traffic. This prevents your page to be loaded. By adding the <a href="http://davidwalsh.name/html5-async"><code>async</code> attribute</a>, the browser will keep on parsing the HTML while loading the script in the background. At least some browsers do: <a href="http://webkit.org/blog/1395/running-scripts-in-webkit/">Safari 5.0</a> and Firefox 3.6.</p>
+          <pre><code><b>&lt;<em>script</em></b> <b>async</b> <b>src</b>=&quot;//use.typekit.com/nbn2flh.js&quot;<b>&gt;</b><b>&lt;/<em>script</em>&gt</b>&#x000A;<b>&lt;<em>script</em></b><b>&gt;</b><em>try</em>{<b>Typekit</b>.load();}<em>catch</em>(e){}<b>&lt;/<em>script</em>&gt</b></code></pre>
+          <p>6 bytes lost. Shit.</p>
+          <p>By the way if you’re using XML syntax, you need to write <code>async=&quot;async&quot;</code>. And you will loose 8 more bytes.</p>
+          <h2 id="4-load-typekit-onload">4. Load Typekit Onload</h2>
+          <p>A <code>&lt;script&gt;</code> tag has an <code>onload</code> event just like <code>&lt;body&gt;</code> or <code>&lt;img&gt;</code>. As we’re loading the script asynchrony, we’ll need to run it after loading is finished.</p>
+          <pre><code><b>&lt;<em>script</em></b> <b>async</b> <b>onload</b>=&quot;<em>try</em>{<b>Typekit</b>.load();}<em>catch</em>(e){}&quot; &#x000A;        <b>src</b>=&quot;//use.typekit.com/nbn2flh.js&quot;<b>&gt;</b><b>&lt;/<em>script</em>&gt</b></code></pre>
+          <p>At least 5 bytes saved. <strong>But wait</strong>: Will it work in all browsers? <strong>No</strong>. At least Internet Explorer up to Version 8 won’t support it. IE 9 does. Rollback.</p>
+          <h2 id="5-be-unobtrusive">5. Be Unobtrusive</h2>
+          <p>Most of your projects may have an own JavaScript file. And you may use jQuery. This way you could move the Typekit loading out of your HTML:</p>
+          <pre><code><b>&lt;<em>script</em></b> <b>async</b> <b>src</b>=&quot;//use.typekit.com/nbn2flh.js&quot;<b>&gt;</b><b>&lt;/<em>script</em>&gt</b></code></pre>
+          <p>Add to your JavaScript file (I’m sure you’re using an <a href="Asset-Packaging-for-Staticmatic-with-Jammit.html">JavaScript compressor</a>):</p>
+          <pre><code>$(<em>function</em>() {&#x000A;  <em>try</em> {&#x000A;    <b>Typekit</b>.load();&#x000A;  }&#x000A;  <em>catch</em>(e) {}&#x000A;});</code></pre>
+          <p>This saved some more bytes—at least for the second request.</p>
+          <h2 id="6-remove-that-semicolon">6. Remove that Semicolon</h2>
+          <p>And save one more byte!</p>
+          <h2 id="conclusion">Conclusion</h2>
+          <p>Before integration third party tools, think about their implementation. Your website may not need exactly the solution they deliver.</p>
+        </article>
+        <div id="twitter">
+          <a href="http://twitter.com/hagenburger">Follow me on twitter: @hagenburger</a>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <a href="http://github.com/hagenburger" id="github">
+        <span>Fork me on GitHub!</span>
+        <span>Get free lemonade!</span>
+      </a>
+      <small>© Nico Hagenburger/Hagenburger GmbH 2000—2010 · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)</small>
+    </footer>
+  </body>
+  <!--
+    You've just read it till the end.
+    If you're that fascinated, you definitaly have to hire me.
+  -->
+</html>

@@ -24,6 +24,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>http://www.hagenburger.net/BLOG/A-Better-Typekit-Integration.html</loc>
+    <lastmod>2010-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>http://www.hagenburger.net/BLOG/Asset-Packaging-for-Staticmatic-with-Jammit.html</loc>
     <lastmod>2010-10-29</lastmod>
     <changefreq>weekly</changefreq>

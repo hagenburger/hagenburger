@@ -3,9 +3,17 @@
     <title>Nico Hagenburger</title>
     <link>http://www.hagenburger.net</link>
     <description>I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml and Sass.</description>
-    <lastBuildDate>Fri Oct 29 00:00:00 +0200 2010</lastBuildDate>
+    <lastBuildDate>Sun Oct 31 00:00:00 +0200 2010</lastBuildDate>
     <generator>Staticmatic fork by Nico Hagenburger</generator>
     <language>en</language>
+    <item>
+      <title>A Better Typekit Integration</title>
+      <link>http://www.hagenburger.net/BLOG/A-Better-Typekit-Integration.html</link>
+      <description>Some tweaks to optimize the script tags provided by Typekit to improve loading and beauty.</description>
+      <author>Nico Hagenburger</author>
+      <guid>BLOG/A-Better-Typekit-Integration.html</guid>
+      <pubDate>Sun Oct 31 00:00:00 +0200 2010</pubDate>
+    </item>
     <item>
       <title>Production Ready Staticmatic Projects</title>
       <link>http://www.hagenburger.net/BLOG/Asset-Packaging-for-Staticmatic-with-Jammit.html</link>
