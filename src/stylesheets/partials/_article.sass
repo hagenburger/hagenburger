@@ -105,7 +105,7 @@ article
       color: lighten($text-color, 30%)
     var
       text-decoration: underline
-  p, td
+  p, td, li
     code
       background: lighten($background-color, 7%)
       font-size: 12px
@@ -130,6 +130,13 @@ article
     width: $content-width - $padding-left
     li
       list-style: decimal
+      @include no-margin-bottom
+  ul
+    $padding-left: 50px
+    padding-left: $padding-left
+    width: $content-width - $padding-left
+    li
+      list-style: disc
       @include no-margin-bottom
   figure,
   .image
