@@ -49,7 +49,7 @@
     <item>
       <title>How to use GMail with WordPress</title>
       <link>http://www.hagenburger.net/BLOG/How-to-use-GMail-with-WordPress.html</link>
-      <description>With Cimy Swift it’s easy to switch from PHP’s mail() to your GMail address</description>
+      <description>With Cimy Swift it’s easy to switch from PHP’s mail() to your Goolge Mail e-mail address.</description>
       <author>Nico Hagenburger</author>
       <guid>BLOG/How-to-use-GMail-with-WordPress.html</guid>
       <pubDate>Mon Aug 10 00:00:00 +0200 2009</pubDate>
@@ -65,7 +65,7 @@
     <item>
       <title>4 Useful HTML5 Browser Support Overviews</title>
       <link>http://www.hagenburger.net/BLOG/4-useful-HTML5-browser-support-overviews.html</link>
-      <description>Great tables about HTML5 support in browsers, attributes and elements</description>
+      <description>Four great tables about HTML5 support in different browsers, attributes and elements.</description>
       <author>Nico Hagenburger</author>
       <guid>BLOG/4-useful-HTML5-browser-support-overviews.html</guid>
       <pubDate>Sat May 16 00:00:00 +0200 2009</pubDate>
@@ -105,7 +105,7 @@
     <item>
       <title>HTML5/XHTML5 with CSS for Safari, Firefox, Opera &amp; IE</title>
       <link>http://www.hagenburger.net/BLOG/HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html</link>
-      <description>Create cross-browser HTML5 documents. Down to IE6 and Firefox 2.0</description>
+      <description>Create cross-browser HTML5 documents. This includes fixes for IE6 and Firefox 2.0.</description>
       <author>Nico Hagenburger</author>
       <guid>BLOG/HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html</guid>
       <pubDate>Mon Mar 09 00:00:00 +0100 2009</pubDate>

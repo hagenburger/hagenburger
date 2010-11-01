@@ -24,22 +24,25 @@
     ## 1. Border Radius for Safari and Firefox
 
     If you want to use the CSS 3.0 feature **[border-radius](http://www.the-art-of-web.com/css/border-radius/)** you have to do this several times to tell all the browsers—OK, currently only Safari and Firefox will support it:
+  
+  :csscode
+    .radius-test {
+      -moz-border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -khtml-border-radius: 12px;
+      border-radius: 12px;
+    }
 
-        .radius-test
-        {
-          -moz-border-radius: 12px;
-          -webkit-border-radius: 12px;
-          -khtml-border-radius: 12px;
-          border-radius: 12px;
-        }
-
+  :markdown
     Insteat of typing all this you can use a snipplet:
 
-        -moz-border-radius: $1px;
-        -webkit-border-radius: $1px;
-        -khtml-border-radius: $1px;
-        border-radius: $1px;
+  :csscode
+    -moz-border-radius: $1px;
+    -webkit-border-radius: $1px;
+    -khtml-border-radius: $1px;
+    border-radius: $1px;
 
+  :markdown
     By the way: TextMate will choose the right indentation automatically. Your bundle editor should like this:
 
     #{ figure 'textmate-bundle-editor-snipplet-css.png', 'TextMate’s bundle editor for a CSS snipplet with tab trigger' }
@@ -48,26 +51,28 @@
 
     This clearfix will expand a box without float to the height of all children—even if the have floats.
 
-        /** For all browsers except IE6 **/
-        .clearfix:after
-        {
-          clear: both;
-          content: ".";
-          display: block;
-          height: 0;
-          visibility: hidden;
-        }
+  :csscode
+    /** For all browsers except IE6 **/
+    .clearfix:after {
+      clear: both;
+      content: ".";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
 
-        /** For IE6 **/
-        .clearfix
-        {
-          _height: 1%;
-        }
+    /** For IE6 **/
+    .clearfix {
+      _height: 1%;
+    }
 
-    My snipplet contains everything in one line because I wouldn’t change anything. As a tab trigger name I chose “:after”.
+  :markdown
+    My snipplet contains everything in one line because I wouldn’t change anything. As a tab trigger name I chose `:after`.
 
-        $1:after{clear:both;content:".";display:block;height:0;visibility:hidden}$1{_height:1%}
+  :csscode
+    $1:after{clear:both;content:".";display:block;height:0;visibility:hidden;}$1{_height:1%;}
 
+  :markdown
     Whatever class or element you type at the beginning, it will be repeated for the IE6 block.
 
     I hope this was usefull and inspires you for your own snipplets.

@@ -11,7 +11,7 @@
     <meta content="2010-07-01" name="date">
     <title>Generate CSS Sprites on the Fly with Lemonade</title>
     <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
-    <link href="../stylesheets/hagenburger.css?3" rel="stylesheet">
+    <link href="../stylesheets/hagenburger.css?4" rel="stylesheet">
     <link href="../stylesheets/lemonade.css" rel="stylesheet">
     <script src="../javascripts/hagenburger.js"></script>
   </head>
@@ -28,7 +28,7 @@
           <div class="lemonade-intro">
             <h1>Generate CSS Sprites<br>on the Fly with Lemonade</h1>
             <p>Lemonade’s goal as a <em>sprite generator</em> is to be <em>incredible easy to use,</em> so you’ll use ist for every project—just because there’s no overhead. It needs no configuration, no Rake task, no Photoshop, just a little change in your Sass or SCSS files. All you need to write is:</p>
-            <pre><code>background: sprite-image(&quot;icons/home.png&quot;);</code></pre>
+            <pre><code><b>background:</b> sprite-image(<q>&quot;icons/home.png&quot;</q>);</code></pre>
             <p>This will generate a sprite <code>icons.png</code>, insert the <code>url(…)</code> and calculate the <code>background-position</code>. On the fly. Everytime your Sass/SCSS file will be compiled.</p>
           </div>
           <aside class="lemonade-info">
@@ -41,11 +41,11 @@
           <div class="lemonade-example">
             <div class="lemonade-before">
               <h2>Source (SCCS or Sass):</h2>
-              <pre><code>.logo {&#x000A;  background: sprite-image("lemonade/lemonade-logo.png");&#x000A;}&#x000A;.lime {&#x000A;  background: sprite-image("lemonade/lime.png");&#x000A;}&#x000A;.coffee {&#x000A;  background: sprite-image("other-drinks/coffee.png") no-repeat;&#x000A;}</code></pre>
+              <pre><code><b><i>.logo</i></b> {&#x000A;  <b>background:</b> sprite-image(<q>&quot;lemonade/lemonade-logo.png&quot;</q>);&#x000A;}&#x000A;<b><i>.lime</i></b> {&#x000A;  <b>background:</b> sprite-image(<q>&quot;lemonade/lime.png&quot;</q>);&#x000A;}&#x000A;<b><i>.coffee</i></b> {&#x000A;  <b>background:</b> sprite-image(<q>&quot;other-drinks/coffee.png&quot;</q>) <em>no-repeat</em>;&#x000A;}</code></pre>
             </div>
             <div class="lemonade-after">
               <h2>Result (CSS):</h2>
-              <pre><code>.logo {&#x000A;  background: url('/images/lemonade.png');&#x000A;}&#x000A;.lime {&#x000A;  background: url('/images/lemonade.png') 0 -26px;&#x000A;}&#x000A;.coffee {&#x000A;  background: url('/images/other-drinks.png') no-repeat;&#x000A;}</code></pre>
+              <pre><code><b><i>.logo</i></b> {&#x000A;  <b>background:</b> url(<q>'/images/lemonade.png'</q>);&#x000A;}&#x000A;<b><i>.lime</i></b> {&#x000A;  <b>background:</b> url(<q>'/images/lemonade.png'</q>) 0 -26px;&#x000A;}&#x000A;<b><i>.coffee</i></b> {&#x000A;  <b>background:</b> url(<q>'/images/other-drinks.png'</q>) <em>no-repeat</em>;&#x000A;}</code></pre>
             </div>
           </div>
           <h2>Examples</h2>
@@ -53,7 +53,7 @@
             <h3>#1 Use an Offset for the Background-Position</h3>
             <article>
               <p>You can provide an offset as 2<sup>nd</sup> (X) and 3<sup>rd</sup> (Y) parameter. The will be added to the calculated sprite background offset:</p>
-              <pre><code>.lemonade-example-1 {&#x000A;  background: sprite-image(&quot;lemonade/example-1/blue-10x10.png&quot;, 10px, 2px) yellow no-repeat;&#x000A;}</code></pre>
+              <pre><code><b><i>.lemonade-example-1</i></b> {&#x000A;  <b>background:</b> sprite-image(<q>&quot;lemonade/example-1/blue-10x10.png&quot;</q>, 10px, 2px) <em>yellow</em> <em>no-repeat</em>;&#x000A;}&#x000A;</code></pre>
               <p>Result:</p>
               <p class="lemonade-example-1">Some text</p>
               <p>Generated sprite image: <img src='/images/lemonade/example-1.png' alt='sprite image'></p>
@@ -64,18 +64,17 @@
             <article>
               <p>Example #1 works well just because there’s only one image in the sprite. With two images, you would see a part of the other images (here the pink one) like this:</p>
               <p class="lemonade-example-2-a">Some text</p>
-              <p>Generated image: <img src='/images/lemonade/example-2-a.png' alt='sprite image'></p>
               <p>To avoid this, you can add a 4<sup>th</sup> parameter which generates transparent space between the sprite images. The 4<sup>th</sup> sets the space before and after the current image. If you set both, th 4<sup>th</sup> creates space before, the 5<sup>th</sup> space after.</p>
-              <pre><code>.lemonade-example-2-b {&#x000A;  background: sprite-image(&quot;lemonade/example-2-b/blue-10x10.png&quot;, 20px, 9px, 20px) yellow no-repeat;&#x000A;}</code></pre>
+              <pre><code><b><i>.lemonade-example-2-b</i></b> {&#x000A;  <b>background:</b> sprite-image(<q>&quot;lemonade/example-2-b/blue-10x10.png&quot;</q>, 20px, 9px, 20px) <em>yellow</em> <em>no-repeat</em>;&#x000A;}&#x000A;</code></pre>
               <p class="lemonade-example-2-b">Some text</p>
               <p>Generated image: <img src='/images/lemonade/example-2-b.png' alt='sprite image'><br />Please note the 20px transparent space between pink and blue.</p>
             </article>
           </div>
           <h2 id="installation">Installation</h2>
           <p>I’ve tested it with both Ruby 1.8.7 and 1.9.2. It works with Haml/Sass 3.0.x. But it depends on Compass 0.10.x. You can integrate it in Rails 2.3.x and 3.0, Staticmatic or just run <code>compass watch</code>.</p>
-          <pre><code>gem install lemonade</code></pre>
+          <pre class="command-line"><code><kbd>gem install lemonade</kbd></code></pre>
           <p>Now open your <code>config.rb</code> (<a href="http://compass-style.org/docs/tutorials/configuration-reference/">Compass cofiguration file</a>) and add one line after this comment:</p>
-          <pre><code># Require any additional compass plugins here.&#x000A;require &quot;lemonade&quot;</code></pre>
+          <pre><code><i><i># Require any additional compass plugins here.</i></i>&#x000A;<em>require</em> <q>&quot;lemonade&quot;</q>&#x000A;</code></pre>
           <h2 id="development-support-bugs">Development, Support, Bugs</h2>
           <p>If you find any bug, please <a href="http://github.com/hagenburger/lemonade/issues">quote it at github</a>. If you want to fix it by yourself, <a href="http://github.com/hagenburger/lemonade/fork">fork my project</a> and send me a pull request.</p>
           <p>You’ll find the source code at: <a href="http://github.com/hagenburger/lemonade">http://github.com/hagenburger/lemonade</a> <em>Feel free to fork!</em></p>

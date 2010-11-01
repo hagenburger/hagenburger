@@ -4,6 +4,7 @@ Bundler.setup
 require 'compass'
 require 'maruku'
 require File.join(Dir.getwd, 'src', 'lib', 'haml_filters')
+require File.join(Dir.getwd, 'src', 'lib', 'syntax_highlighter')
  
 # Parse the Compass config
 Compass.add_project_configuration('config/compass.rb')

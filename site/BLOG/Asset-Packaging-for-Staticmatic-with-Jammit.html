@@ -11,7 +11,7 @@
     <meta content="2010-10-29" name="date">
     <title>Production Ready Staticmatic Projects ··· Nico Hagenburger</title>
     <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
-    <link href="../stylesheets/hagenburger.css?3" rel="stylesheet">
+    <link href="../stylesheets/hagenburger.css?4" rel="stylesheet">
     <script src="../javascripts/hagenburger.js"></script>
   </head>
   <body>
@@ -31,26 +31,26 @@
           <p><a href="http://github.com/documentcloud/jammit">Jammit</a> is one (of many) gems which handles asset packages for <a href="http://www.rubyonrails.org">Ruby on Rails</a>. Jammit packs JavaScript files either with the <a href="http://developer.yahoo.com/yui/compressor/">YUI Compressor</a> or <a href="http://code.google.com/intl/de-DE/closure/compiler/">Google’s Closure Compiler</a> (Jammit docs recommend using uncompressed versions of jQuery if you use Closure). With a bit of configuration it’s possible to use it with Staticmatic.</p>
           <h2 id="switch-to-bundler">Switch to Bundler</h2>
           <p>Using <a href="http://gembundler.com/">bundler</a> with staticmatic is pretty easy. Create your <code>Gemfile</code> in the root path of your project:</p>
-          <pre><code>source &#39;http://rubygems.org&#39;&#x000A;gem &#39;staticmatic&#39;, &#39;~&gt; 0.11.0.alpha.8&#39;&#x000A;gem &#39;jammit&#39;, &#39;~&gt; 0.5.3&#39;</code></pre>
+          <pre><code>source <q>'http://rubygems.org'</q>&#x000A;gem <q>'staticmatic'</q>, <q>'~&gt; 0.11.0.alpha.8'</q>&#x000A;gem <q>'jammit'</q>, <q>'~&gt; 0.5.3'</q>&#x000A;</code></pre>
           <p>Run at the same place:</p>
-          <pre><code>bundle</code></pre>
+          <pre class="command-line"><code><kbd>bundle</kbd></code></pre>
           <p>Activate bundler at the beginning of your <code>config/site.rb</code> and activate Jammit:</p>
-          <pre><code>require &quot;bundler&quot;&#x000A;Bundler.setup&#x000A;ROOT = File.dirname(__FILE__)&#x000A;JAVASCRIPTS_PATH = File.join(ROOT, &#39;site&#39;, &#39;javascripts&#39;)&#x000A;require &quot;jammit&quot;&#x000A;Jammit.load_configuration(File.join(ROOT, &#39;config&#39;, &#39;assets.yml&#39;))&#x000A;Jammit.packager.precache_all(JAVASCRIPTS_PATH, ROOT) if ARGV[0] == &#39;build&#39;</code></pre>
+          <pre><code><em>require</em> <q>&quot;bundler&quot;</q>&#x000A;<b>Bundler</b>.setup&#x000A;&#x000A;<b>ROOT</b> = <b>File</b>.dirname(<b>__FILE__</b>)&#x000A;<b>JAVASCRIPTS_PATH</b> = <b>File</b>.join(<b>ROOT</b>, <q>'site'</q>, <q>'javascripts'</q>)&#x000A;&#x000A;<em>require</em> <q>&quot;jammit&quot;</q>&#x000A;<b>Jammit</b>.load_configuration(<b>File</b>.join(<b>ROOT</b>, <q>'config'</q>, <q>'assets.yml'</q>))&#x000A;<b>Jammit</b>.packager.precache_all(<b>JAVASCRIPTS_PATH</b>, <b>ROOT</b>) <em>if</em> <b>ARGV</b>[0] == <q>'build'</q>&#x000A;</code></pre>
           <h2 id="jammit-configuration">Jammit Configuration</h2>
           <p>I assume your JavaScript files are placed in <code>site/javascripts</code> (if not change line 5 in <code>config/site.rb</code>, line 1 and lines 7 and following in <code>config/assets.yml</code>). Create <code>config/assets.yml</code> and add your JavaScript files:</p>
-          <pre><code>package_path: javascripts&#x000A;package_assets: &lt;%= ARGV[0] == &#39;build&#39; ? &#39;on&#39; : &#39;off&#39; %&gt;&#x000A;javascript_compressor: yui&#x000A;javascripts:&#x000A;  your_package:&#x000A;    - site/javascripts/vendor/jquery-1.4.2.min.js&#x000A;    - site/javascripts/vendor/jquery.ui.js&#x000A;    - site/javascripts/config/*.js&#x000A;    - site/javascripts/app/**/*.js&#x000A;    - site/javascripts/application.js</code></pre>
+          <pre><code><b>package_path:</b> javascripts&#x000A;<b>package_assets:</b> <code>&lt;%= <b>ARGV</b>[0] == <q>'build'</q> ? <q>'on'</q> : <q>'off'</q> %&gt;</code>&#x000A;<b>javascript_compressor:</b> yui&#x000A;&#x000A;<b>javascripts:</b>&#x000A;  <b>your_package:</b>&#x000A;    - site/javascripts/vendor/jquery-1.4.2.min.js&#x000A;    - site/javascripts/vendor/jquery.ui.js&#x000A;    - site/javascripts/config/*.js&#x000A;    - site/javascripts/app/**/*.js&#x000A;    - site/javascripts/application.js&#x000A;</code></pre>
           <p>The second line determines if staticmatic currently builds or previews—it should compress the assets only in build mode. The YAML file is <a href="http://rrn.dk/rubys-erb-templating-system">parsed with ERB</a> by default.</p>
           <h2 id="jammit-integration">Jammit Integration</h2>
           <p>Add a new helper (will be included by default) in <code>src/helpers/jammit_helper.rb</code> (woohoo it’s so <a href="HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html">HTML5</a>—without <code>type=&quot;text/javascript&quot;</code>):</p>
-          <pre><code>module JammitHelper&#x000A;  def javascripts(*packages)&#x000A;    packages.map do |pack|&#x000A;      if Jammit.package_assets&#x000A;        url = current_page_relative_path + Jammit.asset_url(pack, :js)[1..-1]&#x000A;        %Q(&lt;script src=&quot;#{url}&quot;&gt;&lt;/script&gt;\n)&#x000A;      else&#x000A;        Jammit.packager.individual_urls(pack.to_sym, :js).map do |file|&#x000A;          url = file.gsub(%r(^.*site/), current_page_relative_path)&#x000A;          %Q(&lt;script src=&quot;#{url}&quot;&gt;&lt;/script&gt;\n)&#x000A;        end&#x000A;      end&#x000A;    end.join&#x000A;  end&#x000A;  alias include_javascripts javascripts&#x000A;end</code></pre>
+          <pre><code><em>module</em> <b>JammitHelper</b>&#x000A;&#x000A;  <em>def</em> javascripts(*packages)&#x000A;    packages.map <em>do</em> |pack|&#x000A;      <em>if</em> <b>Jammit</b>.package_assets&#x000A;        url = current_page_relative_path + <b>Jammit</b>.asset_url(pack, :js)[1..-1]&#x000A;        <q>%Q(&lt;script src=&quot;<code>#{url}</code>&quot;&gt;&lt;/script&gt;\n)</q>&#x000A;      <em>else</em>&#x000A;        <b>Jammit</b>.packager.individual_urls(pack.to_sym, :js).map <em>do</em> |file|&#x000A;          url = file.gsub(<q>%r(^.*site/)</q>, current_page_relative_path)&#x000A;          <q>%Q(&lt;script src=&quot;<code>#{url}</code>&quot;&gt;&lt;/script&gt;\n)</q>&#x000A;        <em>end</em>&#x000A;      <em>end</em>&#x000A;    <em>end</em>.join&#x000A;  <em>end</em>&#x000A;  <em>alias</em> include_javascripts javascripts&#x000A;&#x000A;<em>end</em></code></pre>
           <p>Now you can include your JavaScript files in your <code>layout/default.haml</code>:</p>
-          <pre><code>!!!&#x000A;%html&#x000A;  %head&#x000A;    %title StaticMatic&#x000A;    = stylesheets&#x000A;    = javascripts :your_package # key as defined in config/assets.yml&#x000A;  %body&#x000A;    = yield</code></pre>
+          <pre><code>!!!&#x000A;<em>%html</em>&#x000A;  <em>%head</em>&#x000A;    <em>%title</em> StaticMatic&#x000A;    = stylesheets&#x000A;    = javascripts :your_package <i># key as defined in config/assets.yml</i>&#x000A;  <em>%body</em>&#x000A;    = <em>yield</em></code></pre>
           <p>You could also use <code>include_javascripts</code> if you prefer consistency to Rails applications.</p>
           <h2 id="csssassscss-configuration">CSS/Sass/SCSS Configuration</h2>
           <p>If you don’t have a Compass configuration, add the following line at the end of your <code>config/site.rb</code>:</p>
-          <pre><code>Compass.add_project_configuration(&#39;config/compass.rb&#39;)</code></pre>
+          <pre><code><b>Compass</b>.add_project_configuration(<q>'config/compass.rb'</q>)</code></pre>
           <p>In your <code>config/compass.rb</code> add or change:</p>
-          <pre><code>output_style = ARGV[0] == &#39;build&#39; ? :compressed : :expanded</code></pre>
+          <pre><code>output_style = <b>ARGV</b>[0] == <q>'build'</q> ? :compressed : :expanded</code></pre>
           <p>Comments will appear on your localhost, but on your production server, it will use the compressed version (after you run <code>staticmatic build .</code>).</p>
           <h2 id="conclusion">Conclusion</h2>
           <p>It’s easy to build super-fast static websites with Staticmatic (as this blog itself), but Staticmatic doesn’t help you with with your assets. There’s no problem to add them by yourself, but this should be integrated by default.</p>

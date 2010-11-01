@@ -11,7 +11,7 @@
     <meta content="2010-04-26" name="date">
     <title>HTML5 Placeholder Input Fields Fixed with jQuery</title>
     <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
-    <link href="../stylesheets/hagenburger.css?3" rel="stylesheet">
+    <link href="../stylesheets/hagenburger.css?4" rel="stylesheet">
     <script src="../javascripts/hagenburger.js"></script>
   </head>
   <body>
@@ -25,17 +25,17 @@
         <article class="post">
           <h1>HTML5 Placeholder Input Fields Fixed with jQuery</h1>
           <p><a href="HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html">HTML5</a> added some new features for <code>input</code> and <code>textarea</code> fields. One is inspired by Safari’s search box: <code>placeholder</code> This adds an default text if the textfield is empty:</p>
-          <pre><code>&lt;input type=&quot;text&quot; placeholder=&quot;Fill me …&quot;&gt;</code></pre>
+          <pre><code><b>&lt;<em>input</em></b> <b>type</b>=&quot;text&quot; <b>placeholder</b>=&quot;Fill me …&quot;<b>&gt;</b>&#x000A;</code></pre>
           <h2 id="jquery-fix-for-all-browsers">jQuery Fix for All Browsers</h2>
           <p>Currently the <em>placeholder</em> works with the latest <a href="http://webkit.org/">Webkit</a> (Safari nightly build) and Chrome only. In Safari 4.0 placeholders won’t appear in textareas. For all other browsers, the following short jQuery fix will help you. <code>$(&#39;[placeholder]&#39;)</code> selects all HTML elements with an placeholder attribute (textarea, input, and other elements).</p>
-          <pre><code>$(&#39;[placeholder]&#39;).focus(function() {&#x000A;  var input = $(this);&#x000A;  if (input.val() == input.attr(&#39;placeholder&#39;)) {&#x000A;    input.val(&#39;&#39;);&#x000A;    input.removeClass(&#39;placeholder&#39;);&#x000A;  }&#x000A;}).blur(function() {&#x000A;  var input = $(this);&#x000A;  if (input.val() == &#39;&#39; || input.val() == input.attr(&#39;placeholder&#39;)) {&#x000A;    input.addClass(&#39;placeholder&#39;);&#x000A;    input.val(input.attr(&#39;placeholder&#39;));&#x000A;  }&#x000A;}).blur();</code></pre>
+          <pre><code>$(<q>'[placeholder]'</q>).focus(<em>function</em>() {&#x000A;  <em>var</em> input = $(<em>this</em>);&#x000A;  <em>if</em> (input.val() == input.attr(<q>'placeholder'</q>)) {&#x000A;    input.val(<q>''</q>);&#x000A;    input.removeClass(<q>'placeholder'</q>);&#x000A;  }&#x000A;}).blur(<em>function</em>() {&#x000A;  <em>var</em> input = $(<em>this</em>);&#x000A;  <em>if</em> (input.val() == <q>''</q> || input.val() == input.attr(<q>'placeholder'</q>)) {&#x000A;    input.addClass(<q>'placeholder'</q>);&#x000A;    input.val(input.attr(<q>'placeholder'</q>));&#x000A;  }&#x000A;}).blur();&#x000A;</code></pre>
           <p>Don’t forget the last <code>blur()</code> call. This one initializes the fields.</p>
           <p><em>Update:</em> <a href="http://twitter.com/rmehner">Robin</a> mentioned in the comments, that this would post the <em>placeholder</em> values to the form action script. Of course, this isn’t what we want. By adding a pre-submit clearing this problem is solved:</p>
-          <pre><code>$(&#39;[placeholder]&#39;).parents(&#39;form&#39;).submit(function() {&#x000A;  $(this).find(&#39;[placeholder]&#39;).each(function() {&#x000A;    var input = $(this);&#x000A;    if (input.val() == input.attr(&#39;placeholder&#39;)) {&#x000A;      input.val(&#39;&#39;);&#x000A;    }&#x000A;  })&#x000A;});</code></pre>
+          <pre><code>$(<q>'[placeholder]'</q>).parents(<q>'form'</q>).submit(<em>function</em>() {&#x000A;  $(<em>this</em>).find(<q>'[placeholder]'</q>).each(<em>function</em>() {&#x000A;    <em>var</em> input = $(<em>this</em>);&#x000A;    <em>if</em> (input.val() == input.attr(<q>'placeholder'</q>)) {&#x000A;      input.val(<q>''</q>);&#x000A;    }&#x000A;  })&#x000A;});&#x000A;</code></pre>
           <p>You’ll find the whole <a href="http://gist.github.com/379601">code at github</a>.</p>
           <h2 id="css-styling">CSS Styling</h2>
           <p>While the placeholder is visible, the text field gets an additional <code>.placeholder</code> class. To make it look beautifully add a some CSS for a grey placeholder text:</p>
-          <pre><code>.placeholder&#x000A;{&#x000A;  color: #aaa;&#x000A;}</code></pre>
+          <pre><code><b><i>.placeholder</i></b>&#x000A;{&#x000A;  <b>color:</b> #aaa;&#x000A;}&#x000A;</code></pre>
           <h2 id="result">Result</h2>
           <p>Here’s the result—it’s tested and works in Safari, Firefox, Opera, Chrome and even Internet Explorer:</p>
           <div class="result" id="with-jquery">
@@ -54,7 +54,7 @@
           </div>
           <h2 id="css-styling-of-the-html5-attribute-placeholder">CSS Styling of the HTML5 Attribute Placeholder</h2>
           <p>But there’s one more thing: Webkit users can even style their placeholder text. There’s an temporarily pseudo element selector called <code>-webkit-input-placeholder</code>:</p>
-          <pre><code>::-webkit-input-placeholder&#x000A;{&#x000A;  color: red;&#x000A;  font-weight: bold;&#x000A;}</code></pre>
+          <pre><code>::-webkit-input-placeholder&#x000A;{&#x000A;  <b>color:</b> <em>red</em>;&#x000A;  <b>font-weight:</b> <em>bold</em>;&#x000A;}&#x000A;</code></pre>
           <p>This one is pure <em>HTML5</em> and <em>CSS</em>. You should see bold red text for the placeholders (left side) and normal black text if there’s user input (right side). It works in Webkit and Chrome only and partially in Safari:</p>
           <div class="result" id="pure-html5">
             <form>

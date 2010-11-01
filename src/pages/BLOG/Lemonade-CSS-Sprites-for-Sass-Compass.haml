@@ -14,9 +14,9 @@
       Lemonade’s goal as a *sprite generator* is to be *incredible easy to use,* so you’ll use ist for every project—just because there’s no overhead.
       It needs no configuration, no Rake task, no Photoshop, just a little change in your Sass or SCSS files.
       All you need to write is:
-      
-          background: sprite-image("icons/home.png");
-      
+    :csscode
+      background: sprite-image("icons/home.png");
+    :markdown
       This will generate a sprite `icons.png`, insert the `url(…)` and calculate the `background-position`.
       On the fly.
       Everytime your Sass/SCSS file will be compiled.
@@ -37,32 +37,28 @@
   .lemonade-example
     .lemonade-before
       %h2 Source (SCCS or Sass):
-      %pre
-        %code
-          :preserve
-            .logo {
-              background: sprite-image("lemonade/lemonade-logo.png");
-            }
-            .lime {
-              background: sprite-image("lemonade/lime.png");
-            }
-            .coffee {
-              background: sprite-image("other-drinks/coffee.png") no-repeat;
-            }
+      :csscode
+        .logo {
+          background: sprite-image("lemonade/lemonade-logo.png");
+        }
+        .lime {
+          background: sprite-image("lemonade/lime.png");
+        }
+        .coffee {
+          background: sprite-image("other-drinks/coffee.png") no-repeat;
+        }
     .lemonade-after
       %h2 Result (CSS):
-      %pre
-        %code
-          :preserve
-            .logo {
-              background: url('/images/lemonade.png');
-            }
-            .lime {
-              background: url('/images/lemonade.png') 0 -26px;
-            }
-            .coffee {
-              background: url('/images/other-drinks.png') no-repeat;
-            }
+      :csscode
+        .logo {
+          background: url('/images/lemonade.png');
+        }
+        .lime {
+          background: url('/images/lemonade.png') 0 -26px;
+        }
+        .coffee {
+          background: url('/images/other-drinks.png') no-repeat;
+        }
   %h2 Examples
   
   .lemonade-example
@@ -72,14 +68,17 @@
         You can provide an offset as 2<sup>nd</sup> (X) and 3<sup>rd</sup> (Y) parameter.
         The will be added to the calculated sprite background offset:
         
-            .lemonade-example-1 {
-              background: sprite-image("lemonade/example-1/blue-10x10.png", 10px, 2px) yellow no-repeat;
-            }
+      :csscode
+        .lemonade-example-1 {
+          background: sprite-image("lemonade/example-1/blue-10x10.png", 10px, 2px) yellow no-repeat;
+        }
         
+      :markdown
         Result:
-        
-        <p class="lemonade-example-1">Some text</p>
+      
+      %p.lemonade-example-1 Some text
     
+      :markdown
         Generated sprite image:
         ![sprite image](/images/lemonade/example-1.png)
 
@@ -90,20 +89,23 @@
         Example #1 works well just because there’s only one image in the sprite.
         With two images, you would see a part of the other images (here the pink one) like this:
     
-        <p class="lemonade-example-2-a">Some text</p>
+      %p.lemonade-example-2-a Some text
     
+      :markdown
         Generated image: ![sprite image](/images/lemonade/example-2-a.png)
 
         To avoid this, you can add a 4<sup>th</sup> parameter which generates transparent space between the sprite images.
         The 4<sup>th</sup> sets the space before and after the current image.
         If you set both, th 4<sup>th</sup> creates space before, the 5<sup>th</sup> space after.
     
-            .lemonade-example-2-b {
-              background: sprite-image("lemonade/example-2-b/blue-10x10.png", 20px, 9px, 20px) yellow no-repeat;
-            }
+      :csscode
+        .lemonade-example-2-b {
+          background: sprite-image("lemonade/example-2-b/blue-10x10.png", 20px, 9px, 20px) yellow no-repeat;
+        }
+      
+      %p.lemonade-example-2-b Some text
     
-        <p class="lemonade-example-2-b">Some text</p>
-    
+      :markdown
         Generated image:
         ![sprite image](/images/lemonade/example-2-b.png)  
         Please note the 20px transparent space between pink and blue.
@@ -117,14 +119,18 @@
     It works with Haml/Sass 3.0.x.
     But it depends on Compass 0.10.x.
     You can integrate it in Rails 2.3.x and 3.0, Staticmatic or just run `compass watch`.
-    
-        gem install lemonade
-        
+  
+  :commandline
+    gem install lemonade
+  
+  :markdown
     Now open your `config.rb` ([Compass cofiguration file](http://compass-style.org/docs/tutorials/configuration-reference/)) and add one line after this comment:
-    
-        # Require any additional compass plugins here.
-        require "lemonade"
-    
+  
+  :rubycode
+    # Require any additional compass plugins here.
+    require "lemonade"
+  
+  :markdown
     Development, Support, Bugs
     --------------------------
     

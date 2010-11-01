@@ -8,8 +8,10 @@
     One is inspired by Safari’s search box: `placeholder`
     This adds an default text if the textfield is empty:
     
-        <input type="text" placeholder="Fill me …">
-        
+  :htmlcode
+    <input type="text" placeholder="Fill me …">
+    
+  :markdown
     jQuery Fix for All Browsers
     ---------------------------
     
@@ -18,36 +20,40 @@
     For all other browsers, the following short jQuery fix will help you.
     `$('[placeholder]')` selects all HTML elements with an placeholder attribute (textarea, input, and other elements).
     
-        $('[placeholder]').focus(function() {
-          var input = $(this);
-          if (input.val() == input.attr('placeholder')) {
-            input.val('');
-            input.removeClass('placeholder');
-          }
-        }).blur(function() {
-          var input = $(this);
-          if (input.val() == '' || input.val() == input.attr('placeholder')) {
-            input.addClass('placeholder');
-            input.val(input.attr('placeholder'));
-          }
-        }).blur();
+  :javascriptcode
+    $('[placeholder]').focus(function() {
+      var input = $(this);
+      if (input.val() == input.attr('placeholder')) {
+        input.val('');
+        input.removeClass('placeholder');
+      }
+    }).blur(function() {
+      var input = $(this);
+      if (input.val() == '' || input.val() == input.attr('placeholder')) {
+        input.addClass('placeholder');
+        input.val(input.attr('placeholder'));
+      }
+    }).blur();
     
+  :markdown
     Don’t forget the last `blur()` call.
     This one initializes the fields.
     
     *Update:* [Robin](http://twitter.com/rmehner) mentioned in the comments, that this would post the *placeholder* values to the form action script.
     Of course, this isn’t what we want.
     By adding a pre-submit clearing this problem is solved:
-    
-        $('[placeholder]').parents('form').submit(function() {
-          $(this).find('[placeholder]').each(function() {
-            var input = $(this);
-            if (input.val() == input.attr('placeholder')) {
-              input.val('');
-            }
-          })
-        });
-    
+  
+  :javascriptcode
+    $('[placeholder]').parents('form').submit(function() {
+      $(this).find('[placeholder]').each(function() {
+        var input = $(this);
+        if (input.val() == input.attr('placeholder')) {
+          input.val('');
+        }
+      })
+    });
+  
+  :markdown
     You’ll find the whole [code at github](http://gist.github.com/379601).
     
     CSS Styling
@@ -55,12 +61,14 @@
     
     While the placeholder is visible, the text field gets an additional `.placeholder` class.
     To make it look beautifully add a some CSS for a grey placeholder text:
-    
-        .placeholder
-        {
-          color: #aaa;
-        }
-    
+  
+  :csscode
+    .placeholder
+    {
+      color: #aaa;
+    }
+  
+  :markdown
     Result
     ------
     
@@ -84,13 +92,15 @@
     But there’s one more thing:
     Webkit users can even style their placeholder text.
     There’s an temporarily pseudo element selector called `-webkit-input-placeholder`:
-    
-        ::-webkit-input-placeholder
-        {
-          color: red;
-          font-weight: bold;
-        }
-    
+  
+  :csscode
+    ::-webkit-input-placeholder
+    {
+      color: red;
+      font-weight: bold;
+    }
+  
+  :markdown
     This one is pure *HTML5* and *CSS*.
     You should see bold red text for the placeholders (left side) and normal black text if there’s user input (right side).
     It works in Webkit and Chrome only and partially in Safari:

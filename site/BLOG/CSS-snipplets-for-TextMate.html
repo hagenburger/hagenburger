@@ -10,7 +10,7 @@
     <meta content="2009-04-16" name="date">
     <title>CSS Snipplets for TextMate ··· Nico Hagenburger</title>
     <link href="../hagenburger.rss" rel="alternate" type="application/rss+xml">
-    <link href="../stylesheets/hagenburger.css?3" rel="stylesheet">
+    <link href="../stylesheets/hagenburger.css?4" rel="stylesheet">
     <script src="../javascripts/hagenburger.js"></script>
   </head>
   <body>
@@ -38,16 +38,15 @@
           <p>So here’s the first example:</p>
           <h2 id="1-border-radius-for-safari-and-firefox">1. Border Radius for Safari and Firefox</h2>
           <p>If you want to use the CSS 3.0 feature <strong><a href="http://www.the-art-of-web.com/css/border-radius/">border-radius</a></strong> you have to do this several times to tell all the browsers—OK, currently only Safari and Firefox will support it:</p>
-          <pre><code>.radius-test&#x000A;{&#x000A;  -moz-border-radius: 12px;&#x000A;  -webkit-border-radius: 12px;&#x000A;  -khtml-border-radius: 12px;&#x000A;  border-radius: 12px;&#x000A;}</code></pre>
+          <pre><code><b><i>.radius-test</i></b> {&#x000A;  <b>-moz-border-radius:</b> 12px;&#x000A;  <b>-webkit-border-radius:</b> 12px;&#x000A;  <b>-khtml-border-radius:</b> 12px;&#x000A;  <b>border-radius:</b> 12px;&#x000A;}&#x000A;</code></pre>
           <p>Insteat of typing all this you can use a snipplet:</p>
-          <pre><code>-moz-border-radius: $1px;&#x000A;-webkit-border-radius: $1px;&#x000A;-khtml-border-radius: $1px;&#x000A;border-radius: $1px;</code></pre>
-          <p>By the way: TextMate will choose the right indentation automatically. Your bundle editor should like this:</p>
+          <pre><code><b>-moz-border-radius:</b> $1px;&#x000A;<b>-webkit-border-radius:</b> $1px;&#x000A;<b>-khtml-border-radius:</b> $1px;&#x000A;<b>border-radius:</b> $1px;&#x000A;</code></pre>
           <figure><img src='textmate-bundle-editor-snipplet-css.png' alt='TextMate’s bundle editor for a CSS snipplet with tab trigger'><figcaption>TextMate’s bundle editor for a CSS snipplet with tab trigger</figcaption></figure>
           <h2 id="2-clearfix">2. Clearfix</h2>
           <p>This clearfix will expand a box without float to the height of all children—even if the have floats.</p>
-          <pre><code>/** For all browsers except IE6 **/&#x000A;.clearfix:after&#x000A;{&#x000A;  clear: both;&#x000A;  content: &quot;.&quot;;&#x000A;  display: block;&#x000A;  height: 0;&#x000A;  visibility: hidden;&#x000A;}&#x000A;/** For IE6 **/&#x000A;.clearfix&#x000A;{&#x000A;  _height: 1%;&#x000A;}</code></pre>
-          <p>My snipplet contains everything in one line because I wouldn’t change anything. As a tab trigger name I chose “:after”.</p>
-          <pre><code>$1:after{clear:both;content:&quot;.&quot;;display:block;height:0;visibility:hidden}$1{_height:1%}</code></pre>
+          <pre><code><i>/** For all browsers except IE6 **/</i>&#x000A;<b><i>.clearfix</i></b>:after {&#x000A;  <b>clear:</b> <em>both</em>;&#x000A;  <b>content:</b> <q>&quot;.&quot;</q>;&#x000A;  <b>display:</b> <em>block</em>;&#x000A;  <b>height:</b> 0;&#x000A;  <b>visibility:</b> <em>hidden</em>;&#x000A;}&#x000A;&#x000A;<i>/** For IE6 **/</i>&#x000A;<b><i>.clearfix</i></b> {&#x000A;  <b>_height:</b> 1%;&#x000A;}&#x000A;</code></pre>
+          <p>My snipplet contains everything in one line because I wouldn’t change anything. As a tab trigger name I chose <code>:after</code>.</p>
+          <pre><code>$1:after{<b>clear:</b><em>both</em>;<b>content:</b><q>&quot;.&quot;</q>;<b>display:</b><em>block</em>;<b>height:</b>0;<b>visibility:</b><em>hidden</em>;}$1{<b>_height:</b>1%;}&#x000A;</code></pre>
           <p>Whatever class or element you type at the beginning, it will be repeated for the IE6 block.</p>
           <p>I hope this was usefull and inspires you for your own snipplets.</p>
         </article>
