@@ -3,7 +3,7 @@
 %article.post(data-slug="html5-HTML5-with-css-for-safari-firefox-opera-ie")
   %h1= @title = 'HTML5 with CSS for Safari, Firefox, Opera & IE'
   :markdown
-    As I started a new [WordPress theme](http://www.hagenburger.net/topics/wordpress), the time was right to do this in **[HTML5](http://www.w3.org/TR/html5/)**.
+    As I started a new [WordPress theme](http://www.fructus-gmbh.de), the time was right to do this in **[HTML5](http://www.w3.org/TR/html5/)**.
 
     ## 1. The HTML5 header/head
 
@@ -139,10 +139,12 @@
 
     I found a solution to solve it in Firefox 2.0 (I think it is working for Firefox 1.0 and 1.5, too). You need to set the HTTP header to `Content-type: application/xhtml+xml`. But be careful. IE will not work with this solution and the document **must** be valid. Here’s a simple PHP code for doing this:
 
-        if (strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox/')) {
-          header("Content-type: application/xhtml+xml");
-        }
+  :phpcode
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox/')) {
+      header("Content-type: application/xhtml+xml");
+    }
 
+  :markdown
     ## Update (April 9th, 2009)
 
     I’ve added the `content-type` meta tag as suggested by “blabberstar.com” (see comments).

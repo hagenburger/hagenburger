@@ -23,7 +23,7 @@
       <div id="content">
         <article class="post" data-slug="html5-HTML5-with-css-for-safari-firefox-opera-ie">
           <h1>HTML5 with CSS for Safari, Firefox, Opera & IE</h1>
-          <p>As I started a new <a href="http://www.hagenburger.net/topics/wordpress">WordPress theme</a>, the time was right to do this in <strong><a href="http://www.w3.org/TR/html5/">HTML5</a></strong>.</p>
+          <p>As I started a new <a href="http://www.fructus-gmbh.de">WordPress theme</a>, the time was right to do this in <strong><a href="http://www.w3.org/TR/html5/">HTML5</a></strong>.</p>
           <h2 id="1-the-html5-headerhead">1. The HTML5 header/head</h2>
           <p>The <strong>doctype</strong> is much easier now. And it’s the first time for me to write it by hand and not via copy ’n’ paste. The doctype is as simple as:</p>
           <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
@@ -62,7 +62,7 @@
           </tr></tbody></table>
           <h2 id="update-firefox-20-april-3rd-2009">Update: Firefox 2.0 (April 3rd, 2009)</h2>
           <p>I found a solution to solve it in Firefox 2.0 (I think it is working for Firefox 1.0 and 1.5, too). You need to set the HTTP header to <code>Content-type: application/xhtml+xml</code>. But be careful. IE will not work with this solution and the document <strong>must</strong> be valid. Here’s a simple PHP code for doing this:</p>
-          <pre><code>if (strpos($_SERVER[&#39;HTTP_USER_AGENT&#39;], &#39;Firefox/&#39;)) {&#x000A;  header(&quot;Content-type: application/xhtml+xml&quot;);&#x000A;}</code></pre>
+          <pre><code><em>if</em> (strpos($<b>_SERVER</b>[<q>'HTTP_USER_AGENT'</q>], <q>'Firefox/'</q>)) {&#x000A;  header(<q>&quot;Content-type: application/xhtml+xml&quot;</q>);&#x000A;}&#x000A;</code></pre>
           <h2 id="update-april-9th-2009">Update (April 9th, 2009)</h2>
           <p>I’ve added the <code>content-type</code> meta tag as suggested by “blabberstar.com” (see comments).</p>
           <h2 id="update-november-1st-2010">Update (November 1st, 2010)</h2>

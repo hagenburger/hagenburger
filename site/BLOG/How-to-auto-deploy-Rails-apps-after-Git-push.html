@@ -41,7 +41,7 @@
             <dd>with SSH keys</dd>
           </dl>
           <p>First, create a SSH key for the user git (unless you already did so) and add it for for the deploy user and vice versa:</p>
-          <pre class="command-line"><code><i># log in as git:</kbd></i>&#x000A;<kbd>ssh-keygen -t rsa</kbd>&#x000A;<i># log in as deploy:</kbd></i>&#x000A;<kbd>cat /home/git/.ssh/id_rsa.pub &gt;&gt; /home/deploy/authorized_keys</kbd>&#x000A;<kbd>ssh-keygen -t rsa</kbd>&#x000A;<i># log in as git:</kbd></i>&#x000A;<kbd>cat /home/deploy/.ssh/id_rsa.pub &gt;&gt; /home/git/authorized_keys</kbd></code></pre>
+          <pre class="command-line"><code><i># log in as git:</i>&#x000A;<kbd>ssh-keygen -t rsa</kbd>&#x000A;<i># log in as deploy:</i>&#x000A;<kbd>cat /home/git/.ssh/id_rsa.pub &gt;&gt; /home/deploy/authorized_keys</kbd>&#x000A;<kbd>ssh-keygen -t rsa</kbd>&#x000A;<i># log in as git:</i>&#x000A;<kbd>cat /home/deploy/.ssh/id_rsa.pub &gt;&gt; /home/git/authorized_keys</kbd></code></pre>
           <h2 id="installing-the-git-hook">Installing the Git Hook</h2>
           <p>Git offers <a href="http://book.git-scm.com/5_git_hooks.html">some hooks</a>, where you can add your own code. The most interestion hook for having a deploy is “post-receive”. Just add the deploy command:</p>
           <pre><code><i># File: /home/git/awesome-rails-app.git/hooks/post-receive</i>&#x000A;<i>#!/bin/sh</i>&#x000A;&#x000A;cd /var/www/awesome-rails-app/current &amp;&amp; cap deploy:migrations&#x000A;&#x000A;<i>## If Git isn’t on the same server as the application:</i>&#x000A;<i># ssh deploy@deploy-server.com \</i>&#x000A;<i>#   <q>'cd /var/www/awesome-rails-app/current &amp;&amp; cap deploy:migrations'</q></i>&#x000A;<i>## Don’t forget to add the SSH keys.</i>&#x000A;</code></pre>

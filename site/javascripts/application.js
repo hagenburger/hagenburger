@@ -108,7 +108,8 @@ $(function() {
       disqus_identifier = slug;
     }
     var disqus_developer = location.hostname == 'localhost' ? 1 : 0;
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var dsq = document.createElement('script');
+    dsq.async = true;
     dsq.src = 'http://hagenburger.disqus.com/embed.js';
     document.getElementsByTagName('head')[0].appendChild(dsq);
     
@@ -120,15 +121,20 @@ $(function() {
     }
     }
     var sc = document.createElement('script');
-    sc.type = 'text/javascript';
     sc.src = 'http://disqus.com/forums/hagenburger/get_num_replies.js' + query;
-    document.getElementsByTagName('body')[0].appendChild(sc);
+    document.getElementsByTagName('head')[0].appendChild(sc);
   }
   
 });
 
 // ANALYTICS
 
-if (location.hostname != 'localhost' && !location.href.match(/\/test\//)) {
-  $.gaTracker('UA-4797174-1');
+if (location.hostname != 'localhost') {
+  try {
+    $.gaTracker('UA-4797174-1');
+    var piwikTracker = Piwik.getTracker("http://stats.hagenburger.net/piwik.php", 1);
+    piwikTracker.trackPageView();
+    piwikTracker.enableLinkTracking();
+  }
+  catch (e) {}
 }

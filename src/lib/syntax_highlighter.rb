@@ -10,7 +10,7 @@ module Haml
           if comment =~ %r(</q>)
             comment
           else
-            comment.gsub! %r(<(b|i|em|var|kbd)>(.*?)</\1>), "\\2"
+            comment.gsub! %r(</?(b|i|em|var|code|kbd)>), ""
             %Q(<i>#{comment}</i>)
           end
         end
@@ -31,7 +31,7 @@ module Haml
       include Base
   
       def highlight(code)
-        code.gsub! /\$[a-z-_]+/, "<var>\\0</var>"
+        code.gsub! /\$[a-z\-_]+/, "<var>\\0</var>"
         code.gsub! /(&quot;(.*?)&quot;|'.*?')/ do |text|
           %Q(<q>#{text}</q>)
         end
@@ -39,7 +39,7 @@ module Haml
           if comment.gsub(%r(<q>(.*?)</q>), "\\1") =~ %r(</q>)
             comment
           else
-            comment.gsub! %r(<(b|i|em|var)>(.*?)</\1>), "\\2"
+            comment.gsub! %r(</?(b|i|em|var|code)>), ""
             %Q(<i>#{comment}</i>)
           end
         end
@@ -76,7 +76,7 @@ module Haml
           if comment.gsub(%r(<q>(.*?)</q>), "\\1") =~ %r(</q>)
             comment
           else
-            comment.gsub! %r(<(b|i|em|var)>(.*?)</\1>), "\\2"
+            comment.gsub! %r(</?(b|i|em|var|code)>), ""
             %Q(<i>#{comment}</i>)
           end
         end
@@ -100,10 +100,47 @@ module Haml
         code.gsub! /\b([A-Z_][a-zA-Z0-9_]+)\b/, "<b>\\1</b>"
         code.gsub! /("(.*?)"|'.*?')/, "<q>\\1</q>"
         code.gsub! %r((//.*?)$) do |comment|
-          if comment =~ %r(</q>)
+          if comment.gsub(%r(<q>(.*?)</q>), "\\1") =~ %r(</q>)
             comment
           else
-            comment.gsub! %r(<([bui])>(.*?)</\1>), "\\2"
+            comment.gsub! %r(</?(b|i|em|var|code)>), ""
+            %Q(<i>#{comment}</i>)
+          end
+        end
+        code
+      end
+  
+      def render(code)
+        code = Haml::Helpers.html_escape(code)
+        code = highlight(code)
+        Code.render(code)
+      end
+    end
+
+    module PHPCode
+      include Base
+  
+      def highlight(code)
+        keywords = %w(abstract and array as break case catch cfunction class clone const continue declare default do else elseif enddeclare endfor endforeach endif endswitch endwhile extends final for foreach function global goto if implements interface instanceof namespace new old_function or private protected public static switch throw try use var while xor)
+        keywords += %w(die echo empty exit eval include include_once isset list require require_once return print unset )
+        code.gsub! /\b(#{keywords.join('|')})\b/, "<em>\\1</em>"
+        code.gsub! /\b([A-Z_][a-zA-Z0-9_]+)\b/, "<b>\\1</b>"
+        code.gsub! /\$[a-zA-Z0-9_]+/, "<var>\\0</var>"
+        code.gsub! /(&quot;(.*?)&quot;|'.*?')/ do |q|
+          q.gsub! %r(<(b|i|em|var)>(.*?)</\1>), "\\2"
+          if q[0..5] == '&quot;'
+            q.gsub! /(\$[a-zA-Z0-9_]+)(\[(.+?)\])?/ do
+              hash = $3['$'] ? %Q([<var>#{$3}</var>]) : $2 if $2
+              %Q(<code><var>#{$1}</var>#{hash}</code>)
+            end
+          end
+          %Q(<q>#{q}</q>)
+        end
+        code.gsub! %r((//.*?)$) do |comment|
+          if comment.gsub(%r(<q>(.*?)</q>), "\\1") =~ %r(</q>)
+            comment
+          else
+            comment.gsub! %r(</?(b|i|em|var|code)>), ""
             %Q(<i>#{comment}</i>)
           end
         end
@@ -122,7 +159,7 @@ module Haml
 
       def render(code)
         code = Haml::Helpers.html_escape(code)
-        code.gsub! /^( *)(%[a-z-]+)?(([\.\#][a-z-_]+)*)((&lt;)?(&gt;)?&?)(=.+?$)?/i do
+        code.gsub! /^( *)(%[a-z\-]+)?(([\.\#][a-z\-_]+)*)((&lt;)?(&gt;)?&?)(=.+?$)?/i do
           result = $1 || ''
           tag = $2
           classes_and_id = $3
@@ -173,13 +210,13 @@ module Haml
       include Base
 
       def highlight(code)
-        code.gsub! %r((&lt;script( [a-z-]+(=(&quot;|'|\w).*?\4)?)*&gt;)(.+?)(&lt;/script&gt;))m do
+        code.gsub! %r((&lt;script( [a-z\-]+(=(&quot;|'|\w).*?\4)?)*&gt;)(.+?)(&lt;/script&gt;))m do
           %Q(#{$1}#{JavaScriptCode.highlight($5)}#{$6})
         end
-        code.gsub! %r(&lt;([a-z-]+[1-6]?)(( [a-z-]+(=&quot;.*?&quot;)?)*)( /)?&gt;)m do
+        code.gsub! %r(&lt;([a-z\-]+[1-6]?)(( [a-z\-]+(=&quot;.*?&quot;)?)*)( /)?&gt;)m do
           tag = $1
           xml_close_tag = $5
-          attributes = $2.gsub %r( ([a-z-]+)(=(&quot;)(.*?)(&quot;))?)m do
+          attributes = $2.gsub %r( ([a-z\-]+)(=(&quot;)(.*?)(&quot;))?)m do
             if %(onload onclick onmouseover onmousemove onmouseout onfocus onblur onkeyup onkeydown onkeypress).include?($1)
               %Q( <b>#{$1}</b>=#{$3}#{JavaScriptCode.highlight($4)}#{$3})
             else
@@ -188,7 +225,7 @@ module Haml
           end if $2
           %Q(<b>&lt;<em>#{tag}</em></b>#{attributes}<b>#{xml_close_tag}&gt;</b>)
         end
-        code.gsub! %r(&lt;/([a-z-]+[1-6]?)&gt;) do
+        code.gsub! %r(&lt;/([a-z\-]+[1-6]?)&gt;) do
           %Q(<b>&lt;/<em>#{$1}</em>&gt</b>)
         end
         code = ERBCode.highlight(code)
@@ -232,7 +269,7 @@ module Haml
         keywords << %w(normal pre nowrap pre-wrap pre-line)
         keywords << %w(maroon red yellow olive purple fuchsia white lime green navy blue aqua teal black silver gray orange)
         code.gsub! /\b#{keywords.join('|')}\b/, "<em>\\0</em>"
-        code.gsub! /\$[a-z-_]+/, "<var>\\0</var>"
+        code.gsub! /\$[a-z\-_]+/, "<var>\\0</var>"
         code.gsub! /(&quot;|')(.*?)\1/ do |q|
           q.gsub! %r(<(b|i|em|var)>(.*?)</\1>), "\\2"
           q.gsub!(/#\{(.*?)\}/) do
@@ -244,7 +281,7 @@ module Haml
       end
 
       def highlight(code)
-        code.gsub! %r(( *)((\$[a-z-_]+):(.+?);|([_\*]?[a-z-]+:)((&quot;|[^&])+?);|@import (.+?);|(([\.\#]?[a-z0-9-_&:]+([,\s]\s*[\.\#]?[a-z0-9-_&:]+)*))(\s*)\{(.*?\n\1)\}))im do
+        code.gsub! %r(( *)((\$[a-z\-_]+):(.+?);|([_\*]?[a-z\-]+:)((&quot;|[^&])+?);|@import (.+?);|(([\.\#]?[a-z0-9\-_&:]+([,\s]\s*[\.\#]?[a-z0-9\-_&:]+)*))(\s*)\{(.*?\n\1)\}))im do
           intendation = $1
           if $3
             %Q(#{intendation}<var>#{$3}</var>:#{highlight_value($4)};)
@@ -255,7 +292,7 @@ module Haml
           elsif $10
             whitespace = $12
             rules = $13
-            selector = $10.gsub(/([\.\#\b])([a-z0-9-_]+)\b/i) do
+            selector = $10.gsub(/([\.\#\b])([a-z0-9\-_]+)\b/i) do
               if $1 == '.'
                 %Q(<b><i>#{$1}#{$2}</i></b>)
               elsif $1 == '#'
@@ -272,7 +309,7 @@ module Haml
           if $1 == '<i>' or comment.gsub(%r(<q>(.*?)</q>), "\\1") =~ %r(</q>)
             comment
           else
-            comment.gsub! %r(</?(b|i|em|var)>), ""
+            comment.gsub! %r(</?(b|i|em|var|code)>), ""
             %Q(<i>#{comment}</i>)
           end
         end

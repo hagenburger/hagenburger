@@ -3,8 +3,9 @@ package_assets: <%= ARGV[0] == 'build' ? 'on' : 'off' %>
 javascript_compressor: yui
 javascripts:
   hagenburger:
+    - site/javascripts/vendor/jquery.js
+    - site/javascripts/vendor/jquery.easing.1.3.js
+    - site/javascripts/vendor/analytics.js
+    - site/javascripts/vendor/piwik.js
     - site/javascripts/typekit.js
-    - site/javascripts/jquery.js
-    - site/javascripts/jquery.easing.1.3.js
-    - site/javascripts/analytics.js
     - site/javascripts/application.js
