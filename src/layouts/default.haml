@@ -11,6 +11,7 @@
       %meta(name="keywords" content="#{@keywords.map{ |keyword| keyword.downcase }.join(',')}")
     %meta(name="date" content="#{(@date || Time.now).strftime('%Y-%m-%d')}")
     %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
+    %link(rel="apple-touch-icon" href="#{current_page_relative_path}apple-touch-icon.png")
     %link(rel="alternate" type="application/rss+xml" href="#{current_page_relative_path}hagenburger.rss")
     %link(rel="stylesheet" href="#{current_page_relative_path}stylesheets/hagenburger.css?4")
     - if @stylesheet
