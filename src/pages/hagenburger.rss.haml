@@ -1,3 +1,4 @@
+- require 'time'
 - @layout = 'rss'
 - blog "BLOG" do |post|
   - @last_build_date = post.date if @last_build_date.nil? or @last_build_date < post.date
@@ -7,4 +8,4 @@
     %description&= post.description
     %author Nico Hagenburger
     %guid= post.permalink
-    %pubDate= post.date
+    %pubDate= post.date.rfc2822
