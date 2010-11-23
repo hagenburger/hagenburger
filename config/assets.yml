@@ -9,3 +9,5 @@ javascripts:
     - site/javascripts/vendor/piwik.js
     - site/javascripts/typekit.js
     - site/javascripts/application.js
+  beijing:
+    - site/javascripts/beijing/application.js
