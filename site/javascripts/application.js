@@ -127,6 +127,10 @@ $(function() {
   
 });
 
+if (location.hostname != 'localhost' && location.hostname != 'www.hagenburger.net') {
+  location.href = "http://www.hagenburger.net/";
+}
+
 // ANALYTICS
 
 if (location.hostname != 'localhost') {
