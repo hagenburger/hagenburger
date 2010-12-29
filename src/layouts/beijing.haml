@@ -1,5 +1,5 @@
 !!!
-%html(lang="#{@lang || 'en'}")
+%html(lang="#{@lang || 'en'}" xmlns:og="http://opengraphprotocol.org/schema/")
   /
     Hey, isn't this the best intended source you've ever seen?
     And it's HTML5 - so it must be awesome.
@@ -10,9 +10,9 @@
     - if @keywords
       %meta(name="keywords" content="#{@keywords.map{ |keyword| keyword.downcase }.join(',')}")
     %meta(name="date" content="#{(@date || Time.now).strftime('%Y-%m-%d')}")
-    %meta(name="og:site_name" content="hagenburger.net")
-    %meta(name="og:title" content="#{@og_title || [@title].flatten.first}")
-    %meta(name="og:image" content="#{@og_image || current_page_relative_path + 'apple-touch-icon.png'}")
+    %meta(property="og:site_name" content="hagenburger.net")
+    %meta(property="og:title" content="#{@og_title || [@title].flatten.first}")
+    %meta(property="og:image" content="#{@og_image || current_page_relative_path + 'apple-touch-icon.png'}")
     %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
     %link(rel="apple-touch-icon" href="#{current_page_relative_path}apple-touch-icon.png")
     %link(rel="alternate" type="application/rss+xml" href="#{current_page_relative_path}hagenburger.rss")

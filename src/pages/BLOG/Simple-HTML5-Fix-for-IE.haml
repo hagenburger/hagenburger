@@ -1,0 +1,36 @@
+- @date = Time.mktime(2010, 12, 29)
+- @description = 'A very fast way to fix Internet Explorer 6.0, 7.0 and 8.0 with JavaScript without any external library.'
+- @title = 'A Simple HTML5 Fix for IE'
+- @keywords = %w(javascript html5 ie createelement css)
+%article.post
+  %h1
+    = @title
+  :markdown
+    **Internet Explorer** up to version 8.0 (it is fixed in 9.0) [can’t read HTML5 tags properly](HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html).
+    In recent projects I used **[modernizr](http://www.modernizr.com)** to fix this.
+    But since I don’t need all the features modernizr provides all the time, this is an **expensive (slow) extra HTTP call** in the header which prevents the content from beeing loaded.
+    
+    I wrote a **simple solution** which works well in Internet Explorer 6.0/7.0/8.0 (have a look at the [IE test page](../EXPERIMENTS/html5-for-internet-explorer.html)).
+  :htmlcode
+    <script>
+      for(var e,l='article aside footer header nav section time'.split(' ');e=l.pop();document.createElement(e))
+    </script>
+  :markdown
+    Do you have any shorter piece of code? I love to hear from you.
+    
+    (You could more more **HTML5 element types**. My typical list is: `article aside figcaption figure footer header hgroup nav section time`)
+- @jquery ||= "$('#code').click(function() { this.select(); });"
+%style(type="text/css")
+  :sass
+    @import config/colors.sass
+    .post pre
+      padding: 20px
+    .result
+      padding: 20px
+      textarea
+        border: 1px darken($green, 10%) solid
+        font-family: 'Courier New', Courier, monospace
+        font-size: 12px
+        float: left
+        padding: 2px
+        width: 800px - 6px

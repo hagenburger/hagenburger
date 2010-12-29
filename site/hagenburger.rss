@@ -3,9 +3,17 @@
     <title>Nico Hagenburger</title>
     <link>http://www.hagenburger.net</link>
     <description>I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml and Sass.</description>
-    <lastBuildDate>Sun Oct 31 00:00:00 +0200 2010</lastBuildDate>
+    <lastBuildDate>Wed Dec 29 00:00:00 +0100 2010</lastBuildDate>
     <generator>Staticmatic fork by Nico Hagenburger</generator>
     <language>en</language>
+    <item>
+      <title>A Simple HTML5 Fix for IE</title>
+      <link>http://www.hagenburger.net/BLOG/Simple-HTML5-Fix-for-IE.html</link>
+      <description>A very fast way to fix Internet Explorer 6.0, 7.0 and 8.0 with JavaScript without any external library.</description>
+      <author>Nico Hagenburger</author>
+      <guid>BLOG/Simple-HTML5-Fix-for-IE.html</guid>
+      <pubDate>Wed, 29 Dec 2010 00:00:00 +0100</pubDate>
+    </item>
     <item>
       <title>A Better Typekit Integration</title>
       <link>http://www.hagenburger.net/BLOG/A-Better-Typekit-Integration.html</link>
