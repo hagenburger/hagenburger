@@ -104,10 +104,11 @@
 
     * I’ve used both `lang` and `xml:lang` because I had some problems with Google, when I used `xml:lang` only.
     * You could use conditional comments for MSIE
+    * There is a [shorter way to fix HTML5 tags for MSIE](Simple-HTML5-Fix-for-IE.html) instead of calling `document.createElement()` several times.
 
     ## 4. CSS styling of HTML5 elements
 
-    Just do it the way you would expect it—after calling `document.createElement` you can use this CSS even in IE 6.0 and IE 7.0.
+    Just do it the way you would expect it—after calling `document.createElement` you can use this CSS even in IE 6.0, 7.0 and 8.0.
 
   :csscode
     header {
@@ -152,4 +153,8 @@
     ## Update (November 1st, 2010)
 
     Fixed article to stay up-to-date.
+
+    ## Update (December 30th, 2010)
+
+    Added link to a [shorter IE HTML5 fix](Simple-HTML5-Fix-for-IE.html).
     
