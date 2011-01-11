@@ -35,7 +35,11 @@ tmp
 
 ### PROJECT
 
-src/pages/BLOG/_*.haml
-site/.htaccess
+views/BLOG/_*.*
+views/_*
+public/.htaccess
+build
 _*
 *.sprite_info.yml
+
+images

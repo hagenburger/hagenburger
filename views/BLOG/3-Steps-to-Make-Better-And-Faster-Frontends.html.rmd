@@ -1,0 +1,16 @@
+<%
+  @date = Time.mktime(2010, 7, 7)
+  @description = 'Enhance your frontend development with SCSS/Sass, Compass and Lemonade—use variables, color functions CSS3 and CSS sprites.'
+  @title = '3 Steps to Make Better & Faster Frontends'
+  @keywords = %w(css sprites sass scss compass css3 sass)
+%>
+
+3 Steps to Make<br>Better & Faster<br>Frontends<br><small>With Sass/SCSS, Compass and Lemonade’s CSS Sprites</small>
+====================================================================================================================
+
+<%= slideshare 'sass-scss-compass-lemonade-100703091111-phpapp02' %>
+
+I gave this talk at the awesame [Railscamp 4](http://www.railscamp.de).
+In my blog post [Generate CSS Sprites on the Fly with Lemonade](Lemonade-CSS-Sprites-for-Sass-Compass.html) I gave more details about how to use [lemonade for CSS sprites](http://github.com/hagenburger/lemonade).
+
+Part 1 shows SCSS/Sass with the possibility to use variables, color calculations, mix-ins and the brand new `@extend` syntax. In part 2 you’ll learn about CSS3 mix-ins provided by Compass and how-to use frameworks like blueprint. The 3<sup>rd</sup> part encourages you to use CSS sprites in every project with the help of the simple syntax of lemonade.

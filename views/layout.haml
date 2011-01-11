@@ -1,0 +1,83 @@
+!!!
+- @title ||= ''
+%html(lang="#{@lang || 'en'}" class="#{page_classes.gsub('_', '-').downcase}")
+  /
+     
+    ┌───────────────┐
+    │               │
+    │               │
+    │               │
+    │               │
+    │      │        │
+    │      ├─┐      │
+    │      │ ╵      │
+    │               │
+    │  HAGENBURGER  │
+    │               │
+    └───────────────┘
+     
+    WELCOME TO MY SOURCE!
+     
+    Hey, isn’t this the best intended source you’ve ever seen?
+    And it’s HTML5—so it must be awesome.
+     
+    If you want to see the “real” source of this website, check out:
+    https://github.com/hagenburger/hagenburger
+    (And don’t forget to watch the project follow me there ^^)
+     
+  %head
+    %meta(charset="utf-8")
+    - if @description
+      %meta(name="description" content="#{@description}")
+    - if @keywords
+      %meta(name="keywords" content="#{@keywords.map{ |keyword| keyword.downcase }.join(',')}")
+    %meta(name="date" content="#{(@date || Time.now).strftime('%Y-%m-%d')}")
+    %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
+    %link(rel="apple-touch-icon" href="#{asset_url('apple-touch-icon.png')}")
+    %link(rel="alternate" type="application/rss+xml" href="#{asset_url('hagenburger.rss')}")
+    %link(rel="stylesheet" href="#{asset_url('stylesheets/hagenburger.css')}")
+    - if css = @css || yield_content(:css)
+      %style(type="text/css")= css
+    %script(src="//use.typekit.com/fal4qpz.js" async onload="try{Typekit.load()}catch(e){}")
+    - if @stylesheet
+      %link(rel="stylesheet" href="#{asset_url("stylesheets/#{@stylesheet}.css")}")
+    - javascript = @jquery || @javascript || yield_content(:javascript)
+    %script for(var e,l='article aside figcaption figure footer header nav section time'.split(' ');e=l.pop();document.createElement(e));try{Typekit.load()}catch(e){};#{"onload=function(){var s=document.createElement('script');s.src='#{asset_url('javascripts/hagenburger.js')}';document.getElementsByTagName('HEAD')[0].appendChild(s)}" if ENV['MM_ENV'] == 'build'}#{%Q(var ol=function(){#{compress_javascript(javascript)}}) if javascript}
+  %body
+    #nico-hagenburger
+      %header
+        %a(href="#{asset_url('.')}")<
+          %img#logo(src="#{asset_url('images/nico-hagenburger-ruby-on-rails.png')}" alt="Nico Hagenburger — #{(@keywords || [] + ['Ruby on Rails', 'Haml', 'Sass', 'HTML5'])[0..6].join(', ')}")
+        %nav<
+          = link_to 'Home', asset_url('.')
+          = link_to 'Blog', asset_url('BLOG.html')
+          = link_to 'Contact', asset_url('CONTACT.html')
+          = link_to 'Portfolio', asset_url('PORTFOLIO.html')
+        %div<
+          %strong> Hi, I’m Nico Hagenburger
+          %br>
+          My pleasure is designing
+          %br>
+          clean, simple websites
+          %br>
+          and developing web applications in Ruby on Rails.
+      #content
+        - if request.url =~ %r(/BLOG/)
+          %article.post{ :slug => @slug }
+            = yield
+          = partial 'twitter'
+        - else
+          = yield
+    %footer
+      %a#github(href="https://github.com/hagenburger")
+        %span Fork me on GitHub!
+        %span Get free lemonade!
+      %small<
+        © Nico Hagenburger/Hagenburger GmbH 2000—#{Time.now.year} · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)
+    - unless ENV['MM_ENV'] == 'build'
+      = javascripts :hagenburger
+  /
+     
+    You’ve just read it till the end.
+    If you're that fascinated, you definitaly have to hire me.
+     

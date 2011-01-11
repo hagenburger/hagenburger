@@ -1,0 +1,148 @@
+<%
+  @date = Time.mktime(2009, 3, 5)
+  @description = 'Easily insert translations for Rails I18n projects on the fly: just type “t” and hit tab.'
+  @title = 'Rails I18n: translation on the fly with TextMate (plug-in)'
+  @slug = 'rails-i18n-translation-on-the-fly-with-textmate-plug-in'
+%>
+
+Rails I18n: translation on the fly with TextMate (plug-in)
+==========================================================
+
+_I made a short presentation for this plug-in at the [Ruby User Group Berlin](http://www.rug-b.com) today._
+
+Before Ruby on Rails 2.2 it hasn’t been funny translating Rails applications with gettext and all the others. **rake updatepo**, **rake makemo** again and again. Now the translated strings are stored in the **I18n YAML files**:
+
+    ## yaml ##
+    de:
+      users:
+        update:
+          notice: "Du hast dein Geschlecht erfolgreich geändert."
+
+OK, cool. But what sucks is writing `t('users.update.notice')` in every place and add them to the YAML files by hand. There’s something like **updatepo** but it didn’t work for my (looks up only in the controllers, doesn’t work with **<%%- -%>** in views, …).
+
+So I wrote my own little **TextMate plug-in**. You can just call it by typing “t” and pressing tab (tab trigger). You’ll be asked by for the ID and the translations for each language in the next step. The languages are detected if the language files have been created before. In the example can see a German (de) and English (en) translated project. Press “fn” and return to close the box if you don’t want to use the mouse:
+
+<%= figure 'textmate-i18n-translation-for-ruby-on-rails.png', 'Enter i18n translations with this Ruby on Rails TextMate plug-in' %>
+
+It inserts the t or I18n::translate function depending on if you are in a controller, view or elsewhere. If you want, you can customize the code for the suggested ID. For me it was useful to automatically make a suggestion if a **flash\[:notice]** appears in the current line.
+
+
+Installation:
+-------------
+
+<ol><li><p>Install ya2yaml gem (because of UTF-8 problems).</p>    sudo gem install ya2yaml</li><li><p>Save the ruby script on your Mac.</p></li><li><p>Go to TextMate’s bundle editor. Choose “Ruby on Rails” in the list and add a new command (“+” button at the bottom).</p>_Commands:_    RUBYLIB="$TM_BUNDLE_SUPPORT/lib:$RUBYLIB"
+        "${TM_RUBY:=ruby}" -- "/Users/yourdir/h_quick_translation.rb"<p>_Input:_ Selected Text
+\*Or:\* Nothing
+\*Output:\* Insert as Text
+\*Activation:\* Tab Trigger + “t”</p></li></ol>
+
+<%= figure 'textmate-ruby-on-rails-i18n-plugin.png', 'TextMate’s bundle editor: Configuration for the i18n Ruby on Rails plugin' %>
+
+
+Here’s the plug-in:
+-------------------
+
+    ## ruby ##
+    #!/usr/bin/env ruby
+
+    # Copyright:
+    #   (c) 2009 Nico Hagenburger, Hagenburger GmbH
+    #   Released under the MIT license.
+    #   Visit my Blog at http://www.hagenburger.net
+    #   Follow me on http://twitter.com/Hagenburger
+    # Author: Nico Hagenburger (follow me on twitter for contact)
+    # Description:
+    #   Inserts an translation string to the current position
+    #   and to the localization file(s).
+    # Example for German/DE and English/EN translation:
+    #   users.update.success
+    #   Du hast dein Geschlecht erfolgreich geändert.
+    #   You changed your gender successfully.
+    # Hint: 
+    #   Press fn + return to close window instead of clicking OK
+    #   (if fn key is available).
+
+    require 'rails_bundle_tools'
+    require 'yaml'
+    require 'rubygems'
+    require 'ya2yaml'
+    require 'jcode'
+    $KCODE = 'u'
+
+    current_file = RailsPath.new
+    rails_root = RailsPath.new.rails_root
+    locales_dir = File.join(rails_root, 'config', 'locales')
+
+    if [:view, :helper, :controller].include?(current_file.file_type)
+      method = 't'
+    else
+      method = 'I18n.t'
+    end
+
+    # Change this, if you want to use outher default keys.
+    # Default is “controller.action.key”
+    suggestion = ''
+    unless current_file.controller_name.nil?
+      suggestion << "\#{current_file.controller_name}."
+    end
+    unless current_file.action_name.nil?
+      suggestion << "\#{current_file.action_name}."
+    end
+    case TextMate.current_line
+    when /flash\[:([a-z_]+)\]/
+      suggestion << "\#{$~[1]}n"
+    when /<h1/
+      suggestion << "headlinen"
+    when /link_to/
+      suggestion << "link_"
+    end
+
+    languages = []
+    Dir.open(locales_dir).entries.each do |file|
+      if file =~ /^translation_([a-zA-Z_-]+).yml$/
+        languages << $~[1]
+      end
+    end
+
+    # Don’t use TextMate.textbox. You won’t get any results.
+    user_input = TextMate.cocoa_dialog(
+        'textbox',
+        :informative_text => "Enter ID in the first line and translations " +
+          "in the following lines in this order:nn" +
+          "ID" + languages.map { |l| "n\#{l} (optional)" }.join(''),
+        :text => suggestion,
+        :title => "Add translation (by www.hagenburger.net)",
+        :focus_textbox => true,
+        :editable => true,
+        :button1 => 'OK',
+        :button2 => 'Cancel'
+      )
+
+    if user_input[0] == "1" # OK was clicked
+      id            = user_input[1]
+      id_splitted   = id.split('.')
+      translations  = user_input[2..-1]
+
+      0.upto(languages.length - 1) do |i|
+        filename = File.join(locales_dir, "translation_\#{languages[i]}.yml")
+        yaml = YAML.load(File.read(filename))
+        yaml[languages[i]] ||= {}
+        current = yaml[languages[i]]
+        id_splitted[0..-2].each do |key|
+          current[key] = {} unless current[key].is_a?(Hash)
+          current = current[key]
+        end
+        current[id_splitted.last] = "\#{translations[i]}"
+        File.open(filename, 'w+') do |file|
+          # to_yaml has problems with German umlauts
+          # and would print them as binary.
+          text = yaml.ya2yaml
+          file.puts text
+        end
+      end
+
+      print "\#{method}('\#{id}')"
+      TextMate.exit_insert_text
+    end
+
+Have fun and please tell me about your improvements!

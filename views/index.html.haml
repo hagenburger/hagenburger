@@ -1,0 +1,16 @@
+- @title = 'Concepts, Design, Frontends & Ruby on Rails'
+- @description = 'I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml, Sass/SCSS & CSS3. And you should click me.'
+#welcome
+  %h1 Hi, I’m Nico Hagenburger
+  %p
+    My pleasure is designing clean, simple websites
+    %br
+    and developing web applications in Ruby on Rails.
+#blog
+  - blog "BLOG", 2 do |post|
+    %article
+      %h2
+        %a(href="#{post.permalink}")&= post.title
+      %p&= post.description
+      .more=# link_to 'Read on …', post.permalink
+= partial 'twitter'

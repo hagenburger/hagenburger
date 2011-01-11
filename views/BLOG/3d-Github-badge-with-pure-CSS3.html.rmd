@@ -1,0 +1,108 @@
+<%
+  @date = Time.mktime(2011, 1, 11)
+  @description = 'A pure CSS3 Github badge with 3D transitions for Safari—made with Sass/SCSS and Compass.'
+  @title = '3d Github badge with pure CSS3'
+  @keywords = %w(github badge css3 sass scss compass)
+%>
+
+3d Github badge<br>with pure CSS3
+=================================
+
+You may have noticed my **“Fork me on Github!”** badge in the upper left corner.
+Are you using Safari? Great. Try to hover over it with your mouse. The badge will turn around and switch to its backside.
+For Chrome and Firefox 4.0 users, there’s a fading between both sides.
+All other browsers will see just a switch without any transition.
+
+
+The HTML code
+-------------
+
+    ## html ##
+    <a id="github" href="https://github.com/hagenburger">
+      <span>Fork me on GitHub!</span>
+      <span>Get free lemonade!</span>
+    </a>
+
+The first `span` will be visible, the second on is the backside.
+Btw don’t forget to use `https:` to avoid a slow redirect, as [Github is using SSL protection by default](https://github.com/blog/738-sidejack-prevention-phase-2-ssl-everywhere) since November 2010.
+
+
+Sass/SCSS/Compass/CSS3 implementation for modern Browsers
+---------------------------------------------------------
+
+    ## css ##
+    
+    @import "compass";
+    
+    #github {
+      left: -65px;
+      height: 30px;
+      top: 40px;
+      position: absolute;
+      text-decoration: none;
+      width: 250px;
+      @include rotate(-45deg);
+      span {
+        background: black;
+        color: white;
+        font-size: 14px;
+        left: 0;
+        padding: 5px 0;
+        position: absolute;
+        text-align: center;
+        width: 250px;
+        @include box-shadow(rgba(black, 0.2) 1px 1px 10px);
+        // If you’re using Compass < 0.11 use this:
+        // @include box-shadow(rgba(black, 0.2), 1px, 1px, 10px);
+        @include transition(opacity, 1s);
+        &:last-child {
+          /* this is the backside */
+          background: red;
+          opacity: 0;
+        }
+      }
+      :hover span {
+        &:first-child {
+          opacity: 0;
+        }
+        &:last-child {
+          opacity: 1;
+        }
+      }
+    }
+
+
+3d implementation for Safari and future Chrome versions
+-------------------------------------------------------
+
+By this `@media` rule the following code will be ignored unless 3d is activated in the browser (Safari in a virtual machine may have it turned off). 
+
+    ## css ##
+    @media all and (-webkit-transform-3d) {
+      #github {
+        span {
+          opacity: 1 !important;
+          -webkit-backface-visibility: hidden;
+          -webkit-transition: -webkit-transform 1s;
+          &:last-child {
+            -webkit-transform: rotateX(180deg);
+          }
+        }
+        &:hover span {
+          &:first-child {
+            -webkit-transform: rotateX(180deg);
+          }
+          &:last-child {
+            -webkit-transform: rotateX(360deg);
+          }
+        }
+      }
+    }
+
+
+What about Internet Explorer 7.0 and 8.0?
+-----------------------------------------
+
+Actually nothing. Rotating is a mess with IE. So I decided to hide the whole badge.
+
+OK. That’s not the normal way I work. But: I assume, there are only few developers out there who are interested in my code, using Github and love IE for its CSS support.

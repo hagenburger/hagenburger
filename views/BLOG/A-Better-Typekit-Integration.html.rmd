@@ -1,0 +1,100 @@
+<%
+  @date = Time.mktime(2010, 10, 31)
+  @description = 'Some tweaks to optimize the script tags provided by Typekit to improve loading and beauty.'
+  @title = 'A Better Typekit Integration'
+  @keywords = %w(staticmatic asset packaging css javascript yui)
+%>
+
+A Better Typekit Integration
+============================
+
+Usually your [Typekit](http://www.typekit.com) integration looks like this:
+
+    ## html ##
+    <script type="text/javascript" src="http://use.typekit.com/nbn2flh.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+Only two lines, but they could be better. Btw. Typekit is just an example, most suggestions will also improve other includes.
+    
+
+1. Protocol Independend Link
+----------------------------
+
+If your websites uses SSL encryption, you may want to include the HTTPS version of the Typekit includes. An old trick has become very popular the recent weeks, after [Paul Irish](http://paulirish.com/) [removed 5 bytes in html5-boilerplate](http://github.com/paulirish/html5-boilerplate/commit/afaf14304e55dac23b2f4c38b6c5f67a7ddb70c8). Typekit delivers both—the HTTP and HTTPS version of the JavaScript file. We can remove the protocol:
+    
+    ## html ##
+    <script type="text/javascript" src="//use.typekit.com/nbn2flh.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+5 bytes saved. Hooray.
+    
+    
+2. HTML5 Does’t Require a Type
+------------------------------
+    
+As `text/javascript` is default in [HTML5](HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html), we can remove it. It will work across all browser.
+
+    ## html ##
+    <script src="//use.typekit.com/nbn2flh.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
+46 bytes saved. Double hooray.
+    
+    
+3. Load Script Asynchrony
+-------------------------
+    
+Sometimes (very few times) the script needs a little bit longer due to high traffic. This prevents your page to be loaded. By adding the [`async` attribute](http://davidwalsh.name/html5-async), the browser will keep on parsing the HTML while loading the script in the background. At least some browsers do: [Safari 5.0](http://webkit.org/blog/1395/running-scripts-in-webkit/) and Firefox 3.6.
+
+    ## html ##
+    <script async src="//use.typekit.com/nbn2flh.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
+6 bytes lost. Shit.
+    
+By the way if you’re using XML syntax, you need to write `async="async"`. And you will loose 8 more bytes.
+    
+
+4. Load Typekit Onload
+----------------------
+    
+A `<script>` tag has an `onload` event just like `<body>` or `<img>`. As we’re loading the script asynchrony, we’ll need to run it after loading is finished.
+
+    ## html ##
+    <script async onload="try{Typekit.load();}catch(e){}" 
+            src="//use.typekit.com/nbn2flh.js"></script>
+
+At least 5 bytes saved. **But wait**: Will it work in all browsers? **No**. At least Internet Explorer up to Version 8 won’t support it. IE 9 does. Rollback.
+    
+    
+5. Be Unobtrusive
+-----------------
+    
+Most of your projects may have an own JavaScript file. And you may use jQuery. This way you could move the Typekit loading out of your HTML:
+
+    ## html ##
+    <script async src="//use.typekit.com/nbn2flh.js"></script>
+
+Add to your JavaScript file (I’m sure you’re using an [JavaScript compressor](Asset-Packaging-for-Staticmatic-with-Jammit.html)):
+
+    ## javascript ##
+    $(function() {
+      try {
+        Typekit.load();
+      }
+      catch(e) {}
+    });
+
+This saved some more bytes—at least for the second request. 
+    
+    
+6. Remove that Semicolon
+------------------------
+    
+And save one more byte!
+    
+    
+Conclusion
+----------
+    
+Before integration third party tools, think about their implementation. Your website may not need exactly the solution they deliver.

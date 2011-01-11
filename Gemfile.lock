@@ -1,54 +1,127 @@
-GIT
-  remote: ../compass
-  revision: 8a59e34ec861a2ad980aab448d16e2bd80cc5718
+PATH
+  remote: ~/Projekte/middleman
   specs:
-    compass (0.11.alpha.0.8a59e34)
-      sass (~> 3.1.0)
+    middleman (1.0.2)
+      coffee-script (~> 2.1.0)
+      compass (~> 0.10)
+      compass-slickmap (~> 0.4.0)
+      haml (~> 3.0)
+      json_pure (~> 1.4.0)
+      less (~> 1.2.0)
+      padrino-core (~> 0.9.0)
+      padrino-helpers (~> 0.9.0)
+      rack (~> 1.0)
+      rack-test (~> 0.5.0)
+      shotgun (~> 0.8.0)
+      sinatra (~> 1.0)
+      smusher (~> 0.4.5)
+      templater (~> 1.0.0)
+      thin (~> 1.2.0)
+      tilt (~> 1.1)
+      yui-compressor (~> 0.9.0)
 
-GIT
-  remote: http://github.com/hagenburger/sass.git
-  revision: 558073858e9b01c7c075e855337a9764598397d2
+PATH
+  remote: ~/Projekte/minisyntax
   specs:
-    sass (3.1.0.alpha.0)
-
-GIT
-  remote: http://github.com/hagenburger/staticmatic.git
-  revision: 781d31abfcabd35ed528f9e06fda5178fed7b679
-  specs:
-    staticmatic (0.11.0.alpha.9)
-      compass (>= 0.10.0)
-      haml (>= 2.0.0)
-      rack (>= 1.0)
-
-GIT
-  remote: http://github.com/nex3/haml.git
-  revision: 81a85b1906b0e0f16c26d8f85d2c5cf3a30ef1d1
-  branch: haml-only
-  specs:
-    haml (3.1.0.alpha.0)
+    minisyntax (0.1.0)
+      nokogiri (~> 1.4.4)
 
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (3.0.3)
+    chunky_png (0.10.5)
     closure-compiler (0.3.3)
-    jammit (0.5.3)
+    coffee-script (2.1.1)
+      coffee-script-source
+    coffee-script-source (1.0.0)
+    compass (0.11.alpha.4)
+      chunky_png (~> 0.10.3)
+      sass (>= 3.1.0.alpha.50)
+    compass-slickmap (0.4.0)
+      compass (>= 0.10)
+      haml (>= 3.0)
+    daemons (1.1.0)
+    diff-lcs (1.1.2)
+    eventmachine (0.12.10)
+    extlib (0.9.15)
+    haml (3.1.0.alpha.147)
+    highline (1.6.1)
+    html5-boilerplate (0.2.6)
+      compass (>= 0.10.0)
+    http_router (0.4.1)
+      rack (>= 1.0.0)
+      url_mount (~> 0.2.1)
+    httpclient (2.1.6.1)
+    i18n (0.5.0)
+    jammit (0.5.4)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
+    json (1.4.6)
+    json_pure (1.4.6)
+    less (1.2.21)
+      mutter (>= 0.4.2)
+      treetop (>= 1.4.2)
     maruku (0.6.0)
       syntax (>= 1.0.0)
+    mutter (0.5.3)
+    nokogiri (1.4.4)
+    padrino-core (0.9.19)
+      activesupport (>= 3.0.0)
+      http_router (~> 0.4.0)
+      sinatra (>= 1.1.0)
+      thor (>= 0.14.3)
+      tzinfo
+    padrino-helpers (0.9.19)
+      i18n (>= 0.4.1)
+      padrino-core (= 0.9.19)
+    polyglot (0.3.1)
     rack (1.2.1)
+    rack-test (0.5.7)
+      rack (>= 1.0)
+    rake (0.8.7)
+    rdiscount (1.6.5)
     redgreengrid (0.3.2)
+    sass (3.1.0.alpha.210)
+    shotgun (0.8)
+      rack (>= 1.0)
+    sinatra (1.2.0.a)
+      rack (~> 1.1)
+      tilt (~> 1.2)
+    smusher (0.4.6)
+      httpclient
+      json
+      rake
     syntax (1.0.0)
+    templater (1.0.0)
+      diff-lcs (>= 1.1.2)
+      extlib (>= 0.9.5)
+      highline (>= 1.4.0)
+    thin (1.2.7)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    thor (0.14.6)
+    tilt (1.2.1)
+    treetop (1.4.9)
+      polyglot (>= 0.3.1)
+    tzinfo (0.3.23)
+    url_mount (0.2.1)
+      rack
     yui-compressor (0.9.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  compass!
-  haml!
-  jammit (~> 0.5.3)
-  maruku (~> 0.6.0)
+  compass (= 0.11.alpha.4)
+  haml (= 3.1.0.alpha.147)
+  html5-boilerplate (~> 0.2.6)
+  jammit (= 0.5.4)
+  maruku (= 0.6.0)
+  middleman!
+  minisyntax!
+  rdiscount (= 1.6.5)
   redgreengrid (~> 0.3.2)
-  sass!
-  staticmatic!
+  sass (= 3.1.0.alpha.210)
+  sinatra (~> 1.2.0.a)

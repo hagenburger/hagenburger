@@ -1,0 +1,69 @@
+$footer-height: 320px
+
+#nico-hagenburger
+  min-height: 100%
+
+#content
+  padding-bottom: $footer-height
+  margin-bottom: -$footer-height
+
+footer
+  color: white
+  font-size: 9px
+  font-weight: bold
+  margin: 0 auto
+  max-width: 1000px
+  padding-top: $footer-height - 20px
+  text-align: center
+  .loaded &
+    background: image-url("footer.jpg") 50% 0 no-repeat
+  a
+    color: white
+
+#github
+  left: -65px
+  height: 30px
+  top: 40px
+  position: absolute
+  text-decoration: none
+  width: 250px
+  +rotate(-45deg)
+  span
+    background: $black
+    font-size: 14px
+    left: 0
+    padding: 5px 0
+    position: absolute
+    text-align: center
+    width: 250px
+    +box-shadow(rgba(black, 0.2) 1px 1px 10px)
+    +transition(opacity, 1s)
+    &:last-child
+      background: $pink
+      opacity: 0
+  &:hover span
+    &:first-child
+      opacity: 0
+    &:last-child
+      opacity: 1
+  .trident &
+    display: none
+
+@media all and (-webkit-transform-3d)
+  #github
+    span
+      opacity: 1 !important
+      -webkit-backface-visibility: hidden
+      -webkit-transition: -webkit-transform 1s
+      &:last-child
+        -webkit-transform: rotateX(180deg)
+    &:hover span
+      &:first-child
+        -webkit-transform: rotateX(180deg)
+      &:last-child
+        -webkit-transform: rotateX(360deg)
+      
+
+.trident
+  #github
+    display: none

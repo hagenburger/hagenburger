@@ -1,0 +1,18 @@
+- require 'time'
+%rss(version="2.0")
+  %channel
+    %title Nico Hagenburger
+    %link http://www.hagenburger.net
+    %description I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml, Sass/SCSS, jQuery and CoffeeScript.
+    %lastBuildDate= Time.now.rfc2822
+    %generator Middleman + Blog script by Nico Hagenburger
+    %language en
+    - blog "BLOG" do |post|
+      - @last_build_date = post.date if @last_build_date.nil? or @last_build_date < post.date
+      %item
+        %title&= post.title
+        %link&= 'http://www.hagenburger.net/' + post.permalink
+        %description&= post.description
+        %author Nico Hagenburger
+        %guid= post.permalink
+        %pubDate= post.date.rfc2822

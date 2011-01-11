@@ -1,0 +1,36 @@
+!!!
+%html(lang="#{@lang || 'en'}" xmlns:og="http://opengraphprotocol.org/schema/")
+  /
+    Hey, isn't this the best intended source you've ever seen?
+    And it's HTML5 - so it must be awesome.
+  %head
+    %meta(charset="utf-8")
+    - if @description
+      %meta(name="description" content="#{@description}")
+    - if @keywords
+      %meta(name="keywords" content="#{@keywords.map{ |keyword| keyword.downcase }.join(',')}")
+    %meta(name="date" content="#{(@date || Time.now).strftime('%Y-%m-%d')}")
+    %meta(property="og:site_name" content="hagenburger.net")
+    %meta(property="og:title" content="#{@og_title || [@title].flatten.first}")
+    %meta(property="og:image" content="#{@og_image || asset_url('apple-touch-icon.png')}")
+    %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
+    %link(rel="apple-touch-icon" href="#{asset_url('apple-touch-icon.png')}")
+    %link(rel="alternate" type="application/rss+xml" href="#{asset_url('hagenburger.rss')}")
+    %link(rel="stylesheet" href="#{asset_url('stylesheets/beijing.css')}")
+    - if @stylesheet
+      %link(rel="stylesheet" href="#{asset_url("stylesheets/#{@stylesheet}.css")}")
+    %script(src="//use.typekit.com/fal4qpz.js" async onload="try{Typekit.load()}catch(e){}")
+    = javascripts :hagenburger, :beijing
+    %script for(var e,l='article aside figcaption figure footer header nav section time'.split(' ');e=l.pop();document.createElement(e));try{Typekit.load()}catch(e){}
+  %body
+    = yield
+    %footer
+      %a(href="http://www.hagenburger.net/")<
+        © Nico Hagenburger/Hagenburger GmbH 2000—#{Time.now.year}
+    - if @jquery
+      :javascript
+        $(function(){#{@jquery}})
+    %script(src="http://api.map.baidu.com/api?key=fd5efa8387d5b7339adcf17c5f8eb83d&v=1.1&services=true")
+  /
+    You've just read it till the end.
+    If you're that fascinated, you definitaly have to hire me.

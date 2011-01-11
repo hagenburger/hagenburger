@@ -1,0 +1,14 @@
+<%
+  @date = Time.mktime(2009, 8, 10)
+  @description = 'With Cimy Swift it’s easy to switch from PHP’s mail() to your Goolge Mail e-mail address.'
+  @title = 'How to use GMail with WordPress'
+%>
+
+How to use GMail with WordPress
+===============================
+
+WordPress uses the PHP function mail() as default for sending e-mails such as comment notifications. However sendmail isn’t configured on my server. So I used the WordPress plugin **[WP Mail SMTP](http://www.callum-macdonald.com/code/wp-mail-smtp/)** till now. Unfortunately it won’t work with Google’s GMail—which is a problem for me, after I switched to GMail.
+
+There’s another WordPress plugin out there: It’s called **[“Cimy Swift SMTP”](http://www.marcocimmino.net/cimy-wordpress-plugins/cimy-swift-smtp/)** and works well with GMAIL, TLS and SSL connections. Give it a try!
+
+<%= figure 'wordpress-gmail-plugin.png', 'WordPress plugin for GMail mail and TLS/SSL connections' %>

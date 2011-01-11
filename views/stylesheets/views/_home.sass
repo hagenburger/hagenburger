@@ -1,0 +1,122 @@
+html.index
+  background: image-url("homepage.jpg")
+
+#welcome
+  background: image-url("homepage.jpg") 0 -280px no-repeat
+  color: white
+  height: 340px
+  @include section
+  h1
+    background: $blue image-url("homepage.jpg") 0 -280px
+    padding: 60px 0 0 60px
+  p
+    background: $blue image-url("homepage.jpg") 0 -380px
+    padding: 0 0 60px 60px
+  &:before,
+  #welcome-before
+    color: transparent
+    content: "."
+    display: block
+    height: 290px
+    margin: -280px 0 0 510px
+    position: absolute
+    width: 380px
+    z-index: 1111
+    background: image-url("homepage.jpg") -510px 0 no-repeat
+
+#blog
+  $p-height: 40px
+  height: 39px + $p-height
+  padding: 20px 0 0 60px
+  @include section(-60px)
+  article
+    float: left
+    margin-right: 30px
+    width: 340px
+    position: relative
+    &:first-child
+      h2:before
+        color: $blue
+        content: "BLOG"
+        display: block
+        bottom: 17px
+  h2
+    position: absolute
+    bottom: 21px + $p-height
+  p
+    height: $p-height
+    overflow: hidden
+    text-overflow: ellipsis
+  .more
+    bottom: 1px
+    font-weight: normal
+    height: 20px
+    position: relative
+
+#contact-bar
+  overflow: hidden
+  padding: 20px 0
+  width: 100%
+  address
+    background: $pink
+    clear: both
+    color: $pink
+    color: white
+    font-size: 23px
+    margin: 40px -10px
+    padding: 20px 0
+    text-align: center
+    -webkit-transform: rotate(-4deg)
+    -webkit-transition: all 500ms
+    -moz-transform: rotate(-4deg)
+    text-shadow: rgba(white, 0.3) 0 0 3px
+    &:hover
+      background: $turquoise
+  a
+    color: white
+    -webkit-transition: all 500ms
+    &:hover
+      color: yellow
+      text-decoration: none
+  strong
+    font-weight: normal
+
+#twitter
+  clear: both
+  overflow: hidden
+  padding: 20px 0
+  width: 100%
+  a
+    background: $pink
+    clear: both
+    color: white
+    display: block
+    font-size: 23px
+    margin: 40px -10px
+    padding: 20px 0
+    text-align: center
+    -webkit-transform: rotate(-4deg)
+    -webkit-transition: all 500ms
+    -moz-transform: rotate(-4deg)
+    text-shadow: rgba(white, 0.3) 0 0 3px
+    &:hover
+      background: $turquoise
+      color: yellow
+      text-decoration: none
+
+#portfolio
+  padding-left: 60px
+  @include section(-60px)
+  &:before
+    bottom: 17px
+    color: $pink
+    content: "PORTFOLIO"
+    display: block
+    padding-right: 60px
+    text-align: right
+  li
+    float: left
+    margin-right: 30px
+    width: 220px
+    &:before
+      content: ""

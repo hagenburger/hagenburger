@@ -1,0 +1,15 @@
+<%
+  @date = Time.mktime(2009, 5, 13)
+  @description = 'The logo and CI I created for Germany’s corporate tweet-up which I founded with Stefan.'
+  @slug = 'twittwoch-tweetup-logo'
+  @title = 'Twittwoch: Tweetup & Logo'
+%>
+
+Twittwoch: Tweetup & Logo
+=========================
+
+Today Berlin’s first Twittwoch will take place at Coffee Karma. The name “Twittwoch” is a German combination of  “Twitter” and “Mittwoch” (= Wednesday). The event is organized by [Stefan](http://twitter.com/StefanW) and [me](http://twitter.com/Hagenburger) and promoted by [Alexander](http://twitter.com/DStartups). The hash tag is #twb. 
+
+Here’s the logo I designed for the Twittwoch:
+
+<%= figure '../images/logos/twittwoch.png' %>

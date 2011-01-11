@@ -1,0 +1,175 @@
+<%
+  @date = Time.mktime(2009, 3, 9)
+  @description = 'Create cross-browser HTML5 documents. This includes fixes for IE6 and Firefox 2.0.'
+  @title = 'HTML5 with CSS for Safari, Firefox, Opera & IE'
+  @slug = 'html5-HTML5-with-css-for-safari-firefox-opera-ie'
+%>
+
+HTML5 with CSS for Safari, Firefox, Opera & IE
+==============================================
+
+As I started a new [WordPress theme](http://www.fructus-gmbh.de), the time was right to do this in **[HTML5](http://www.w3.org/TR/html5/)**.
+
+
+1. The HTML5 header/head
+------------------------
+
+The **doctype** is much easier now. And it’s the first time for me to write it by hand and not via copy ’n’ paste. The doctype is as simple as:
+
+    ## html ##
+    <!DOCTYPE html>
+
+
+2. Structuring the content with<br>“header”, “nav”, “article” and “footer”
+--------------------------------------------------------------------------
+
+Most of the HTML/XHTML pages have a header, a navigation and a footer. In between there’s the content. We used to classify them by giving them IDs:
+
+    ## html ##
+    <div id="head">
+      <ul id="nav">[...]</ul>
+    </div>
+    <div id="content">
+      [...]
+    </div>
+    <ul id="footer">[...]</ul>
+
+HTML5 introduced **special tags** for this areas—so they will be more accessible for people and search engines:
+
+    ## html ##
+    <header>
+      <nav>[...]</nav>
+    </header>
+    <article>
+      [...]
+    </article>
+    <footer>[...]</footer>
+
+Looks cooler. But what about the **browsers?** Peter Kröner did [some tests](http://www.peterkroener.de/html5-was-geht-heute-schon-was-geht-nicht-der-grosse-ueberblick:) Safari, Firefox 3.0 and Opera don’t have any problems. Firefox 2.0 has some but most people already use 3.0 and up. But styling in Internet Explorer isn’t possible because IE handle those tags as inline elements—they can’t have children.
+
+One solution is to use the HTML5 semantic elements and some DIV overhead to make them work in IE:
+
+    ## html ##
+    <div id="header"><header>
+      <div id="nav"><nav>[...]</nav></div>
+    </header></div>
+    <div id="article"><article>
+      [...]
+    </article></div>
+    <div id="footer"><footer>[...]</footer></div>
+
+That’s semi cool. After searching the web, I found a tricky solution for IE. If you create those elements via JavaScript, they’ll also work in Internet Explorer. But who want’s to create a whole website in JavaScript? But there’s an IE bug, no let’s call it “feature”. If you create only one `<header>` element via JavaScript, all others will work fine with CSS. Even if you don’t add it to the DOM tree. Even in IE6. Just call:
+
+    ## javascript ##
+    document.createElement('header');
+
+3. Putting it all together
+--------------------------
+
+The prototype HTML5 which will work in Safari, Firefox 3.0 and up, Opera and even Internet Explorer would look like this:
+
+    ## html ##
+    <!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/HTML" lang="en" xml:lang="en">
+      <head>
+         <meta charset="utf-8" />
+         <title>My first HTML5 website</title>
+         <script type="text/javascript">
+           document.createElement('header');
+           document.createElement('nav');
+           document.createElement('article');
+           document.createElement('section');
+           document.createElement('footer');
+         </script>
+      </head>
+      <body>
+        <header>
+          <a href="/">Welcome to my HTML5 test page</a>
+          <nav>
+             <a href="/">Home</a>
+             <a href="/about">About</a>
+          </nav>
+        </header>
+        <article>
+           <section>
+              <h2>HTML5 section 1</h2>
+              <p>[...]</p>
+           </section>
+           <section>
+              <h2>HTML5 section 2</h2>
+              <p>[...]</p>
+           </section>
+        </article>
+        <footer>
+           This HTML5 test page has been created by Nico Hagenburger
+        </footer>
+      </body>
+    </html>
+
+Some remarks:
+
+* I’ve used both `lang` and `xml:lang` because I had some problems with Google, when I used `xml:lang` only.
+* You could use conditional comments for MSIE
+* There is a [shorter way to fix HTML5 tags for MSIE](Simple-HTML5-Fix-for-IE.html) instead of calling `document.createElement()` several times.
+
+
+4. CSS styling of HTML5 elements
+--------------------------------
+
+Just do it the way you would expect it—after calling `document.createElement` you can use this CSS even in IE 6.0, 7.0 and 8.0.
+
+    ## css ##
+    header {
+      background: yellow;
+      display: block; /* inline is the default */
+    }
+    header a {
+      color: red;
+    }
+
+
+Summary
+-------
+
+HTML5 works quite well, makes your code more readable, accessible and your website is made as state of the art. The code will work in most browsers:
+
+Browser      | Does is work?
+-------------|--------------------------------------------------------------------
+Safari 3.1+  | *yes*
+Firefox 2.0  | *yes* with `Content-type: application/HTML+xml`
+Firefox 3.0+ | *yes*
+Opera 9.0+   | *yes*
+Chrome 4.0   | *yes*
+MSIE 6.0     | *yes* with JavaScript only
+MSIE 7.0     | *yes* with JavaScript only
+MSIE 8.0     | *yes* with JavaScript only
+MSIE 9.0     | *yes*
+
+
+Update: Firefox 2.0 (April 3rd, 2009)
+-------------------------------------
+
+I found a solution to solve it in Firefox 2.0 (I think it is working for Firefox 1.0 and 1.5, too). You need to set the HTTP header to `Content-type: application/xhtml+xml`. But be careful. IE will not work with this solution and the document **must** be valid. Here’s a simple PHP code for doing this:
+
+    ## php ##
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox/')) {
+      header("Content-type: application/xhtml+xml");
+    }
+
+
+Update (April 9th, 2009)
+------------------------
+
+I’ve added the `content-type` meta tag as suggested by “blabberstar.com” (see comments).
+
+
+Update (November 1st, 2010)
+---------------------------
+
+Fixed article to stay up-to-date.
+
+
+Update (December 30th, 2010)
+----------------------------
+
+Added link to a [shorter IE HTML5 fix](Simple-HTML5-Fix-for-IE.html).

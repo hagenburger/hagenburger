@@ -1,0 +1,12 @@
+<%
+  @date = Time.mktime(2009, 6, 3)
+  @description = 'Slides: Best practices to design your Twitter profile. Avatar, background image, information, username.'
+  @title = 'Designing Twitter profiles (German)'
+%>
+
+Designing Twitter profiles (German)
+===================================
+
+For Gemany’s monthly corporate twitter event Twittwoch I made a presentation about designing twitter profiles. Currently it’s available in German only.
+
+<%= slideshare '090603-twittwoch-profilgestaltung-090603093531-phpapp01' %>
