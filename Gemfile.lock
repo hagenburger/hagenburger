@@ -105,7 +105,7 @@ GEM
     tilt (1.2.1)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.23)
+    tzinfo (0.3.24)
     url_mount (0.2.1)
       rack
     yui-compressor (0.9.1)
