@@ -23,6 +23,19 @@ Do you have any shorter piece of code? I love to hear from you.
 
 (You could more more **HTML5 element types**. My typical list is: `article aside figcaption figure footer header hgroup nav section time`)
 
+
+Update: A Shorter Version is Possible (February 16<sup>th</sup>, 2011)
+----------------------------------------------------------------------
+
+[Paul Irish sent me](https://twitter.com/paul_irish/status/37731638356086784) an even shorter version:
+
+    ## html ##
+    <script>
+      'article aside footer header nav section time'.replace(/\w+/g,function(n){document.createElement(n)})
+    </script>
+
+(Thanks to [remy, porneL, jdalton, community](http://pastie.org/1569285).)
+
 <style type="text/css">
   .post pre {
     padding: 20px;

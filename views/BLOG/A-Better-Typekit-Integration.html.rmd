@@ -29,8 +29,8 @@ If your websites uses SSL encryption, you may want to include the HTTPS version 
 5 bytes saved. Hooray.
     
     
-2. HTML5 Does’t Require a Type
-------------------------------
+2. HTML5 Doesn’t Require a Type
+-------------------------------
     
 As `text/javascript` is default in [HTML5](HTML5-with-CSS-for-Safari,-Firefox,-Opera-and-IE.html), we can remove it. It will work across all browser.
 

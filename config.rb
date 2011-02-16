@@ -6,6 +6,7 @@ Bundler.setup
 require 'rdiscount'
 require File.join(Dir.getwd, 'lib', 'haml_filters')
 require File.join(Dir.getwd, 'lib', 'syntax_highlighter')
+require File.join(Dir.getwd, 'lib', 'string')
 
 Compass.add_project_configuration('config/compass.rb')
 
@@ -94,6 +95,11 @@ module ::Tilt
       html.gsub! /<h2 id='_?(.+?)_?'>(.+?)<\/h2>/ do
         text = $2
         "<h2 id=\"#{ $1.gsub('_', '-') }\">#{ text }</h2>"
+      end
+      html.gsub! %r(<h2>(.+?)</h2>) do
+        headline = $1
+        id = headline.gsub(/<.+?>/, '').gsub(/\(.+?\)/, '').gsub('Update:', '').gsub(/^\d+\. /, '').strip.to_slug
+        %Q(<h2 id="#{id}">#{headline}</h2>)
       end
       html.gsub! /<li>/, '  \\0'
       html.gsub! " style='text-align: left;'", ''
