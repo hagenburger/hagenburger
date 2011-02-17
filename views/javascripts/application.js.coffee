@@ -7,7 +7,9 @@ catch e
 
 # BROWSER
 
-$('html').addClass if $.browser.webkit then 'webkit' else if $.browser.msie then 'trident' else if $.browser.opera then 'presto' else if $.browser.mozilla then 'gecko' else null
+$('html')
+  .addClass(if $.browser.webkit then 'webkit' else if $.browser.msie then 'trident' else if $.browser.opera then 'presto' else if $.browser.mozilla then 'gecko' else null)
+  .removeClass('no-js')
 
 
 # PORTFOLIO

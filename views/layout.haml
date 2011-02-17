@@ -1,6 +1,6 @@
 !!!
 - @title ||= ''
-%html(lang="#{@lang || 'en'}" class="#{page_classes.gsub('_', '-').downcase}")
+%html(lang="#{@lang || 'en'}" class="#{page_classes.gsub('_', '-').downcase} no-js")
   /
      
     ┌───────────────┐
@@ -42,7 +42,7 @@
     - if @stylesheet
       %link(rel="stylesheet" href="#{asset_url("stylesheets/#{@stylesheet}.css")}")
     - javascript = @jquery || @javascript || yield_content(:javascript)
-    %script for(var e,l='article aside figcaption figure footer header nav section time'.split(' ');e=l.pop();document.createElement(e));try{Typekit.load()}catch(e){};#{"onload=function(){var s=document.createElement('script');s.src='#{asset_url('javascripts/hagenburger.js')}';document.getElementsByTagName('HEAD')[0].appendChild(s)}" if ENV['MM_ENV'] == 'build'}#{%Q(var ol=function(){#{compress_javascript(javascript)}}) if javascript}
+    %script for(var e,l='article aside figcaption figure footer header nav section time'.split(' ');e=l.pop();document.createElement(e));try{Typekit.load()}catch(e){};document.getElementsByTagName('HTML')[0].className+=' js';#{"onload=function(){var s=document.createElement('script');s.src='#{asset_url('javascripts/hagenburger.js')}';document.getElementsByTagName('HEAD')[0].appendChild(s)}" if ENV['MM_ENV'] == 'build'}#{%Q(var ol=function(){#{compress_javascript(javascript)}}) if javascript}
   %body
     #nico-hagenburger
       %header
