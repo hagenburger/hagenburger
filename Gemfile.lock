@@ -29,7 +29,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.0.6)
+    activesupport (3.0.7)
     chunky_png (0.10.5)
     closure-compiler (0.3.3)
     coffee-script (2.1.3)

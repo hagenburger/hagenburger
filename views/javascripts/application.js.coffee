@@ -125,9 +125,9 @@ if location.hostname != 'localhost' and location.hostname != 'www.hagenburger.ne
 
 $ () ->
   if location.hostname == 'www.hagenburger.net'
+    $.gaTracker('UA-4797174-1')
     startTracking = () ->
       try
-        $.gaTracker('UA-4797174-1')
       catch e
       try
         piwikTracker = Piwik.getTracker("http://www.hagenburger.net/piwik/piwik.php", 1)
