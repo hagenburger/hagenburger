@@ -1,8 +1,4 @@
 source 'http://rubygems.org'
-gem 'haml', '3.1.0.alpha.147'
-#gem 'haml', '3.0.25'
-gem 'sass', '3.1.0.alpha.210'
-gem 'compass', '0.11.alpha.4'
 gem 'redgreengrid', '~> 0.3.2'
 gem 'html5-boilerplate', '~> 0.2.6'
 gem 'sinatra', '~> 1.2.0.a'

@@ -8,7 +8,7 @@ require File.join(Dir.getwd, 'lib', 'haml_filters')
 require File.join(Dir.getwd, 'lib', 'syntax_highlighter')
 require File.join(Dir.getwd, 'lib', 'string')
 
-Compass.add_project_configuration('config/compass.rb')
+Compass.add_project_configuration('compass.rb')
 
 activate :automatic_image_sizes
 
@@ -17,12 +17,13 @@ Jammit.load_configuration(File.join(File.dirname(__FILE__), 'assets.yml'))
 
 configure :build do
   activate :minify_css
-  activate :smush_pngs
+  #activate :smush_pngs
   activate :cache_buster
   activate :relative_assets
 end
 
 page '/PHOTOGRAPHY/beijing.html', :layout => :beijing, :layout_engine => :haml
+page '/PHOTOGRAPHY/kino-international-euruko.html', :layout => :images, :layout_engine => :haml
 page '/BLOG/*', :layout => :layout, :layout_engine => :haml
 page '/*.rss', :layout => false
 page '/*.xml', :layout => false
