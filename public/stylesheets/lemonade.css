@@ -151,3 +151,17 @@ pre {
   background: url('/images/lemonade/example-2-b.png?1287491062') 20px -41px yellow no-repeat;
   padding: 5px 10px 5px 35px;
 }
+
+.deprecated {
+  background: white;
+  border: 10px #c322bd solid;
+  color: #c322bd;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+
+.deprecated p {
+  margin: 0 20px !important;
+  width: auto;
+}
