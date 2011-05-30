@@ -1,0 +1,17 @@
+- @title = "3 Types of EuRuKo T-shirts"
+%article.images
+  %h1 3 Types of EuRuKo T-shirts
+  %p
+    Ever wondered about the different t-shirts at the
+    <a href="http://euruko2011.org">EuRuKo 2011 Berlin</a>?
+    Here’s why:
+  %ul
+    - Dir.glob File.dirname('__FILE__') + '/public/images/3-types-of-euruko-t-shirts/*.jpg' do |image|
+      %li
+        %img(src="../images/3-types-of-euruko-t-shirts/#{File.basename(image)}")
+  %iframe#like(src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.hagenburger.net%2FPHOTOGRAPHY%3-types-of-euruko-t-shirts.html&amp;layout=box_count&amp;show_faces=true&amp;width=90&amp;action=like&amp;colorscheme=dark&amp;height=65" scrolling="no" frameborder="0" allowTransparency="true")
+  %p
+    Don’t forget to check the
+    <a href="euruko-t-shirts.html">making of</a>
+    and the
+    <a href="kino-international-euruko.html">backstage photos of the EuRuKo</a>!
