@@ -9,7 +9,7 @@ module BlogHelper
   end
 
   def blog posts_dir = "posts", max = 9999
-    dir = File.join(Dir.getwd, 'views', posts_dir)
+    dir = File.join(File.dirname(__FILE__), '..', 'views', posts_dir)
     posts = []
     Dir["#{dir}/*.html.*"].each do |file|
       if file =~ /\/([^\/_]+?)\.html\.(haml|rmd)/
