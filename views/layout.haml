@@ -35,7 +35,7 @@
     %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
     %link(rel="apple-touch-icon" href="#{asset_url('apple-touch-icon.png')}")
     %link(rel="alternate" type="application/rss+xml" href="#{asset_url('hagenburger.rss')}")
-    %link(rel="stylesheet" href="#{asset_url('stylesheets/hagenburger.css')}")
+    %link(rel="stylesheet" href="#{asset_url('stylesheets/hagenburger.css?2')}")
     - if css = @css || yield_content(:css)
       %style(type="text/css")= css
     %script(src="//use.typekit.com/fal4qpz.js" async onload="try{Typekit.load()}catch(e){}")
