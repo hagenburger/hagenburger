@@ -117,7 +117,8 @@ if post.length == 1
 
 # TO ALL THOSE GUYS WHO ARE TOO DUMP TO DOWNLOAD JQUERY AND USE MY CODE ;)
 
-if location.hostname != 'localhost' and location.hostname != 'www.hagenburger.net'
+host = location.hostname
+if host != 'localhost' and host != 'www.hagenburger.net' and host != 'nh.fornax.uberspace.de'
   location.href = "http://www.hagenburger.net/"
 
 

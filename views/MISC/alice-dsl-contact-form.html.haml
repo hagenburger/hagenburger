@@ -1,0 +1,15 @@
+- @title = "Alice DSL Contact Form"
+%article.images
+  %h1 Alice DSL Contact Form
+  %p
+    How to annoy your paying customers.
+  %p
+    This is when you try to contact the German Alice DSL (Telefónica) Internet provider:
+  %ul
+    - i = 0
+    - Dir.glob File.dirname('__FILE__') + '/public/images/alice-dsl-contact-form/*.png' do |image|
+      %li
+        %h2 Step #{i += 1}
+        %img(src="../images/alice-dsl-contact-form/#{File.basename(image)}")
+  %p I’m not able to fill in all details so I had to stop here.
+  %iframe#like(src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.hagenburger.net%2FMISC%2Falice-dsl-contact-form.html&amp;layout=box_count&amp;show_faces=true&amp;width=90&amp;action=like&amp;colorscheme=dark&amp;height=65" scrolling="no" frameborder="0" allowTransparency="true")
