@@ -8,7 +8,7 @@ require File.join(Dir.getwd, 'lib', 'haml_filters')
 require File.join(Dir.getwd, 'lib', 'syntax_highlighter')
 require File.join(Dir.getwd, 'lib', 'string')
 
-Compass.add_project_configuration('compass.rb')
+::Compass.add_project_configuration('compass.rb')
 
 activate :automatic_image_sizes
 
@@ -31,7 +31,7 @@ page '/*.xml', :layout => false
 ::Compass::configuration.asset_cache_buster = :none
 set :haml, { :attr_wrapper => '"', :format => :html5 }
 
-require 'minisyntax'   
+require 'minisyntax'
 require 'tilt'
 require 'erb'
 require 'compass'
@@ -67,7 +67,7 @@ module ::Tilt
       md.filter_html = false
       md.filter_styles = false
       html = md.to_html
-      
+
       # syntax highlighter
       html.gsub! %r(<code>(.+?)</code>)m do
         code = $1
@@ -82,7 +82,7 @@ module ::Tilt
         code.gsub! "\n", '&#x000A;'
         %Q(<code>#{code}</code>)
       end
-      
+
       # allow <dl>s (not implemented in RDiscount)
       html.gsub! %r(<p>(.+?)\n:\s+(.+?)</p>), "  <dt>\\1</dt>\n  <dd>\\2</dd>"
       html.gsub! %r((</(p|div|figure|h1|h2|table|pre)>\n+)  <dt>)m, "\\1<dl>\n  <dt>"
@@ -108,10 +108,10 @@ module ::Tilt
         "<#{ $1 }#{ $2.gsub('\'', '"') }>"
       end
       html.gsub! /<img(.+?) ?\/>/, '<img\\1>'
-      
+
       # fix image URLs
       html.gsub! 'images/images', 'images'
-      
+
       html
     end
 
@@ -177,7 +177,7 @@ module ::Rack
 
         [status, headers, [content]]
       else
-        [status, headers, response]  
+        [status, headers, response]
       end
     end
   end
@@ -207,7 +207,7 @@ require File.join(Dir.getwd, 'helpers', 'jammit_helper')
 helpers do
   include BlogHelper
   include JammitHelper
-  
+
   def compress_javascript(javascript)
     compressor = ::YUI::JavaScriptCompressor.new(:munge => true)
     compressor.compress(javascript)
@@ -233,20 +233,20 @@ end
 configure :build do
   # For example, change the Compass output style for deployment
   # activate :minify_css
-  
+
   # Minify Javascript on build
   # activate :minify_javascript
-  
+
   # Shrink/smush PNG/JPEGs on build
   # activate :smush_pngs
-  
+
   # Enable cache buster
   # activate :cache_buster
 
   # Generate ugly/obfuscated HTML from Haml
   # activate :ugly_haml
 
-  
+
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end

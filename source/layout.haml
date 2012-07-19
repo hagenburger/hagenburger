@@ -46,13 +46,13 @@
   %body
     #nico-hagenburger
       %header
-        %a(href="#{asset_url('.')}")<
+        = link_to '/' do
           %img#logo(src="#{asset_url('images/nico-hagenburger-ruby-on-rails.png')}" alt="Nico Hagenburger — #{(@keywords || [] + ['Ruby on Rails', 'Haml', 'Sass', 'HTML5'])[0..6].join(', ')}")
         %nav<
-          = link_to 'Home', asset_url('.')
-          = link_to 'Blog', asset_url('BLOG.html')
-          = link_to 'Contact', asset_url('CONTACT.html')
-          = link_to 'Portfolio', asset_url('PORTFOLIO.html')
+          = link_to 'Home', '/'
+          = link_to 'Blog', '/BLOG.html'
+          = link_to 'Contact', '/CONTACT.html'
+          = link_to 'Portfolio', '/PORTFOLIO.html'
         %div<
           %strong> Hi, I’m Nico Hagenburger
           %br>
@@ -62,7 +62,7 @@
           %br>
           and developing web applications in Ruby on Rails.
       #content
-        - if request.url =~ %r(BLOG/)
+        - if request.path =~ %r(BLOG/)
           %article.post{ :slug => @slug }
             = yield
           = partial 'twitter'
