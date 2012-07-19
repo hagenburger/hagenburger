@@ -9,7 +9,7 @@ module BlogHelper
   end
 
   def blog posts_dir = "posts", max = 9999
-    dir = File.join(File.dirname(__FILE__), '..', 'views', posts_dir)
+    dir = File.join(File.dirname(__FILE__), '..', 'source', posts_dir)
     posts = []
     Dir["#{dir}/*.html.*"].each do |file|
       if file =~ /\/([^\/_]+?)\.html\.(haml|rmd)/
@@ -39,14 +39,14 @@ module BlogHelper
     embed = tag(:embed, :src => href, :type => 'application/x-shockwave-flash', :width => 420, :height => 360)
     %Q(<figure class="slideshare"><div><object>#{params}#{embed}</object></div></figure>)
   end
-  
+
   def figure src, alt = nil
     %Q(<figure>) +
     %Q(<img src="#{src}" alt="#{alt || src.gsub('-', ' ').gsub(/\.\w+$/, '')}">) +
     (alt ? %Q(<figcaption>#{alt}</figcaption>) : '') +
     %Q(</figure>)
   end
-  
+
   def article_img src, alt = nil
     %Q(<div class="image">) +
     %Q(<img src="#{src}" alt="#{alt || src.gsub('-', ' ').gsub(/\.\w+$/, '')}">) +

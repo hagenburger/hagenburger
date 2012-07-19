@@ -62,7 +62,7 @@
           %br>
           and developing web applications in Ruby on Rails.
       #content
-        - if request.url =~ %r(/BLOG/)
+        - if request.url =~ %r(BLOG/)
           %article.post{ :slug => @slug }
             = yield
           = partial 'twitter'
