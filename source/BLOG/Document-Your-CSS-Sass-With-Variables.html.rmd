@@ -1,0 +1,66 @@
+<%
+  @title = 'Document Your CSS/Sass Code With Variables'
+  @date = Time.mktime(2012, 12, 6)
+  @description = 'Learn how variables help you to document your CSS/Sass code'
+%>
+
+Document Your CSS/Sass Code With Variables
+==========================================
+
+One of the advantages of using CSS processors like Sass/SCSS/Less/Stylus/… I hear the most in beginner tutorials is the possibility of using variables for colors and metrics.
+Actually the more “designed” a project gets, the less global color codes can be used.
+But there is one thing, makes variables even more useful: **The code gets readable and documented.**
+
+Example:
+
+    ## css ##
+    .my-class {
+      border: 1px red solid;
+      height: 244px;
+      padding: 6px;
+      width: 368px;
+    }
+
+If you change it later, you may forget why you used those magic values and how to adopt them.
+Try this:
+
+    ## css ##
+    .my-class {
+      $border-width: 1px;
+      $padding: 6px;
+      $height: 256px
+      $width: 380px;
+
+      border: $border-width red solid;
+      height: $height - 2 * ($padding + $border-width);
+      padding: $padding;
+      width: $width - 2 * ($padding + $border-width);
+    }
+
+Also use local variables to document which values should be the same:
+
+    ## css ##
+    .my-class {
+      background: $orange;
+      // ...
+      a {
+        background: $dark-blue;
+        color: $orange;
+      }
+    }
+
+Could be:
+
+    ## css ##
+    .my-class {
+      $background: $orange;
+      $foreground: $dark-blue;
+
+      background: $background;
+      // ...
+      a {
+        background: $foreground;
+        color: $background;
+      }
+    }
+
