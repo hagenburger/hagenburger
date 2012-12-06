@@ -47,7 +47,7 @@ module ::Tilt
       # filter CSS and JavaScript
       @data.gsub! %r(^<style type="text/s?css">(.+?)</style>$)m do
         css = %Q(@import "compass"; #{$1})
-        sass_options = Compass.sass_engine_options
+        sass_options = ::Compass.configuration.to_sass_engine_options
         sass_options.merge! :syntax => :scss, :style => :compressed
         css = Sass::Engine.new(css, sass_options).render
         scope.instance_eval("@css ||= ''\n@css << %q(#{css})", eval_file, 1)
