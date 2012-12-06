@@ -1,0 +1,32 @@
+
+<%
+  @title = 'Made in Berlin'
+  @date = Time.mktime(2011, 12, 9)
+  @description = 'Made in Berlin—a logo for all websites and projects made in Berlin.'
+%>
+
+Made in Berlin
+==============
+
+A few days ago I discovered <a href="https://apps.facebook.com/contestshq/contests/170646/voteable_entries">a competition on a Made in Berlin badge on Facebook</a>. Maybe this was inspired by <a href="http://www.6wunderkinder.com/#footer">the footer of 6wunderkinder</a>. Actually it was over this day. Nevertheless I made <a href="http://dribbble.com/shots/344531-Made-In-Berlin">my own draft on Dribbble</a> as I like the idea.
+
+<img src="/images/made-in-berlin/logo-variations.png" alt="made in berlin logo variations in color and style" id="logo-variations">
+
+What are the requirements for such a logo?
+
+- **Easy to remember:** Simple and unique
+- **Some local color:** Something everybody associate with the city
+- **Adaptable:** It should fit to your design—it shouldn’t be the other way round. If you like box-shadows, glows, bevel and emboss, crunge look, … the logo should allow this while keep the recognitionvalue.
+- **Free to use:** Licensed under CC to allow everybody to use and adopt it.
+
+Inspired by the font of the <a href="http://www.albert-videt.eu/photographie/carnet-de-route/berlin_02-2005/u-bahn_metrostation_alexanderplatz_00.php">station signs of the subway line U5/U8</a>. Those are styled with influence of the Bauhaus design in the 30s of the last century. The font of the Made in Berlin logo is hand-made to avoid licensing problems on the one side and provide a high legability in small sizes. At 100&nbsp;% the font has a weight of exactly one pixel (4 pixels on the columns).
+
+I’ll soon publish the logo as SVG and PNG. Here’s the vector PSD file under <a href="http://creativecommons.org/licenses/by/3.0/de/">CC-BY license</a>:
+
+<a id="download-psd" href="/DOWNLOADS/Made-in-Berlin.psd">Download PSD <small>(156 KB)</small></a>
+
+Hope you enjoy it and feel free to integrate it on your website :)
+
+<style type="text/css">
+.post{min-height:830px}#logo-variations{position:absolute;margin:-17px 0 0 -160px}#download-psd{background:url("/images/made-in-berlin/download-psd.png") no-repeat;display:block;font-weight:bold;height:80px;line-height:80px;font-size:23px;margin:20px;padding-left:60px}#download-psd small{color:#7F7F7F;font-size:14px;font-weight:normal}
+</style>
