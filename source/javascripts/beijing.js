@@ -1,0 +1,1 @@
+//= require "beijing/application.js"

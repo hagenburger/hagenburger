@@ -20,7 +20,7 @@
     - if @stylesheet
       %link(rel="stylesheet" href="#{asset_url("stylesheets/#{@stylesheet}.css")}")
     %script(src="//use.typekit.com/fal4qpz.js" async onload="try{Typekit.load()}catch(e){}")
-    = javascripts :hagenburger, :beijing
+    = javascript_include_tag 'hagenburger', 'beijing'
     %script for(var e,l='article aside figcaption figure footer header nav section time'.split(' ');e=l.pop();document.createElement(e));try{Typekit.load()}catch(e){}
   %body
     = yield

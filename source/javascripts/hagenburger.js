@@ -1,0 +1,5 @@
+//= require "vendor/jquery.js"
+//= require "vendor/jquery.easing.1.3.js"
+//= require "vendor/analytics.js"
+//= require "vendor/piwik.js"
+//= require "application.js"

@@ -12,9 +12,6 @@ require File.join(Dir.getwd, 'lib', 'string')
 
 activate :automatic_image_sizes
 
-require "jammit"
-Jammit.load_configuration(File.join(File.dirname(__FILE__), 'assets.yml'))
-
 configure :build do
   activate :minify_css
   #activate :smush_pngs
