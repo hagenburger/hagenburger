@@ -6,7 +6,7 @@
     <a href="http://euruko2011.org">EuRuKo 2011 Berlin</a>?
     Here’s why:
   %ul
-    - Dir.glob File.dirname('__FILE__') + '/public/images/3-types-of-euruko-t-shirts/*.jpg' do |image|
+    - Dir.glob File.dirname('__FILE__') + '/source/images/3-types-of-euruko-t-shirts/*.jpg' do |image|
       %li
         %img(src="../images/3-types-of-euruko-t-shirts/#{File.basename(image)}")
   = facebook_like
