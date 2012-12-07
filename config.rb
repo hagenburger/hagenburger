@@ -201,6 +201,7 @@ use ::Rack::CleanUp
 
 require File.join(Dir.getwd, 'helpers', 'blog_helper')
 require File.join(Dir.getwd, 'helpers', 'jammit_helper')
+require 'open-uri'
 helpers do
   include BlogHelper
   include JammitHelper
@@ -208,6 +209,12 @@ helpers do
   def compress_javascript(javascript)
     compressor = ::YUI::JavaScriptCompressor.new(:munge => true)
     compressor.compress(javascript)
+  end
+
+  def facebook_like(url = nil)
+    url ||= %Q(http://www.hagenburger.net/#{request.path})
+    url = URI::encode(url)
+    %Q(<iframe id="like" src="http://www.facebook.com/plugins/like.php?href=#{url}&amp;width=420" scrolling="no" frameborder="0" allowTransparency="true"></iframe>)
   end
 end
 

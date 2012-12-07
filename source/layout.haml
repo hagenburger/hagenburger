@@ -68,6 +68,7 @@
         - if request.path =~ %r(BLOG/)
           %article.post{ :slug => @slug }
             = yield
+            = facebook_like
           = partial 'twitter'
         - else
           = yield
