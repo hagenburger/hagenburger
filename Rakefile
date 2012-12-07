@@ -10,8 +10,8 @@ production_path = "/home/web/hagenburger/"
 desc "Builds the site with bundler"
 task :build do
   puts "Building the site"
-  system "bundle exec mm-build"
-  
+  system "bundle exec middleman build"
+
   # fix wrong image urls
   Dir.glob 'build/**/*.css' do |file|
     css = File.read(file)
