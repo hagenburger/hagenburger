@@ -4,7 +4,7 @@
   %p
     Preparations for the
     %a(href="http://euruko2011.org") EuRuKo 2011 Berlin
-  %iframe#like(src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.hagenburger.net%2FPHOTOGRAPHY%2Fkino-international-euruko.html&amp;layout=box_count&amp;show_faces=true&amp;width=90&amp;action=like&amp;colorscheme=dark&amp;height=65" scrolling="no" frameborder="0" allowTransparency="true")
+  = facebook_like
   %ul
     - Dir.glob File.dirname('__FILE__') + '/source/images/kino-international-euruko/*.jpg' do |image|
       %li
