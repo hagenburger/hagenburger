@@ -12,7 +12,7 @@
     %meta(name="date" content="#{(@date || Time.now).strftime('%Y-%m-%d')}")
     %meta(property="og:site_name" content="hagenburger.net")
     %meta(property="og:title" content="#{@og_title || [@title].flatten.first}")
-    %meta(property="og:image" content="#{@og_image || asset_url('apple-touch-icon.png')}")
+    %meta(property="og:image" content="#{@og_image || asset_url('hagenburger.jpg')}")
     %title&= [@title, ('Nico Hagenburger' if @title.length < 45)].compact.join(' ··· ').strip
     %link(rel="apple-touch-icon" href="#{asset_url('apple-touch-icon.png')}")
     %link(rel="alternate" type="application/rss+xml" href="#{asset_url('hagenburger.rss')}")

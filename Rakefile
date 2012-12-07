@@ -3,9 +3,9 @@
 require "bundler"
 Bundler.setup
 
-ssh_user = "nico@hagenburger.net"
+ssh_user = "nh@hagenburger.net"
 production_url = "http://www.hagenburger.net/"
-production_path = "/home/web/hagenburger/"
+production_path = "/home/nh/hagenburger.net/"
 
 desc "Builds the site with bundler"
 task :build do
