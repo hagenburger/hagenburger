@@ -28,11 +28,6 @@ task :build do
       file.write html
     end
   end
-  
-  # jammit
-  require "jammit"
-  Jammit.load_configuration('assets.yml')
-  Jammit.packager.precache_all(File.join('.', 'build', 'javascripts'), '.')
 end
 
 desc "Deploys the site to #{production_url}"
