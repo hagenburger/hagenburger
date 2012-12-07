@@ -46,7 +46,7 @@
   %body
     #nico-hagenburger
       %header
-        = link_to '/' do
+        %a(href="/")
           %img#logo(src="#{asset_url('images/nico-hagenburger-ruby-on-rails.png')}" alt="Nico Hagenburger — #{(@keywords || [] + ['Ruby on Rails', 'Haml', 'Sass', 'HTML5'])[0..6].join(', ')}")
         %nav<
           = link_to 'Home', '/'
