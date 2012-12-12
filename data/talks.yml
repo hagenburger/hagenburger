@@ -1,0 +1,31 @@
+-
+  title: Style Guide Driven Development
+  url: http://speakerdeck.com/hagenburger/style-guide-driven-development
+  image: style-guide-driven-development.jpg
+-
+  title: Is it possible to have beer in bottles while coding JavaScript?
+  url: /TALKS/beer-in-bottles.html
+  image: javascript-beer-in-bottles.jpg
+-
+  title: Create Your Own Gem
+  subtitle: With Github, Jeweler and rubygems.org
+  url: http://de.slideshare.net/hagenburger/create-yourowngemwithgithubjewelerrubygems
+  image: create-your-own-gem.jpg
+-
+  title: Rails 3.1
+  subtitle: A Sneak Preview
+  url: /TALKS/rails-3.1-frontend-performance.html
+  image: rails-3-1.jpg
+-
+  title: 3 Ways to Create CSS Sprites in Rails
+  url: http://de.slideshare.net/hagenburger/3-waystocreatespritesinrails
+  image: 3-ways-to-create-css-sprites-in-rails.jpg
+-
+  title: 3 Steps to Make Better & Faster Frontends
+  url: http://de.slideshare.net/hagenburger/3-steps-to-make-better-faster-frontends
+  image: better-faster-frontends.jpg
+-
+  title: Big Frontends Made Simple
+  subtitle: With Sass & Compass
+  url: http://de.slideshare.net/hagenburger/big-frontends-made-simple
+  image: big-frontends-made-simple.jpg

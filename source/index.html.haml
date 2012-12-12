@@ -6,11 +6,27 @@
     I enjoy designing clean, simple websites 
     %br
     and developing web applications in Ruby on Rails.
-#blog
-  - blog "BLOG", 2 do |post|
-    %article
-      %h2
-        %a(href="#{post.permalink}")&= post.title
-      %p&= post.description
-      .more=# link_to 'Read on …', post.permalink
+.blog-posts
+  %h2.blog-posts--title Blog
+  = link_to 'See all articles', 'BLOG.html', class: 'blog-posts--more'
+  %ol.blog-posts--list
+    - blog "BLOG", 4 do |post|
+      %li.blog-posts--item
+        %h3.blog-posts--item-title
+          %a(href="#{post.permalink}")&= post.title
+        %p.blog-posts--item-abstract&= post.description
+.talks
+  %h2.talks--title Talks
+  %p.talks--more
+    All my talks on
+    = link_to 'Speakerdeck', 'https://speakerdeck.com/hagenburger'
+    and
+    = link_to 'Slideshare', 'http://slideshare.net/hagenburger'
+  %ol.talks--list
+    - data.talks.each do |talk|
+      %li.talks--item
+        %a(href="#{talk.url}" title="#{talk.title}")
+          = image_tag "talks/#{talk.image}", alt: talk.title, class: 'talks--item-thumbnail'
+          %span.talks--item-title= talk.title
+
 = partial 'twitter'
