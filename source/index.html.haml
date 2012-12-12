@@ -6,7 +6,7 @@
     I enjoy designing clean, simple websites 
     %br
     and developing web applications in Ruby on Rails.
-.blog-posts
+.blog-posts#blog-posts
   %h2.blog-posts--title Blog
   = link_to 'See all articles', 'BLOG.html', class: 'blog-posts--more'
   %ol.blog-posts--list
@@ -15,7 +15,7 @@
         %h3.blog-posts--item-title
           %a(href="#{post.permalink}")&= post.title
         %p.blog-posts--item-abstract&= post.description
-.talks
+.talks#talks
   %h2.talks--title Talks
   %p.talks--more
     All my talks on
