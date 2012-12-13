@@ -216,6 +216,13 @@ helpers do
     url = URI::encode(url)
     %Q(<iframe class="like" src="http://www.facebook.com/plugins/like.php?href=#{url}&amp;width=420" scrolling="no" frameborder="0" allowTransparency="true"></iframe>)
   end
+
+  def dribbble_shots
+    require 'simple-rss'
+    require 'open-uri'
+    rss = SimpleRSS.parse(open('http://dribbble.com/hagenburger/shots.rss'))
+    rss.channel.items
+  end
 end
 
 
