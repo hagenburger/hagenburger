@@ -29,4 +29,5 @@ Hope you enjoy it and feel free to integrate it on your website :)
 
 <style type="text/css">
 .post{min-height:830px}#logo-variations{position:absolute;margin:-17px 0 0 -160px}#download-psd{background:url("/images/made-in-berlin/download-psd.png") no-repeat;display:block;font-weight:bold;height:80px;line-height:80px;font-size:23px;margin:20px;padding-left:60px}#download-psd small{color:#7F7F7F;font-size:14px;font-weight:normal}
+.post .like{margin-left:210px;width:490px}
 </style>
