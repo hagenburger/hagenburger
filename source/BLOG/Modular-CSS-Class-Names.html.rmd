@@ -1,0 +1,109 @@
+<%
+  @date = Time.mktime(2013, 8, 8)
+  @description = 'Create maintainable CSS and Sass code by following very simple and easy to remember class naming guidelines.'
+  @title = 'Simple Naming for Modular CSS Class Names'
+  @keywords = %w(css sass scss)
+%>
+
+Simple Naming for Modular CSS Class Names
+=========================================
+
+A follow up to [some discussions](http://thesassway.com/advanced/modular-css-an-example) over in The Sass Way blog
+and guidelines for my clients.
+
+Basically I’m doing the same.
+[But](http://smacss.com/book/type-module) [different](http://railslove.com/blog/2012/11/09/taking-sass-to-the-next-level-with-smurf-and-extend).
+Just like everybody is doing it.
+This naming concept is used in projects for Toyota, ProSiebenSat.1, MyVideo and Maxdome.
+
+
+Class Names
+-----------
+
+There are thre basic rules to keeping it simple:
+
+* Lower case letters
+* Dash case
+* **Meanngful, natural names**
+
+(In other words: No prefixes, no under_scores, no camelCase)
+
+
+Cascading
+---------
+
+**Don’t do it.**
+There is no cascading.
+CSS is much more maintainable if you avoid cascading altogether and just use class names.
+The same goes for **#ids** and **HTML elements.**
+Don’t style them.
+
+
+Modules
+-------
+
+Everything is packed into a module. A module follows the naming conventions (see above).
+All elements that belong to this module are connected with two dashes (`--`).
+I chose two dashes as they stand out, like there’s some meaning behind it.
+And that’s exactly  what it is.
+Some people use a mix of underscores and dashes to separate modules to sub elements,
+but for me this looks a bit random if you are looking at the code without knowing the rules.
+
+    ## sass ##
+    .teaser
+      background: yellow
+      border: 1px gray solid
+      padding: 10px
+
+    .teaser--title
+      font-size: 1.5em
+      font-weight: bold
+
+    .teaser--text
+      font-size: 1.1em
+
+This code will be in a file named **modules/_teaser.sass**.
+Each module should be completely independent from another.
+A module could also be nested inside another module, as long as it makes sense.
+
+
+Modifiers
+---------
+
+Modifiers should be applied to the module class only and named in a way to identify it as a modifier (mostly `is-...`):
+
+    ## sass ##
+    .teaser
+      background: yellow
+      border: 1px gray solid
+      padding: 10px
+
+      &.is-important
+        border-color: red
+
+    .teaser--title
+      font-size: 1.5em
+      font-weight: bold
+
+      .teaser.is-important &
+        font-size: 2em
+
+    .teaser--text
+      font-size: 1.1em
+
+
+Layout
+------
+
+The layout is just another module (`.layout`, `.layout--logo`, …).
+**No extra rules needed.**
+And yes, I don’t style `body` for consistency :)
+
+
+Summary
+-------
+
+I don’t want to have too many rules; just a very easy to learn and easy to adopt concept which looks similar in each file.
+I’ve done it in many projects for clients with different frontend developers and it works well.
+As a side effect, just using class names [speeds up rendering in the Browser](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Writing_efficient_CSS).
+
