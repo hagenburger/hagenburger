@@ -20,11 +20,11 @@ This naming concept is used in projects for Toyota, ProSiebenSat.1, MyVideo and 
 Class Names
 -----------
 
-There are thre basic rules to keeping it simple:
+There are three basic rules to keeping it simple:
 
 * Lower case letters
 * Dash case
-* **Meanngful, natural names**
+* **Meaningful, natural names**
 
 (In other words: No prefixes, no under_scores, no camelCase)
 
