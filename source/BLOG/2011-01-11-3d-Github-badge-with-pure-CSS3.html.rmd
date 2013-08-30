@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2011, 1, 11)
-  @description = 'A pure CSS3 Github badge with 3D transitions for Safari—made with Sass/SCSS and Compass.'
-  @title = '3d Github badge with pure CSS3'
-  @keywords = %w(github badge css3 sass scss compass)
-%>
+---
+title: 3d Github badge with pure CSS3
+description: A pure CSS3 Github badge with 3D transitions for Safari—made with Sass/SCSS and Compass.
+---
+
 
 3d Github badge<br>with pure CSS3
 =================================

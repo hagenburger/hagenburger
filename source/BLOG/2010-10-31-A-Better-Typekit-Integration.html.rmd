@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2010, 10, 31)
-  @description = 'Some tweaks to optimize the script tags provided by Typekit to improve loading and beauty.'
-  @title = 'A Better Typekit Integration'
-  @keywords = %w(staticmatic asset packaging css javascript yui)
-%>
+---
+title: A Better Typekit Integration
+description: Some tweaks to optimize the script tags provided by Typekit to improve loading and beauty.
+---
+
 
 A Better Typekit Integration
 ============================

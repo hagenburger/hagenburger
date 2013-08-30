@@ -1,8 +1,8 @@
-<%
-  @title = 'Document Your CSS/Sass Code With Variables'
-  @date = Time.mktime(2012, 12, 6)
-  @description = 'Learn how variables help you to document your CSS/Sass code'
-%>
+---
+title: Document Your CSS/Sass Code With Variables
+description: Learn how variables help you to document your CSS/Sass code
+---
+
 
 Document Your CSS/Sass Code With Variables
 ==========================================

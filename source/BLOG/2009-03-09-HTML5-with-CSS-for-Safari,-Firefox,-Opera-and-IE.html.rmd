@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2009, 3, 9)
-  @description = 'Create cross-browser HTML5 documents. This includes fixes for IE6 and Firefox 2.0.'
-  @title = 'HTML5 with CSS for Safari, Firefox, Opera & IE'
-  @slug = 'html5-HTML5-with-css-for-safari-firefox-opera-ie'
-%>
+---
+title: HTML5 with CSS for Safari, Firefox, Opera & IE
+description: Create cross-browser HTML5 documents. This includes fixes for IE6 and Firefox 2.0.
+---
+
 
 HTML5 with CSS for Safari, Firefox, Opera & IE
 ==============================================

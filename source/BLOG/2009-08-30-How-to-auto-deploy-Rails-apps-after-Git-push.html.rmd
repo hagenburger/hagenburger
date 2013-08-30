@@ -1,10 +1,8 @@
-<%
-  @date = Time.mktime(2009, 8, 30)
-  @description = "Ever wondered how Heroku “deploying” Rails apps via Git works? It’s very easy to setup Git."
-  @keywords = %w(Git Rails Deploy Heroku Push Auto)
-  @title = 'How to auto deploy Rails apps after Git push'
-  @slug = "howto-auto-deploy-rails-apps-after-git-push"
-%>
+---
+title: How to auto deploy Rails apps after Git push
+description: Ever wondered how Heroku “deploying” Rails apps via Git works? It’s very easy to setup Git.
+---
+
 
 How to auto deploy Rails apps after Git push
 ============================================

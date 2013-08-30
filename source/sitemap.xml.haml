@@ -22,9 +22,9 @@
     %lastmod= now
     %changefreq weekly
     %priority 0.7
-  - blog "BLOG" do |post|
+  - blog.articles.each do |article|
     %url
-      %loc= 'http://www.hagenburger.net/' + post.permalink
-      %lastmod= post.date.strftime(date_format)
+      %loc= 'http://www.hagenburger.net' + article.url
+      %lastmod= article.date.strftime(date_format)
       %changefreq weekly
       %priority 0.8

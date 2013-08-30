@@ -1,9 +1,8 @@
-<%
-  @title = 'How to Get to Baku? (And How to Get Back?)'
-  @date = Time.mktime(2009, 4, 6)
-  @description = 'I had an awesome trip to Azerbaijan and a lot of fun with Aeroflot.'
-  @slug = 'barcamp-caspian-baku-azerbaijan'
-%>
+---
+title: How to Get to Baku? (And How to Get Back?)
+description: I had an awesome trip to Azerbaijan and a lot of fun with Aeroflot.
+---
+
 
 How to Get to Baku?<br>(And How to Get Back?)
 =============================================

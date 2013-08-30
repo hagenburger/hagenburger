@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2009, 5, 16)
-  @description = 'Four great tables about HTML5 support in different browsers, attributes and elements.'
-  @keywords = %w(HTML5 browser support attributes elements Firefox MSIE Safari Chrome Opera)
-  @title = '4 Useful HTML5 Browser Support Overviews'
-%>
+---
+title: 4 Useful HTML5 Browser Support Overviews
+description: Four great tables about HTML5 support in different browsers, attributes and elements.
+---
+
 
 4 Useful HTML5 Browser Support Overviews
 ========================================

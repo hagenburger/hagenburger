@@ -1,8 +1,8 @@
-<%
-  @date = Time.mktime(2009, 6, 3)
-  @description = 'Slides: Best practices to design your Twitter profile. Avatar, background image, information, username.'
-  @title = 'Designing Twitter profiles (German)'
-%>
+---
+title: Designing Twitter profiles (German)
+description: Slides: Best practices to design your Twitter profile. Avatar, background image, information, username.
+---
+
 
 Designing Twitter profiles (German)
 ===================================

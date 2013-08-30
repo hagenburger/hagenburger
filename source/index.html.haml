@@ -1,20 +1,23 @@
-- @title = 'Concepts, Design, Frontends & Ruby on Rails'
-- @description = 'I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml, Sass/SCSS & CSS3. And you should click me.'
+---
+title: Concepts, Design, Frontends & Ruby on Rails
+description: I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml, Sass/SCSS & CSS3. And you should click me.
+---
+
 #welcome
   %h1 Hi, I’m Nico Hagenburger
   %p
-    I enjoy designing clean, simple websites 
+    I enjoy designing clean, simple websites
     %br
     and developing web applications in Ruby on Rails.
 .blog-posts#blog-posts
   %h2.blog-posts--title Blog
   = link_to 'See all articles', 'BLOG.html', class: 'blog-posts--more'
   %ol.blog-posts--list
-    - blog "BLOG", 4 do |post|
+    - blog.articles[0...4].each do |article|
       %li.blog-posts--item
         %h3.blog-posts--item-title
-          %a(href="#{post.permalink}")&= post.title
-        %p.blog-posts--item-abstract&= post.description
+          %a(href="#{article.url}")&= article.title
+        %p.blog-posts--item-abstract&= article.data.description
 .talks#talks
   %h2.talks--title Talks
   %p.talks--more

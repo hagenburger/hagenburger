@@ -6,3 +6,5 @@ gem 'rdiscount'
 gem 'maruku'
 gem 'minisyntax'
 gem 'simple-rss'
+gem 'middleman-blog'
+

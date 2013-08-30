@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2013, 8, 8)
-  @description = 'Create maintainable CSS and Sass code by following very simple and easy to remember class naming guidelines.'
-  @title = 'Simple Naming for Modular CSS Class Names'
-  @keywords = %w(css sass scss)
-%>
+---
+title: Simple Naming for Modular CSS Class Names
+description: Create maintainable CSS and Sass code by following very simple and easy to remember class naming guidelines.
+---
+
 
 Simple Naming for Modular CSS Class Names
 =========================================

@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2010, 12, 29)
-  @description = 'A very fast way to fix Internet Explorer 6.0, 7.0 and 8.0 with JavaScript without any external library.'
-  @title = 'A Simple HTML5 Fix for IE'
-  @keywords = %w(javascript html5 ie createelement css)
-%>
+---
+title: A Simple HTML5 Fix for IE
+description: A very fast way to fix Internet Explorer 6.0, 7.0 and 8.0 with JavaScript without any external library.
+---
+
 
 A Simple HTML5 Fix for IE
 =========================

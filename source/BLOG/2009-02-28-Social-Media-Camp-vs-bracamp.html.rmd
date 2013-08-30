@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2009, 2, 28)
-  @lang = 'de'
-  @description = 'Logo drafts for the “Social-Media-Camp” and the “bracamp”'
-  @title = 'Social-Media-Camp vs. bracamp'
-%>
+---
+title: Social-Media-Camp vs. bracamp
+description: Logo drafts for the “Social-Media-Camp” and the “bracamp”
+---
+
 
 Social-Media-Camp vs. bracamp
 =============================

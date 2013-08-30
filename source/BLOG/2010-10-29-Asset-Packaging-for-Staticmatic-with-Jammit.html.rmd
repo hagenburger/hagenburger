@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2010, 10, 29)
-  @description = 'Integrate the Jammit gem to pack your CSS and JavaScript with YUI compressor or Closure in Staticmatic projects.'
-  @title = 'Production Ready Staticmatic Projects'
-  @keywords = %w(staticmatic asset packaging css javascript yui)
-%>
+---
+title: Production Ready Staticmatic Projects
+description: Integrate the Jammit gem to pack your CSS and JavaScript with YUI compressor or Closure in Staticmatic projects.
+---
+
 
 <h1>
   Production Ready Staticmatic Projects

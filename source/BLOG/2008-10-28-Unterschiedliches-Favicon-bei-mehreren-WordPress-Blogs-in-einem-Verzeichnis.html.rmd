@@ -1,10 +1,8 @@
-<%
-  @date = Time.mktime(2008, 10, 28)
-  @lang = 'de'
-  @description = 'If you’re running more than one WordPress blog in the same directory, here’s how you setup different favicons.'
-  @slug = 'loesung-unterschiedliches-favicon-bei-mehreren-wordpress-blogs-in-einem-verzeichnis'
-  @title = 'Lösung: Unterschiedliches Favicon bei mehreren WordPress-Blogs in einem Verzeichnis'
-%>
+---
+title: Lösung: Unterschiedliches Favicon bei mehreren WordPress-Blogs in einem Verzeichnis
+description: If you’re running more than one WordPress blog in the same directory, here’s how you setup different favicons.
+---
+
 
 Lösung: Unterschiedliches Favicon bei mehreren WordPress-Blogs in einem Verzeichnis
 ===================================================================================

@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2008, 10, 9)
-  @lang = 'de'
-  @description = 'I started a private blog about Berlin and its public transport systems'
-  @title = 'Mein neues Blog: Das Stadtbahn-Blog'
-%>
+---
+title: Mein neues Blog: Das Stadtbahn-Blog
+description: I started a private blog about Berlin and its public transport systems
+---
+
 
 Mein neues Blog: Das Stadtbahn-Blog
 ===================================

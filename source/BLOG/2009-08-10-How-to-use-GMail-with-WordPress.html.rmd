@@ -1,8 +1,8 @@
-<%
-  @date = Time.mktime(2009, 8, 10)
-  @description = 'With Cimy Swift it’s easy to switch from PHP’s mail() to your Goolge Mail e-mail address.'
-  @title = 'How to use GMail with WordPress'
-%>
+---
+title: How to use GMail with WordPress
+description: With Cimy Swift it’s easy to switch from PHP’s mail() to your Goolge Mail e-mail address.
+---
+
 
 How to use GMail with WordPress
 ===============================

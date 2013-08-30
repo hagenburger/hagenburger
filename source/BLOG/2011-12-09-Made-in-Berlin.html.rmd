@@ -1,9 +1,8 @@
+---
+title: Made in Berlin
+description: Made in Berlin—a logo for all websites and projects made in Berlin.
+---
 
-<%
-  @title = 'Made in Berlin'
-  @date = Time.mktime(2011, 12, 9)
-  @description = 'Made in Berlin—a logo for all websites and projects made in Berlin.'
-%>
 
 Made in Berlin
 ==============

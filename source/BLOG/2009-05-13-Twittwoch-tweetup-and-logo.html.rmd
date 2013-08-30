@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2009, 5, 13)
-  @description = 'The logo and CI I created for Germany’s corporate tweet-up which I founded with Stefan.'
-  @slug = 'twittwoch-tweetup-logo'
-  @title = 'Twittwoch: Tweetup & Logo'
-%>
+---
+title: Twittwoch: Tweetup & Logo
+description: The logo and CI I created for Germany’s corporate tweet-up which I founded with Stefan.
+---
+
 
 Twittwoch: Tweetup & Logo
 =========================

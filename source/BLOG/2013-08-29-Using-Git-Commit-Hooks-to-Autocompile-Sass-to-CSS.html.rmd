@@ -1,8 +1,8 @@
-<%
-  @title = 'A Git Commit Hook to Autocompile Sass to CSS'
-  @date = Time.mktime(2013, 8, 29)
-  @description = 'Ensure the compiled CSS is always up-to-date in your Git repository with this Git pre-commit hook.'
-%>
+---
+title: A Git Commit Hook to Autocompile Sass to CSS
+description: Ensure the compiled CSS is always up-to-date in your Git repository with this Git pre-commit hook.
+---
+
 
 A Git Commit Hook to Autocompile Sass to CSS
 ============================================

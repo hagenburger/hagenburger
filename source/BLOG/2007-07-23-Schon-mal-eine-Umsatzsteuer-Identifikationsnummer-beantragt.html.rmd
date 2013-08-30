@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2007, 7, 23)
-  @lang = 'de'
-  @description = 'German bureaucracy discovers the Internet. An adventure to get a fat ID.'
-  @title = 'Schon mal eine Umsatzsteuer-Identifikationsnummer beantragt?'
-%>
+---
+title: Schon mal eine Umsatzsteuer-Identifikationsnummer beantragt?
+description: German bureaucracy discovers the Internet. An adventure to get a fat ID.
+---
+
 
 Schon mal eine Umsatzsteuer-Identifikationsnummer beantragt?
 ============================================================

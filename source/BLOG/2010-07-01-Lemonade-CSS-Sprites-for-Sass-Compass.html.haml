@@ -1,8 +1,10 @@
-- @date = Time.mktime(2010, 7, 1)
-- @description = 'Generate CSS sprites on the fly with this Sass/Compass plugin: `background: sprite-image("icons/go.png")`—and you’re done.'
-- @keywords = %w(css sprites sass scss compass)
-- @title = 'Generate CSS Sprites on the Fly with Lemonade'
-- @stylesheet = 'lemonade'
+---
+title: Generate CSS Sprites on the Fly with Lemonade
+description: CSS sprites on the fly with this Sass/Compass plugin: `background: sprite-image("icons/go.png")`—and you’re done.
+keywords: css sprites sass scss compass
+stylesheet: lemonade
+---
+
 %article.post
   %img.lemonade(src="lemonade-sass-sprites-scss-css.png" alt="Lemonade—a Sass sprite generator")
   .deprecated
@@ -23,20 +25,20 @@
       This will generate a sprite `icons.png`, insert the `url(…)` and calculate the `background-position`.
       On the fly.
       Everytime your Sass/SCSS file will be compiled.
-      
+
   %aside.lemonade-info
     :markdown
       504 KB
       ------
-      
+
       *Ingredients:* Pure Ruby, Sass, Compass, RMagick, No artificial flavors or sugar added.
-      
+
       Gemmed under the MIT licence with jeweler by Nico Hagenburger, Berlin/Germany.
-      
+
       Special thanks to [Chris Eppstein](http://chriseppstein.github.com).
-      
+
       Best served—Ice cold
-      
+
   .lemonade-example
     .lemonade-before
       %h2 Source (SCCS or Sass):
@@ -63,24 +65,24 @@
           background: url('/images/other-drinks.png') no-repeat;
         }
   %h2 Examples
-  
+
   .lemonade-example
     %h3 #1 Use an Offset for the Background-Position
     %article
       :markdown
         You can provide an offset as 2<sup>nd</sup> (X) and 3<sup>rd</sup> (Y) parameter.
         The will be added to the calculated sprite background offset:
-        
+
       :csscode
         .lemonade-example-1 {
           background: sprite-image("lemonade/example-1/blue-10x10.png", 10px, 2px) yellow no-repeat;
         }
-        
+
       :markdown
         Result:
-      
+
       %p.lemonade-example-1 Some text
-    
+
       :markdown
         Generated sprite image:
         ![sprite image](/images/lemonade/example-1.png)
@@ -91,66 +93,66 @@
       :markdown
         Example #1 works well just because there’s only one image in the sprite.
         With two images, you would see a part of the other images (here the pink one) like this:
-    
+
       %p.lemonade-example-2-a Some text
-    
+
       :markdown
         Generated image: ![sprite image](/images/lemonade/example-2-a.png)
 
         To avoid this, you can add a 4<sup>th</sup> parameter which generates transparent space between the sprite images.
         The 4<sup>th</sup> sets the space before and after the current image.
         If you set both, th 4<sup>th</sup> creates space before, the 5<sup>th</sup> space after.
-    
+
       :csscode
         .lemonade-example-2-b {
           background: sprite-image("lemonade/example-2-b/blue-10x10.png", 20px, 9px, 20px) yellow no-repeat;
         }
-      
+
       %p.lemonade-example-2-b Some text
-    
+
       :markdown
         Generated image:
-        ![sprite image](/images/lemonade/example-2-b.png)  
+        ![sprite image](/images/lemonade/example-2-b.png)
         Please note the 20px transparent space between pink and blue.
-    
 
-  :markdown  
+
+  :markdown
     Installation
     ------------
-    
+
     I’ve tested it with both Ruby 1.8.7 and 1.9.2.
     It works with Haml/Sass 3.0.x.
     But it depends on Compass 0.10.x.
     You can integrate it in Rails 2.3.x and 3.0, Staticmatic or just run `compass watch`.
-  
+
   :commandline
     gem install lemonade
-  
+
   :markdown
     Now open your `config.rb` ([Compass cofiguration file](http://compass-style.org/docs/tutorials/configuration-reference/)) and add one line after this comment:
-  
+
   :rubycode
     # Require any additional compass plugins here.
     require "lemonade"
-  
+
   :markdown
     Development, Support, Bugs
     --------------------------
-    
+
     If you find any bug, please [quote it at github](http://github.com/hagenburger/lemonade/issues).
     If you want to fix it by yourself, [fork my project](http://github.com/hagenburger/lemonade/fork) and send me a pull request.
-    
-    You’ll find the source code at: 
+
+    You’ll find the source code at:
     <http://github.com/hagenburger/lemonade>
     *Feel free to fork!*
-    
+
     Have fun :)
 
     Further Stuff
     -------------
-    
-    * Another CSS sprite generator for Sass by Richard Huang:  
-      <http://github.com/flyerhzm/css_sprite>  
+
+    * Another CSS sprite generator for Sass by Richard Huang:
+      <http://github.com/flyerhzm/css_sprite>
       (good `<img>` tag replacement; generates classes in own Sass file)
     * [Beautiful icons used in examples](http://p.yusukekamiyamane.com/) by Yusuke Kamiyamane
     * <http://github.com/chriseppstein/compass>—useful mixins and frameworks for Sass

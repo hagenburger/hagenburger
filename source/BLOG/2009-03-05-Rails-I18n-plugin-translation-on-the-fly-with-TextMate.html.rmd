@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2009, 3, 5)
-  @description = 'Easily insert translations for Rails I18n projects on the fly: just type “t” and hit tab.'
-  @title = 'Rails I18n: translation on the fly with TextMate (plug-in)'
-  @slug = 'rails-i18n-translation-on-the-fly-with-textmate-plug-in'
-%>
+---
+title: Rails I18n: translation on the fly with TextMate (plug-in)
+description: Easily insert translations for Rails I18n projects on the fly: just type “t” and hit tab.
+---
+
 
 Rails I18n: translation on the fly with TextMate (plug-in)
 ==========================================================

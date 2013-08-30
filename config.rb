@@ -19,6 +19,11 @@ configure :build do
   activate :relative_assets
 end
 
+activate :blog do |blog|
+  blog.permalink = ':title.html'
+  blog.prefix = 'BLOG'
+end
+
 page '/PHOTOGRAPHY/beijing.html', :layout => :beijing, :layout_engine => :haml
 page '/PHOTOGRAPHY/kino-international-euruko.html', :layout => :images, :layout_engine => :haml
 page '/BLOG/*', :layout => :layout, :layout_engine => :haml

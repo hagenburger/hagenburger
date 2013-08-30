@@ -4,31 +4,6 @@ include FileUtils
 
 module BlogHelper
 
-  class Post
-    attr_accessor :title, :date, :permalink, :description
-  end
-
-  def blog posts_dir = "posts", max = 9999
-    dir = File.join(File.dirname(__FILE__), '..', 'source', posts_dir)
-    posts = []
-    Dir["#{dir}/*.html.*"].each do |file|
-      if file =~ /\/([^\/_]+?)\.html\.(haml|rmd)/
-        haml = File.read(file)
-        post = Post.new
-        post.permalink = posts_dir + '/' + $1 + '.html'
-        post.date = extract_instance_variable(haml, :date)
-        post.title = extract_instance_variable(haml, :title)
-        post.description = extract_instance_variable(haml, :description)
-        posts << post
-      end
-    end
-    posts = posts.sort_by{ |item| item.date }.reverse[0..max - 1]
-
-    posts.each do |post|
-      yield post
-    end
-  end
-
   def slideshare id
     href = "http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=#{id}&amp;rel=0"
     params = {
@@ -53,12 +28,5 @@ module BlogHelper
     %Q(</div>)
   end
 
-private
-
-  def extract_instance_variable haml, var
-    if haml =~ /@#{var} ?= ?(.+)/
-      eval($1)
-    end
-  end
-
 end
+

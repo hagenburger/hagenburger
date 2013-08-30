@@ -1,9 +1,8 @@
-<% 
-  @date = Time.mktime(2008, 10, 11)
-  @lang = 'de'
-  @description = 'Glossr is a platform to define terms of the Web 2.0 on barcamps.'
-  @title = 'Das Widget – neue Glossr-Definition'
-%>
+---
+title: Das Widget – neue Glossr-Definition
+description: Glossr is a platform to define terms of the Web 2.0 on barcamps.
+---
+
 
 Das Widget – neue Glossr-Definition
 ===================================

@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2008, 10, 7)
-  @lang = 'de'
-  @description = 'Tipps to design an imprint for German websites by the minister of justice'
-  @title = 'Impressums-Leitfaden vom Bundesministerium der Justiz'
-%>
+---
+title: Impressums-Leitfaden vom Bundesministerium der Justiz
+description: Tipps to design an imprint for German websites by the minister of justice
+---
+
 
 Impressums-Leitfaden vom Bundesministerium der Justiz
 =====================================================

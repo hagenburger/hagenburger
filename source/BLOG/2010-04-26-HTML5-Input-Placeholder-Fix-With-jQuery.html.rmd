@@ -1,9 +1,8 @@
-<%
-  @date = Time.mktime(2010, 4, 26)
-  @description = 'Enhance your textarea or input fields with the HTML5 attribute “placeholder” and make it work in all Browsers with jQuery.'
-  @keywords = %w(HTML5 placeholder jQuery input textarea browser fix)
-  @title = 'HTML5 Placeholder Input Fields Fixed with jQuery'
-%>
+---
+title: HTML5 Placeholder Input Fields Fixed with jQuery
+description: Enhance your textarea or input fields with the HTML5 attribute “placeholder” and make it work in all Browsers with jQuery.
+---
+
 
 HTML5 Placeholder Input Fields Fixed with jQuery
 ================================================

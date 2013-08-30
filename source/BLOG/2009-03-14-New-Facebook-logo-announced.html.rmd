@@ -1,8 +1,8 @@
-<%
-  @date = Time.mktime(2009, 03, 14)
-  @description = 'After Facebook switched to a Twitter styled layout, they had to update their logo.'
-  @title = 'New Facebook Logo Announced'
-%>
+---
+title: New Facebook Logo Announced
+description: After Facebook switched to a Twitter styled layout, they had to update their logo.
+---
+
 
 New Facebook Logo Announced
 ===========================

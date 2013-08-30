@@ -1,8 +1,8 @@
-<%
-  @date = Time.mktime(2009, 4, 16)
-  @description = 'Little helpers to make CSS editing much more easy in TextMate'
-  @title = 'CSS Snipplets for TextMate'
-%>
+---
+title: CSS Snipplets for TextMate
+description: Little helpers to make CSS editing much more easy in TextMate
+---
+
 
 CSS Snipplets for TextMate
 ==========================
