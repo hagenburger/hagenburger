@@ -1,0 +1,84 @@
+<%
+  @title = 'Using Git Commit Hooks to Autocompile Sass to CSS'
+  @date = Time.mktime(2013, 8, 29)
+  @description = 'Ensure the compiled CSS is always up-to-date in your Git repository with this Git pre-commit hook.'
+%>
+
+A Git Commit Hook to Autocompile Sass to CSS
+============================================
+
+I’m currently developing a lot of [living style guides](http://livingstyleguide.org/) for projects that don’t use Ruby at all.
+(They use mostly PHP/Symphony.)
+Even though I don’t usually include compiled CSS into Git, in this situation it makes life easier for my coworkers since they don’t need a Ruby environment.
+They can just use the CSS included in the living style guide and switch easily between versions.
+As I’m a lazy developer (OK, “developer” already includes “lazy”), I tend to forget to compile the CSS via [Middleman](http://middlemanapp.com/).
+
+
+Adding CSS in Middleman to Git
+------------------------------
+
+Since it’s usually not a good idea to include the _build_ folder (merge conflicts), I added only the CSS file:
+
+    git add -f build/css/desktop.css
+
+If you added the _build_ folder into your _.gitignore_, you need to use `-f`.
+
+
+Creating a Pre-Commit Hook
+--------------------------
+
+Pre-commit hooks are stored as _.git/hooks/pre-commit_.
+Mine looks like:
+
+    #!/bin/bash
+
+    ### If you are using RVM you may need to include those lines
+    ### if Ruby 1.8 warnings pop up:
+    # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+    # rvm use `cat .ruby-version`
+    ### If you don’t use .ruby-version, change it to .rvmrc.
+
+    ### Build the files
+    middleman build
+
+    ### Add the compiled CSS
+    git add -f build/css/desktop.css
+
+    ### At this point the commit is going to happen automatically.
+    exit 0
+
+Don’t forget to `chmod +x .git/hooks/pre-commit`.
+Every commit from now on includes the latest CSS version.
+
+
+Teamwork
+--------
+
+What we’ve done works perfect on your machine, but Git commit hooks are not stored under version control.
+If you are using a _script/setup_ or [_script/bootstrap_ like GitHub does](http://wynnnetherland.com/linked/2013012801/bootstrapping-consistency), move the contents of _.git/hooks/pre-commit_ into _script/pre-commit_:
+
+Add to your setup script and make sure every committer executes it:
+
+    ln -s ../../script/pre-commit .git/hooks/pre-commit
+
+
+Speed It Up
+-----------
+
+Building a site with Middleman takes some time and we only need this when the Sass sources actually changed.
+The final script includes a check for changes:
+
+    #!/bin/bash
+
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+    rvm use `cat .ruby-version`
+
+    ### Are any Sass files canged and added?
+    if git status -s | grep  '^M.\+s[ac]ss$'
+    then
+      middleman build
+      git add build/css/desktop.css -f
+    fi
+
+    exit 0
+
