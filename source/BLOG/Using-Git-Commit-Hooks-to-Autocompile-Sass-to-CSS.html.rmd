@@ -1,5 +1,5 @@
 <%
-  @title = 'Using Git Commit Hooks to Autocompile Sass to CSS'
+  @title = 'A Git Commit Hook to Autocompile Sass to CSS'
   @date = Time.mktime(2013, 8, 29)
   @description = 'Ensure the compiled CSS is always up-to-date in your Git repository with this Git pre-commit hook.'
 %>
@@ -81,4 +81,11 @@ The final script includes a check for changes:
     fi
 
     exit 0
+
+
+Summary
+-------
+
+Even if this is not your use case, write your own Git pre-commit hooks to prevent typical mistakes.
+It’s less work than fixing stuff later.
 
