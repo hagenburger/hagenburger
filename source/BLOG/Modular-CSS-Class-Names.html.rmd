@@ -34,7 +34,7 @@ Cascading
 
 **Don’t do it.**
 There is no cascading.
-CSS is much more maintainable if you avoid cascading altogether and just use class names.
+CSS is much more maintainable if you avoid cascading altogether and use just class names.
 The same goes for **#ids** and **HTML elements.**
 Don’t style them.
 
