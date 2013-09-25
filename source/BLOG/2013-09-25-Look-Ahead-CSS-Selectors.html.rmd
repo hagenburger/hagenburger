@@ -1,0 +1,200 @@
+---
+title: Look Ahead CSS Selectors
+description: CSS3 offers look back selectors only. But with :nth-last-of-type you also can look ahead.
+---
+
+
+Look Ahead CSS Selectors
+========================
+
+
+Look Back CSS3 Selectors
+------------------------
+
+With CSS3 it is possible to look back within siblings to check if another element exists before the current one:
+
+<ul class="example example-1">
+  <li class="item">1</li>
+  <li class="blue-item">2</li>
+  <li class="item">3</li>
+  <li class="blue-item">4</li>
+  <li class="item">5</li>
+</ul>
+
+    ## css ##
+    .blue-item ~ .blue-item {
+      border: 1px pink solid;
+    }
+
+The second `.blue-item` just became pink.
+
+We can also check if an element directly succeeds another one:
+
+<ul class="example example-2">
+  <li class="item">1</li>
+  <li class="item">2</li>
+  <li class="blue-item">3</li>
+  <li class="blue-item">4</li>
+  <li class="item">5</li>
+</ul>
+
+    ## css ##
+    .blue-item + .blue-item {
+      border: 1px pink solid;
+    }
+
+CSS3 selectors similar to look ahead do not exist right now.
+
+
+Look Ahead with Existing CSS3 Selectors
+---------------------------------------
+
+The selector `nth-last-of-type(x)` actually looks ahead.
+
+<ul class="example example-3">
+  <li class="item">1</li>
+  <li class="item">2</li>
+  <li class="item">3</li>
+  <li class="blue-item">4</li>
+  <li class="blue-item">5</li>
+</ul>
+
+    ## css ##
+    .blue-item:nth-last-of-type(2) {
+      border: 1px pink solid;
+    }
+
+Now the first `.blue-item` is pink.
+Sadly, this only works just because both `.blue-item`s are the last children.
+If we change the order, it won’t work anymore:
+
+<ul class="example example-3">
+  <li class="item">1</li>
+  <li class="item">2</li>
+  <li class="blue-item">3</li>
+  <li class="blue-item">4</li>
+  <li class="item">5</li>
+</ul>
+
+In this case, ”type” is defined as the element name—`li`.
+However, there are still use cases when this comes in pretty handy:
+
+
+A Real Life Example
+-------------------
+
+Sometimes you have to know how many elements exist and adopt some measurements.
+One solution could be to add a `.has-3-children` modifier class to the parent element.
+Sometimes, however, you can’t influence the class names because of third party tools.
+
+Example: A container can consist of 1 to 3 buttons.
+The buttons should fill the full width.
+
+<div class="example">
+  <div class="buttons">
+    <button>1 Button</button>
+  </div>
+
+  <div class="buttons">
+    <button>2 Buttons</button>
+    <button>2 Buttons</button>
+  </div>
+
+  <div class="buttons">
+    <button>3 Buttons</button>
+    <button>3 Buttons</button>
+    <button>3 Buttons</button>
+  </div>
+</div>
+
+    ## css ##
+    .buttons button {
+      /* ... */
+      float: left;
+      width: 100%
+    }
+
+    .buttons button:nth-last-of-type(2),
+    .buttons button:nth-of-type(2) {
+      width: 50%;
+    }
+
+
+    .buttons button:nth-last-of-type(3),
+    .buttons button:nth-of-type(2):nth-last-of-type(2),
+    .buttons button:nth-of-type(3)
+     {
+      width: 33.33333%;
+    }
+
+Using this, selectors can help to calculate the number of elements.
+
+I hope this helps you in solving future problems.
+Please note this works in Internet Explorer starting from version 9.0;
+it works well in all other browsers.
+
+
+<style type="text/css">
+  .post .example {
+    background: rgba(219, 224, 223, 0.5);
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    width: auto;
+  }
+
+  .example + pre {
+    margin-top: -20px;
+  }
+
+  .item,
+  .blue-item {
+    background: rgba(191, 196, 195, 0.5);
+    border: 2px transparent solid;
+    color: white;
+    display: inline-block;
+    line-height: 16px;
+    width: 100px
+  }
+
+  .blue-item {
+    background: #5ec3c4; // blue
+  }
+
+  .example-1 .blue-item ~ .blue-item,
+  .example-2 .blue-item + .blue-item,
+  .example-3 .blue-item:nth-last-of-type(2) {
+    border: 2px #c732c1 solid; // pink
+  }
+
+  .buttons {
+    border: 5px rgba(191, 196, 195, 0.5) solid;
+    margin: 20px auto;
+    overflow: hidden;
+    width: 420px;
+  }
+
+  .buttons button {
+    background: #DDD;
+    border: 1px solid;
+    border-color: white #999 #999 white;
+    float: left;
+    margin: 0;
+    width: 100%
+  }
+
+  .buttons button:nth-last-of-type(2),
+  .buttons button:nth-of-type(2) {
+    width: 50%;
+  }
+
+
+  .buttons button:nth-last-of-type(3),
+  .buttons button:nth-of-type(2):nth-last-of-type(2),
+  .buttons button:nth-of-type(3)
+   {
+    width: 33.33333%;
+  }
+
+</style>
+
