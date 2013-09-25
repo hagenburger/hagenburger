@@ -1,5 +1,4 @@
 !!!
-- @title ||= ''
 %html(lang="#{@lang || 'en'}" class="#{page_classes.gsub('_', '-').downcase} no-js")
   /
      
@@ -33,8 +32,8 @@
       %meta(name="keywords" content="#{current_page.data.keywords}")
     %meta(name="date" content="#{(@date || Time.now).strftime('%Y-%m-%d')}")
     %meta(property="og:site_name" content="hagenburger.net")
-    %meta(property="og:title" content="#{@og_title || current_page.data.title}")
-    %meta(property="og:image" content="#{@og_image || asset_url('hagenburger.jpg')}")
+    %meta(property="og:title" content="#{current_page.data.og_title || current_page.data.title}")
+    %meta(property="og:image" content="#{current_page.data.og_image || asset_url('hagenburger.jpg')}")
     %title&= [current_page.data.title, ('Nico Hagenburger' if current_page.data.title.length < 45)].compact.join(' ··· ').strip
     %link(rel="apple-touch-icon" href="#{asset_url('apple-touch-icon.png')}")
     %link(rel="alternate" type="application/rss+xml" href="#{asset_url('hagenburger.rss')}")
