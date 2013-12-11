@@ -1,0 +1,128 @@
+---
+title: Compass Placeholders
+description: This simple Ruby gem reduces CSS file size and speeds up browser rendering.
+---
+
+
+Introducing Compass Placeholders
+================================
+
+I’ve been using [Compass](http://www.hagenburger.net/TALKS/compass-placeholders.html#slide1) for years.
+For CSS3 it makes my code more readable, maintainable and I don’t have to remember all the `-webkit`’s, `-moz`’s, etc.
+
+Let’s say I want to have a [pie clearfix](http://nicolasgallagher.com/micro-clearfix-hack/)
+I might know what it does, but I don’t want to have to remember or even type this:
+
+    ## css ##
+    .my-class {
+      *zoom: 1
+    }
+
+    .my-class:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+Compass just makes it easy and readable:
+
+    ## scss ##
+    @import "compass";
+
+    .my-class {
+      @include pie-clearfix;
+    }
+
+Great.
+
+
+Don’t Repeat Yourself
+---------------------
+
+And don’t let Compass repeat itself.
+
+    ## scss ##
+    @import "compass";
+
+    .my-class {
+      @include pie-clearfix;
+    }
+
+    .another-class {
+      @include pie-clearfix;
+    }
+
+Would result in:
+
+    ## css ##
+    .my-class {
+      *zoom: 1;
+    }
+
+    .my-class:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .another-class {
+      *zoom: 1;
+    }
+
+    .another-class:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+Pretty much stuff.
+
+
+Welcome Compass Placeholders
+----------------------------
+
+[Compass Placeholders]() is a tiny Ruby gem wrapping Compass’ mixins into Sass [%placeholders](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#extend).
+
+    ## css ##
+    @import "compass";
+    @import "compass-placeholders";
+
+    .my-class {
+      @extend %pie-clearfix;
+    }
+
+    .another-class {
+      @extend %pie-clearfix;
+    }
+
+Which just results in:
+
+    ## css ##
+    .my-class,
+    .another-class {
+      *zoom: 1;
+    }
+
+    .my-class:after,
+    .another-class:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+There are way more placeholders.
+Check out the [README](https://github.com/hagenburger/compass-placeholders#readme) to find out more.
+
+Missing something? Just [open a new issue on Github](https://github.com/hagenburger/compass-placeholders/issues/new) or send a pull request.
+
+<div class="github">
+  <iframe src="http://ghbtns.com/github-btn.html?user=hagenburger&repo=compass-placeholders&type=watch&count=true&size=large" height="30" width="140" frameborder="0" scrolling="0" style="width:140px; height: 30px;" allowTransparency="true"></iframe>
+  <iframe src="http://ghbtns.com/github-btn.html?user=hagenburger&repo=compass-placeholders&type=fork&count=true&size=large" height="30" width="140" frameborder="0" scrolling="0" style="width:140px; height: 30px;" allowTransparency="true"></iframe>
+  <iframe src="http://ghbtns.com/github-btn.html?user=hagenburger&type=follow&count=true&size=large" height="30" width="266" frameborder="0" scrolling="0" style="width:266px; height: 30px;" allowTransparency="true"></iframe>
+</div>
+
+<style type="text/css">
+  .github { text-align: center }
+  iframe { display: inline-block }
+</style>
+
