@@ -227,6 +227,8 @@ helpers do
     require 'open-uri'
     rss = SimpleRSS.parse(open('http://dribbble.com/hagenburger/shots.rss'))
     rss.channel.items
+  rescue
+    []
   end
 end
 
