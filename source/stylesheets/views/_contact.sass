@@ -1,0 +1,66 @@
+#contact
+  text-align: center
+  img
+    vertical-align: top
+    @include margin-bottom(3)
+    &:first-child
+      height: 320px
+  ul
+    @include margin-top
+    @include margin-bottom(2)
+  a
+    display: inline-block
+    margin: 0 auto
+    position: relative
+    > span:first-child
+      left: -200px
+      position: absolute
+      text-align: right
+      width: 200px
+  span
+    display: inline-block
+    position: relative
+    span
+      position: absolute
+      right: -150px
+      text-align: left
+      top: 0
+      width: 150px
+  .follow
+    color: $grey
+    right: -155px
+    -webkit-transition: color 500ms
+  strong
+    color: $blue
+    -webkit-transition: color 500ms
+  a:hover
+    strong,
+    .follow
+      color: $pink
+
+#imprint
+  h2
+    text-align: center
+    @include margin-bottom
+
+#phone
+  background-color: rgba(0, 0, 0, 0.8)
+  color: $white
+  cursor: pointer
+  display: none
+  font-size: 74px
+  font-weight: 300
+  left: 50%
+  line-height: 80px
+  height: 160px
+  margin: -100px 0 0 -350px
+  padding: 20px
+  position: fixed
+  text-align: center
+  text-shadow: black 0 0 10px
+  top: 50%
+  width: 660px
+  @include border-radius(20px)
+  strong
+    display: block
+    font-weight: bold

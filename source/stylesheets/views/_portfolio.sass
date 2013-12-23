@@ -1,0 +1,58 @@
+#portfolio-carousel
+  background: #69b5b7
+  height: 240px
+  margin-top: 60px
+  position: relative
+  width: 100%
+  @include margin-bottom(12)
+  img
+    bottom: 0
+    cursor: pointer
+    display: none
+    position: absolute
+    -webkit-box-reflect: below 0 -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(0.7, transparent), to(rgba(white, 0.1)))
+  figcaption
+    display: none
+    left: 210px
+    position: absolute
+    top: 260px
+    width: 420px
+    span
+      display: block
+      @include margin-bottom
+  strong
+    font-weight: normal
+
+#logos
+  figure
+    display: block
+    text-align: center
+    @include margin-bottom
+  img
+    vertical-align: bottom
+
+#logos,
+#clients
+  h2
+    margin: 0 auto
+    text-align: center
+    width: 720px
+    @include margin-bottom
+    @include margin-top(6)
+
+#clients
+  table
+    margin: 0 auto
+    width: 728px
+  th
+    color: $turquoise
+    font-weight: bold
+  td, th
+    padding: 0 4px 9px
+    vertical-align: top
+  td
+    border-top: 1px $background-color solid
+    border-top-color: rgba(219, 224, 223, 0.3)
+    padding-top: 10px
+    .trident &
+      border-top-color: $background-color

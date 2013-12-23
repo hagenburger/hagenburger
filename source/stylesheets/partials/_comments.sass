@@ -1,0 +1,157 @@
+#comments
+  margin: 3 * $line-height auto
+  width: 420px
+  table
+    background: transparent
+    border: 0
+  h3
+    @include margin-bottom
+  pre
+    overflow-x: auto
+    padding: 20px
+
+  // I hope someone at disqus.com got fired.
+
+  #dsq-content .dsq-login-buttons,
+  #dsq-content .dsq-options,
+  #dsq-content .dsq-comment-header
+    background: transparent
+    border: 0
+  .dsq-comment-footer-right
+    display: block
+    text-align: center
+  #dsq-content .dsq-header-avatar a.dsq-avatar,
+  #dsq-content .dsq-comment:hover .dsq-header-avatar a.dsq-avatar,
+  #dsq-content .dsq-comment:hover .dsq-header-avatar:hover a.dsq-avatar
+    background: transparent
+    border: 0
+    border-bottom: 0
+    padding: 0 !important
+    @include border-radius(0)
+  #dsq-content .dsq-header-avatar img,
+  #dsq-content .dsq-comment .dsq-header-avatar a.dsq-avatar img
+    border: 0
+    margin: 0
+    padding: 0
+    vertical-align: bottom
+    @include border-radius(0)
+    @include box-shadow(none)
+  .dsq-dc-logo
+    display: none
+  .dsq-subscribe-email
+    margin-right: 5px !important
+    img
+      position: relative
+      top: -4px
+  .dsq-subscribe-rss
+    margin-right: 0 !important
+    vertical-align: baseline !important
+    img
+      position: relative
+      top: 1px
+  .dsq-comment
+    @include margin-bottom(2)
+  #dsq-content .dsq-subscribe-menu
+    margin-top: 3px
+    white-space: nowrap
+    label
+      font-size: 12px
+  #dsq-content .dsq-textarea textarea,
+  #dsq-content .dsq-post-fields input
+    font-size: 14px
+  #dsq-content .dsq-moderator img.dsq-moderator-star
+    display: none
+  #dsq-content .dsq-comment-message
+    @extend .m
+  #dsq-content h3
+    @extend .l
+    margin: 40px 0 20px
+    span,
+    &
+      font-weight: bold
+  #dsq-content #dsq-global-toolbar .toolbar-item
+    border: 0
+    @include border-radius(0)
+  #dsq-content .dsq-comment-header-time
+    padding: 0
+  #dsq-content .dsq-comment-header
+    table, tbody, tr, &
+      display: inline
+    .dsq-header-avatar
+      float: left
+      width: 112px
+      .dsq-tt
+        position: absolute
+    .dsq-comment-header-meta
+      display: block
+      margin: 0
+      padding: 0
+  #dsq-content .dsq-comment-body,
+  #dsq-content .dsq-comment-header .dsq-comment-header-meta,
+  #dsq-content .dsq-comment-footer-right
+    margin-left: 112px
+  #dsq-content .dsq-comment-footer
+    margin: 10px 0
+  #dsq-content .dsq-comment-footer-left
+    float: right
+  #dsq-content .dsq-comment-footer-right
+    text-align: left
+    span
+      font-size: inherit !important
+      margin-left: 0
+      padding: 0
+    button
+      margin: 0 3px 0 0
+  #dsq-content .dsq-like-faces li img
+    border: 0
+    @include border-radius(0)
+  .dsq-comment-hide-thread
+    display: none
+  #dsq-content a.dsq-reply-link
+    opacity: 1
+  #dsq-content .dsq-comment-header cite
+    font-size: 14px
+    font-weight: bold
+    a
+      font-weight: bold
+  .dsq-options img,
+  .dsq-community-launcher,
+  .dsq-global-toolbar-settings,
+  .dsq-community-launcher,
+  #dsq-content .dsq-options
+    display: none
+  .dsq-comment
+    @include clearfix
+  #dsq-content .dsq-textarea .dsq-textarea-wrapper
+    margin: 0
+    padding: 5px
+    @include border-radius(0)
+    iframe
+      vertical-align: bottom
+  #dsq-new-post button.dsq-button
+    float: none
+    margin: 0
+    padding: 5px 15px
+    @include border-radius(0)
+  #dsq-like-thread-button
+    margin-right: 15px
+  #dsq-content #dsq-global-toolbar .dsq-thread-dislike
+    margin-right: 17px
+  #dsq-content-stub
+    > div:first-child
+      border-color: $grey !important
+      height: 4px !important
+      width: 398px !important
+      +border-radius(3px)
+      div
+        background-color: $grey !important
+        height: 4px !important
+    #dsq-loading-problem
+      font-size: inherit !important
+  @for $i from 1 through 6
+    .dsq-depth-#{$i}
+      margin-left: 20px * $i !important
+  .dsq-comment-is-parent
+    margin-bottom: 20px !important
+  #dsq-content-stub
+    text-align: center

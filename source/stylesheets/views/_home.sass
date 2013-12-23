@@ -1,0 +1,215 @@
+html.index
+  background: image-url("homepage.jpg")
+
+#welcome
+  background: image-url("homepage.jpg") 0 -280px no-repeat
+  color: white
+  height: 340px
+  @include section
+  h1
+    background: $blue image-url("homepage.jpg") 0 -280px
+    padding: 60px 0 0 60px
+  p
+    background: $blue image-url("homepage.jpg") 0 -380px
+    padding: 0 0 60px 60px
+  &:before,
+  #welcome-before
+    color: transparent
+    content: "."
+    display: block
+    height: 290px
+    margin: -280px 0 0 510px
+    position: absolute
+    width: 380px
+    z-index: 1111
+    background: image-url("homepage.jpg") -510px 0 no-repeat
+
+$blog--p-height: 72px
+
+.blog-posts
+  height: 39px + $blog--p-height
+  padding: 0 0 80px 60px
+  +section(-60px)
+
+.blog-posts--title
+  @extend .xl
+  bottom: 0
+  color: $blue
+  display: inline
+
+.blog-posts--more
+  color: $blue
+  display: inline
+  margin-left: 10px
+
+.blog-posts--list
+  clear: both
+  margin-top: 20px
+
+.blog-posts--item
+  float: left
+  margin: 0 30px 15px 0
+  width: 340px
+  position: relative
+
+.blog-posts--item-title
+  bottom: 0
+  clear: both
+  color: $blue
+  display: inline
+
+.blog-posts--item-abstract
+  height: $blog--p-height
+  font-size: 18px
+  font-weight: 200
+  overflow: hidden
+  text-overflow: ellipsis
+
+.blog-posts--item-more
+  bottom: 11px
+  font-weight: normal
+  height: 20px
+  position: relative
+
+#contact-bar
+  overflow: hidden
+  padding: 20px 0
+  width: 100%
+  address
+    background: $pink
+    clear: both
+    color: $pink
+    color: white
+    font-size: 23px
+    margin: 40px -10px
+    padding: 20px 0
+    text-align: center
+    -webkit-transform: rotate(-4deg)
+    -webkit-transition: all 500ms
+    -moz-transform: rotate(-4deg)
+    text-shadow: rgba(white, 0.3) 0 0 3px
+    &:hover
+      background: $turquoise
+  a
+    color: white
+    -webkit-transition: all 500ms
+    &:hover
+      color: yellow
+      text-decoration: none
+  strong
+    font-weight: normal
+
+#twitter
+  clear: both
+  overflow: hidden
+  padding: 20px 0
+  width: 100%
+  a
+    background: $pink
+    clear: both
+    color: white
+    display: block
+    font-size: 23px
+    margin: 40px -10px
+    padding: 20px 0
+    text-align: center
+    -webkit-transform: rotate(-4deg)
+    -webkit-transition: all 500ms
+    -moz-transform: rotate(-4deg)
+    text-shadow: rgba(white, 0.3) 0 0 3px
+    &:hover
+      background: $turquoise
+      color: yellow
+      text-decoration: none
+
+#portfolio
+  padding-left: 60px
+  @include section(-60px)
+  &:before
+    bottom: 17px
+    color: $pink
+    content: "PORTFOLIO"
+    display: block
+    padding-right: 60px
+    text-align: right
+  li
+    float: left
+    margin-right: 30px
+    width: 220px
+    &:before
+      content: ""
+
+.talks
+  clear: both
+  margin: auto
+  padding: 20px 0 0 60px
+  width: 780px
+
+.talks--title
+  @extend .xl
+  bottom: 0
+  clear: both
+  color: $blue
+  display: inline
+
+.talks--more
+  color: $blue
+  display: inline
+  margin-left: 10px
+
+  a
+    color: $blue
+    font-weight: bold
+
+.talks--item
+  float: left
+  margin: 20px 20px 0 0
+  width: 220px
+
+.talks--item-thumbnail
+  vertical-align: bottom
+  width: 100%
+  +box-shadow(rgba(desaturate($blue, 20%), 0.3) 0 0 6px)
+
+  &:hover
+    +box-shadow(rgba(desaturate($blue, 20%), 0.6) 0 0 9px)
+
+.talks--item-title
+  display: none
+  margin: 5px 10px
+  text-align: center
+
+.dribbble-shots
+  clear: both
+  margin: auto
+  padding: 20px 0 0 60px
+  width: 780px
+
+.dribbble-shots--title
+  @extend .xl
+  bottom: 0
+  clear: both
+  color: $blue
+  display: inline
+
+.dribbble-shots--more
+  color: $blue
+  display: inline
+  margin-left: 10px
+
+  a
+    color: $blue
+    font-weight: bold
+
+.dribbble-shots--item
+  float: left
+  margin: 20px 20px 0 0
+  width: 220px
+
+.dribbble-shots--item-thumbnail
+  vertical-align: bottom
+  width: 220px
+  +box-shadow(rgba(desaturate($blue, 20%), 0.3) 0 0 6px)
+
+  &:hover
+    +box-shadow(rgba(desaturate($blue, 20%), 0.6) 0 0 9px)

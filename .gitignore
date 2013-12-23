@@ -39,6 +39,5 @@ views/BLOG/_*.*
 views/_*
 public/.htaccess
 build
-_*
 *.sprite_info.yml
 
