@@ -3,12 +3,15 @@ title: Concepts, Design, Frontends & Ruby on Rails
 description: I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HTML5, Haml, Sass/SCSS & CSS3. And you should click me.
 ---
 
-#welcome
-  %h1 Hi, I’m Nico Hagenburger
-  %p
-    I enjoy designing clean, simple websites
+.welcome
+  %h1.welcome--title Hi, I’m Nico Hagenburger
+  %p.welcome--tagline
+    I enjoy designing clean, simple websites,
     %br
-    and developing web applications in Ruby on Rails.
+    developing living style guides & increasing usability.
+  %ul.welcome--technologies
+    - %w(Sass Compass Ruby on Rails Ruby CoffeeScript CSS3 HTML5).each do |technology|
+      %li.welcome--technologies-item= technology
 .blog-posts#blog-posts
   %h2.blog-posts--title Blog
   = link_to 'See all articles', 'BLOG.html', class: 'blog-posts--more'

@@ -1,17 +1,12 @@
 html.index
   background: image-url("homepage.jpg")
 
-#welcome
+.welcome
   background: image-url("homepage.jpg") 0 -280px no-repeat
   color: white
   height: 340px
   @include section
-  h1
-    background: $blue image-url("homepage.jpg") 0 -280px
-    padding: 60px 0 0 60px
-  p
-    background: $blue image-url("homepage.jpg") 0 -380px
-    padding: 0 0 60px 60px
+
   &:before,
   #welcome-before
     color: transparent
@@ -23,6 +18,29 @@ html.index
     width: 380px
     z-index: 1111
     background: image-url("homepage.jpg") -510px 0 no-repeat
+
+.welcome--title
+  background: $blue image-url("homepage.jpg") 0 -280px
+  padding: 60px 0 0 60px
+
+.welcome--tagline
+  @extend .xl
+  background: $blue image-url("homepage.jpg") 0 -380px
+  font-weight: 200
+  padding: 0 0 0 60px
+
+.welcome--technologies
+  font-size: 13px
+  letter-spacing: 1px
+  padding: 10px 0 0 60px
+  text-transform: uppercase
+  @include clearfix
+
+.welcome--technologies-item
+  color: mix($blue, $white)
+  float: left
+  margin-right: 10px
+
 
 $blog--p-height: 72px
 
