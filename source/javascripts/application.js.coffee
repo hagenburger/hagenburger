@@ -45,7 +45,7 @@ if $('#portfolio-carousel').length
         portfolioAnimation = false
         if typeof callback == 'function'
           callback()
-    
+
       portfolioCurrentImage++
       if portfolioCurrentImage > portfolioImagesSize - 1
         portfolioCurrentImage = 0
@@ -64,7 +64,7 @@ if $('#portfolio-carousel').length
 
 $('html').addClass('loaded')
 if document.all
-  $('#welcome h1').before '<div id="welcome-before"></div>'
+  $('.welcome--title').before '<div class="welcome--before"></div>'
 button = $('.button button')
 button.mouseenter () ->
   $(this).parent().parent().addClass 'hover'
@@ -87,7 +87,7 @@ post = $('article.post')
 if post.length == 1
   $('#content').append '<article id="' + disqus_container_id + '"></article>'
   $('#content').append '<div id="disqus_thread"></div>'
-  
+
   date = $('meta[name="date"]').attr('content').split('-')
   year = date[0]
   month = date[1]
@@ -104,7 +104,7 @@ if post.length == 1
   dsq.async = true
   dsq.src = 'http://hagenburger.disqus.com/embed.js'
   document.getElementsByTagName('head')[0].appendChild(dsq)
-  
+
   links = document.getElementsByTagName('a')
   query = '?'
   for i in [0..links.length - 1]

@@ -64,7 +64,7 @@ if $('#portfolio-carousel').length
 
 $('html').addClass('loaded')
 if document.all
-  $('#welcome h1').before '<div id="welcome-before"></div>'
+  $('.welcome--title').before '<div class="welcome--before"></div>'
 button = $('.button button')
 button.mouseenter () ->
   $(this).parent().parent().addClass 'hover'
