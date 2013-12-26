@@ -45,17 +45,17 @@
       %link(rel="stylesheet" href="#{asset_url("stylesheets/#{@stylesheet}.css")}")
     - javascript = @jquery || @javascript || yield_content(:javascript)
     %script for(var e,l='article aside figcaption figure footer header nav section time'.split(' ');e=l.pop();document.createElement(e));try{Typekit.load()}catch(e){};document.getElementsByTagName('HTML')[0].className+=' js'
-  %body
-    #nico-hagenburger
-      %header
+  %body.layout
+    .layout--container
+      %header.layout--header
         %a(href="/")
-          %img#logo(src="#{asset_url('images/nico-hagenburger-ruby-on-rails-2x.png')}" alt="Nico Hagenburger — #{(@keywords || [] + ['Ruby on Rails', 'Haml', 'Sass', 'HTML5'])[0..6].join(', ')}")
-        %nav<
-          = link_to 'Home', '/'
-          = link_to 'Blog', '/BLOG.html'
-          = link_to 'Contact', '/CONTACT.html'
-          = link_to 'Portfolio', '/PORTFOLIO.html'
-        %div<
+          %img.layout--logo(src="#{asset_url('images/nico-hagenburger-ruby-on-rails-2x.png')}" alt="Nico Hagenburger — #{(@keywords || [] + ['Ruby on Rails', 'Haml', 'Sass', 'HTML5'])[0..6].join(', ')}")
+        %nav.layout--navigation<
+          = link_to 'Home', '/', class: 'layout--navigation-item'
+          = link_to 'Blog', '/BLOG.html', class: 'layout--navigation-item'
+          = link_to 'Contact', '/CONTACT.html', class: 'layout--navigation-item'
+          = link_to 'Portfolio', '/PORTFOLIO.html', class: 'layout--navigation-item'
+        .layout--tagline<
           %strong> Hi, I’m Nico Hagenburger
           %br>
           I enjoy designing
@@ -65,7 +65,7 @@
           developing living style guides
           %br>
           &amp; increasing usability.
-      #content
+      .layout--content
         - if request.path =~ %r(BLOG/)
           %article.post{ :slug => @slug }
             = yield
@@ -73,7 +73,7 @@
           = partial 'twitter'
         - else
           = yield
-    %footer
+    %footer.layout--footer
       %a#github(href="https://github.com/hagenburger")
         %span Fork me on GitHub!
         %span Get free lemonade!
