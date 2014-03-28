@@ -1,0 +1,104 @@
+---
+title: Beautiful Tooltips with Drop-shadows
+description: Make your tooltips more beautiful with drop-shadows instead of box-shadows and get them look good on Retina displays.
+published: false
+---
+
+
+Beautiful Tooltips with Drop-shadows
+====================================
+
+Box-shadows are nice, they have been around for years by now.
+Drop-shadows as we know from Photoshop, are slightly different.
+They also include the content of an element.
+For tooltips, this is important, when the have an arrow.
+
+An easy CSS-only way to add an arrow to a box, is to use the
+`::before` or `::after` pseudo elements and border effects.
+
+<div class="example">
+  <div class="example-with-arrow">Tooltip with arrow</div>
+</div>
+
+    ## css ##
+    .example-with-arrow:after {
+      border: 10px solid;
+      border-color: white transparent transparent;
+      content: "";
+      left: 50%;
+      margin-left: -10px;
+      position: absolute;
+      top: 100%;
+    }
+
+By adding a `box-shadow` the arrow will look strange, as the arrow won’t get a shadow:
+
+<div class="example">
+  <div class="example-with-box-shadow">Tooltip with box-shadow</div>
+</div>
+
+    ## css ##
+    .example-with-box-shadow {
+      box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px;
+    }
+
+Using the `drop-shadow` filter, solves this, but looks pixelized on Retina displays:
+
+<div class="example">
+  <div class="example-with-drop-shadow">Tooltip with box-shadow</div>
+</div>
+
+    ## css ##
+    .example-with-drop-shadow {
+      filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px);
+    }
+
+####This can be solved by adding a
+
+
+
+<style type="text/css">
+  .post .example {
+    background: rgba(219, 224, 223, 0.5);
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    width: auto;
+  }
+
+  .example + pre {
+    margin-top: -20px;
+  }
+
+  .example-with-arrow,
+  .example-with-box-shadow,
+  .example-with-drop-shadow {
+    background: white;
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 5px;
+    position: relative;
+    width: 200px;
+  }
+
+  .example-with-arrow:after,
+  .example-with-box-shadow:after,
+  .example-with-drop-shadow:after {
+    border: 10px solid;
+    border-color: white transparent transparent;
+    content: "";
+    left: 50%;
+    margin-left: -10px;
+    position: absolute;
+    top: 100%;
+  }
+
+  .example-with-box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 0 2px 10px;
+  }
+
+  .example-with-drop-shadow {
+    -webkit-filter: drop-shadow(rgba(0, 0, 0, 0.3) 0 2px 10px);
+  }
+</style>
+
