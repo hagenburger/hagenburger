@@ -13,7 +13,7 @@ and guidelines for my clients.
 Basically I’m doing the same.
 [But](http://smacss.com/book/type-module) [different](http://railslove.com/blog/2012/11/09/taking-sass-to-the-next-level-with-smurf-and-extend).
 Just like everybody is doing it.
-This naming concept is used in projects for Toyota, ProSiebenSat.1, MyVideo and Maxdome.
+This naming concept is used in projects for Toyota, ProSiebenSat.1, MyVideo, Maxdome, and Homify.
 
 
 Class Names
@@ -69,7 +69,7 @@ A module could also be nested inside another module, as long as it makes sense.
 Modifiers
 ---------
 
-Modifiers should be applied to the module class only and named in a way to identify it as a modifier (mostly `is-...`):
+Modifiers should be applied to the module class only and named in a way to identify it as a modifier (starting with a `-`):
 
     ## sass ##
     .teaser
@@ -77,14 +77,14 @@ Modifiers should be applied to the module class only and named in a way to ident
       border: 1px gray solid
       padding: 10px
 
-      &.is-important
+      &.-important
         border-color: red
 
     .teaser--title
       font-size: 1.5em
       font-weight: bold
 
-      .teaser.is-important &
+      .teaser.-important &
         font-size: 2em
 
     .teaser--text
