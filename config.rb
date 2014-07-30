@@ -205,11 +205,9 @@ use ::Rack::CleanUp
 # Helpers
 
 require File.join(Dir.getwd, 'helpers', 'blog_helper')
-require File.join(Dir.getwd, 'helpers', 'jammit_helper')
 require 'open-uri'
 helpers do
   include BlogHelper
-  include JammitHelper
 
   def compress_javascript(javascript)
     compressor = ::YUI::JavaScriptCompressor.new(:munge => true)
