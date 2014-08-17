@@ -7,6 +7,7 @@ require 'rdiscount'
 require File.join(Dir.getwd, 'lib', 'haml_filters')
 require File.join(Dir.getwd, 'lib', 'syntax_highlighter')
 require File.join(Dir.getwd, 'lib', 'string')
+require File.join(Dir.getwd, 'lib', 'markdown')
 
 ::Compass.add_project_configuration('compass.rb')
 

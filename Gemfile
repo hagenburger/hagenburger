@@ -7,4 +7,5 @@ gem 'maruku'
 gem 'minisyntax'
 gem 'simple-rss'
 gem 'middleman-blog'
+gem 'livingstyleguide', '~> 1.1.1'
 
