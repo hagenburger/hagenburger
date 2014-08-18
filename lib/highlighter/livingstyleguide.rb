@@ -2,9 +2,11 @@ module MiniSyntax
   module Highlighter
     module LivingStyleGuide
       def self.highlight(code)
-        code.gsub! %r(^@([a-z-]+)( *([^\{\n]+?)?)((( +)(\{(.+?)\n\}))|(: +)(.+?)$|(\n(  .+?(\n|$))+)|$))m do
+        content_syntax = :html
+        code.gsub! %r(^@([a-z-]+)( *([^\{\n]+?)?)((( +)(\{(.+?)\n\}))|(: +)(.+?)$|(\n(  .+?$)+)|$))m do
           result = %Q(<b>@<em>#{$1}</em></b>#{$2})
           filter = $1
+          content_syntax = filter.to_s if %w(haml javascript coffee-script).include?(filter)
           arguments = $3
           if data = $7
             data = sub_highlight(data, filter, arguments)
@@ -20,6 +22,9 @@ module MiniSyntax
         end
         code.gsub! %r(^//.+) do |comment|
           %Q(<i>#{comment}</i>)
+        end
+        code.gsub! %r(^(?<!<b>).+\Z)m do |content|
+          %Q(<q>#{MiniSyntax.highlight(content, content_syntax)}</q>)
         end
         code
       end
