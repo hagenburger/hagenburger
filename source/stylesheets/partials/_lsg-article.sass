@@ -1,0 +1,58 @@
+$livingstyleguide--code-background-color: $white//$pink
+$livingstyleguide--code-border-radius: 0
+$livingstyleguide--code-color: $pink// scale-color($livingstyleguide--code-background-color, $lightness: 80%)
+$livingstyleguide--code-font: monaco, courier, monospace
+$livingstyleguide--code-font-size: 16px
+$livingstyleguide--code-font-weight: normal
+$livingstyleguide--code-line-height: 30px
+$livingstyleguide--width: auto
+$livingstyleguide--gap-width: 5px
+$livingstyleguide--highlight-color: scale-color($pink, $lightness: 50%)
+$livingstyleguide--highlight-border-radius: 3px
+
+%livingstyleguide--reset
+  display: block
+
+@import "livingstyleguide/code"
+
+.post
+  .livingstyleguide--paragraph,
+  .livingstyleguide--ordered-list,
+  .livingstyleguide--unordered-list,
+  .livingstyleguide--page-title,
+  .livingstyleguide--headline,
+  .livingstyleguide--sub-headline,
+  .livingstyleguide--code-block
+    font-size: 20px
+    line-height: 30px
+    margin: 30px auto
+    max-width: 630px
+    width: auto
+    -webkit-font-smoothing: antialiased
+
+  .livingstyleguide--page-title
+    font-size: 40px
+    line-height: 60px
+
+  .livingstyleguide--code-block
+    background: scale-color(#eef1f0, $lightness: 60%)
+    font-size: $livingstyleguide--code-font-size
+    padding: 20px 20px
+
+  .livingstyleguide--code
+    color: $livingstyleguide--code-color
+    -webkit-font-smoothing: subpixel-antialiased
+
+    i
+      color: $grey
+      font-style: italic
+
+    q,
+    q *
+      color: $blue
+
+  .livingstyleguide--paragraph,
+  .livingstyleguide--list-item
+    .livingstyleguide--code
+      color: inherit
+

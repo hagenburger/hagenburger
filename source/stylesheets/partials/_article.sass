@@ -79,41 +79,6 @@ article
   h2,
   h3
     @include margin-top(2)
-  pre
-    background: lighten($background-color, 25%)
-    background: rgba($background-color, 0.5)
-    padding: 20px 210px
-    @include article-box
-    > code
-      position: relative
-      top: 1px
-    code
-      color: $text-color
-    &.command-line
-      background: lighten($text-color, 25%)
-      background: rgba($text-color, 0.5)
-      i
-        color: $background-color
-    kbd
-      color: white
-      display: block
-      font-weight: bold
-      &:before
-        color: $background-color
-        content: "> "
-    em
-      color: lighten($text-color, 10%)
-      font-weight: bold
-      text-decoration: underline
-    b
-      color: lighten($text-color, 20%)
-      font-weight: bold
-    i
-      color: lighten($text-color, 30%)
-    q
-      color: lighten($text-color, 30%)
-    var
-      text-decoration: underline
   p, td, li
     code
       background: lighten($background-color, 7%)
@@ -191,3 +156,39 @@ article
   p
     font-weight: normal
     margin: 0
+pre
+  background: lighten($background-color, 25%)
+  background: rgba($background-color, 0.5)
+  padding: 20px 210px
+  @include article-box
+  > code
+    position: relative
+    top: 1px
+  code
+    color: $text-color
+  &.command-line
+    background: lighten($text-color, 25%)
+    background: rgba($text-color, 0.5)
+    i
+      color: $background-color
+  kbd
+    color: white
+    display: block
+    font-weight: bold
+    &:before
+      color: $background-color
+      content: "> "
+  em
+    color: lighten($text-color, 10%)
+    font-weight: bold
+    text-decoration: underline
+  b
+    color: lighten($text-color, 20%)
+    font-weight: bold
+  i
+    color: lighten($text-color, 30%)
+  q
+    color: lighten($text-color, 30%)
+  var
+    text-decoration: underline
+
