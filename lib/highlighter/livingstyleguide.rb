@@ -2,7 +2,7 @@ module MiniSyntax
   module Highlighter
     module LivingStyleGuide
       def self.highlight(code)
-        code.gsub! %r(@([a-z-]+)( *([^\{\n]+?)?)((( +)(\{(.+?)\n\}))|(: +)(.+?)$|(\n(  .+?(\n|$))+)|$))m do
+        code.gsub! %r(^@([a-z-]+)( *([^\{\n]+?)?)((( +)(\{(.+?)\n\}))|(: +)(.+?)$|(\n(  .+?(\n|$))+)|$))m do
           result = %Q(<b>@<em>#{$1}</em></b>#{$2})
           filter = $1
           arguments = $3
