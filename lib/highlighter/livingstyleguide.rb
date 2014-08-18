@@ -3,32 +3,23 @@ module MiniSyntax
     module LivingStyleGuide
       def self.highlight(code)
         content_syntax = :html
-        code.gsub! %r(^@([a-z-]+)( *([^\{\n]+?)?)((( +)(\{(.+?)\n\}))|(: +)(.+?)$|(\n(  .+?$)+)|$))m do
-          result = %Q(<b>@<em>#{$1}</em></b>#{$2})
-          filter = $1
-          content_syntax = filter.to_s if %w(haml javascript coffee-script).include?(filter)
-          arguments = $3
-          if data = $7
-            data = sub_highlight(data, filter, arguments)
-            result << %Q(#{$6}<q>#{data}</q>)
-          elsif data = $10
-            data = sub_highlight(data, filter, arguments)
-            result << %Q(#{$9}<q>#{data}</q>)
-          elsif data = $11
-            data = sub_highlight(data, filter, arguments)
-            result << %Q(<q>#{data}</q>)
+        result = ''
+        until code == '' do
+          result << if /\A(?<filter_ws>\n*)^@(?<filter>[a-z\-]+)(?<arguments_whitespace> *(?<arguments>[^\{\n]*)?)((?<lead>: +)(?<data>.+?)$|(?<lead>\n)(?<data>(  .+?\n)+)|(?<lead> *)(?<data>\{(.+?)\n\}))?/m =~ code
+            content_syntax = filter.to_s if %w(haml javascript coffee-script).include?(filter)
+            data = sub_highlight(data, filter, arguments) if data
+            %Q(#{filter_ws}<b>@<em>#{filter}</em></b>#{arguments_whitespace}#{lead}<q>#{data}</q>)
+          elsif /\A(?<comment_ws>\n*)^(?<comment>\/\/.+)$/ =~ code
+            %Q(#{comment_ws}<i>#{comment}</i>)
+          elsif /\A(?<content_ws>\n*)(?<content>.+\Z)/m =~ code
+            %Q(#{content_ws}<q>#{MiniSyntax.highlight(content, content_syntax)}</q>) if content.length
           end
-          result
+          code = $' || ''
         end
-        code.gsub! %r(^//.+) do |comment|
-          %Q(<i>#{comment}</i>)
-        end
-        code.gsub! %r(^(?<!<b>).+\Z)m do |content|
-          %Q(<q>#{MiniSyntax.highlight(content, content_syntax)}</q>)
-        end
-        code
+        result
       end
 
+      private
       def self.sub_highlight(data, filter, arguments)
         if filter == 'css' and arguments != 'sass'
           MiniSyntax.highlight(data, :css)
