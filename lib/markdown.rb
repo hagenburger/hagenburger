@@ -26,9 +26,17 @@ module ::Tilt
 
     private
     def render_markdown(markdown)
+      format_info(markdown)
       renderer = LivingStyleGuide::RedcarpetHTML.new
       redcarpet = ::Redcarpet::Markdown.new(renderer, LivingStyleGuide::REDCARPET_RENDER_OPTIONS)
       redcarpet.render(markdown)
+    end
+
+    private
+    def format_info(markdown)
+      markdown.gsub! /^@info (.+?)$/ do
+        %Q(<div class="info"><div class="info--text">#{$1}</div></div>\n)
+      end
     end
 
     private

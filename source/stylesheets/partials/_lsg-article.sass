@@ -22,7 +22,8 @@ $livingstyleguide--highlight-border-radius: 3px
   .livingstyleguide--page-title,
   .livingstyleguide--headline,
   .livingstyleguide--sub-headline,
-  .livingstyleguide--code-block
+  .livingstyleguide--code-block,
+  .info
     font-size: 20px
     line-height: 30px
     margin: 30px auto
@@ -69,4 +70,13 @@ $livingstyleguide--highlight-border-radius: 3px
   .livingstyleguide--ordered-list-item
     font-size: inherit
     line-height: inherit
+
+  .info
+    position: relative
+
+  .info--text
+    color: scale-color($grey, $lightness: 50%)
+    position: absolute
+    right: 0
+    top: 20px
 
