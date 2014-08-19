@@ -1,0 +1,39 @@
+!!!
+%html(lang="#{@lang || 'en'}" class="#{page_classes.gsub('_', '-').downcase} no-js")
+  = partial 'layouts/head'
+  %body.layout.-blog
+    .layout--container
+      .layout--content
+        - if request.path =~ %r(BLOG/)
+          %article.post{ :slug => @slug }
+            = yield
+            = facebook_like
+        - else
+          = yield
+      %header.layout--header
+        %a(href="/")
+          %img.layout--logo(src="#{asset_url('images/nico-hagenburger-ruby-on-rails-2x.png')}" alt="Nico Hagenburger — #{(@keywords || [] + ['Ruby on Rails', 'Haml', 'Sass', 'HTML5'])[0..6].join(', ')}")
+        %nav.layout--navigation<
+          = link_to 'Home', '/', class: 'layout--navigation-item'
+          = link_to 'Blog', '/BLOG.html', class: 'layout--navigation-item'
+          = link_to 'Contact', '/CONTACT.html', class: 'layout--navigation-item'
+          = link_to 'Portfolio', '/PORTFOLIO.html', class: 'layout--navigation-item'
+        .layout--tagline<
+          %strong> Hi, I’m Nico Hagenburger
+          %br>
+          I enjoy designing
+          %br>
+          clean, simple websites,
+          %br>
+          developing living style guides
+          %br>
+          &amp; increasing usability.
+      = partial 'twitter'
+    %footer.layout--footer
+      %small<
+        © Nico Hagenburger/Hagenburger GmbH 2000—#{Time.now.year} · Blog posts published under CC share alike licence (except design and artwork or otherwise mentioned)
+    = javascript_include_tag 'hagenburger'
+  /
+    You’ve just read it till the end.
+    If you’re that fascinated, you definitely have to hire me.
+

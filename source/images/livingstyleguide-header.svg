@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="894px" height="448px" viewBox="0 0 894 448" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.4 (8053) - http://www.bohemiancoding.com/sketch -->
+    <title>livingstyleguide-header</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Content" sketch:type="MSArtboardGroup" transform="translate(-71.000000, -54.000000)">
+            <g id="Schach" sketch:type="MSLayerGroup" transform="translate(517.861436, 53.915693) rotate(-45.000000) translate(-517.861436, -53.915693) translate(201.861436, -261.584307)">
+                <rect id="Square-copy-3" fill="#FF96B5" sketch:type="MSShapeGroup" x="6.39488462e-14" y="1.42108547e-14" width="158" height="158"></rect>
+                <rect id="Square-copy-4" fill="#F9AAC2" sketch:type="MSShapeGroup" x="8.52651283e-14" y="157" width="158" height="158"></rect>
+                <rect id="Square-copy-5" fill="#F06991" sketch:type="MSShapeGroup" x="158" y="157" width="158" height="158"></rect>
+                <rect id="Square-copy-5" fill="#CA1F70" sketch:type="MSShapeGroup" x="1.84741111e-13" y="315" width="158" height="158"></rect>
+                <rect id="Square-copy-6" fill="#D0146D" sketch:type="MSShapeGroup" x="158" y="315" width="158" height="158"></rect>
+                <rect id="Square-copy-7" fill="#FF96B5" sketch:type="MSShapeGroup" x="316" y="315" width="158" height="158"></rect>
+                <rect id="Square-copy-6" fill="#C42872" sketch:type="MSShapeGroup" x="7.10542736e-14" y="473" width="158" height="158"></rect>
+                <rect id="Square-copy-7" fill="#CA1B6E" sketch:type="MSShapeGroup" x="158" y="473" width="158" height="158"></rect>
+                <rect id="Square-copy-8" fill="#F9AAC2" sketch:type="MSShapeGroup" x="316" y="473" width="158" height="158"></rect>
+                <rect id="Square-copy-9" fill="#F299B3" sketch:type="MSShapeGroup" x="474" y="473" width="158" height="158"></rect>
+            </g>
+            <g id="Logo" sketch:type="MSLayerGroup" transform="translate(293.000000, 53.000000)" fill="#FFFFFF">
+                <path d="M225.5,79 L81,223.498947 L225.5,368 L370,223.498947 L225.5,79 L225.5,79 Z M225.501053,111.894309 L273.666667,160.062029 L225.501053,208.227642 L177.333333,160.062029 L225.501053,111.894309 L225.501053,111.894309 Z M113.894309,223.498947 L162.060976,175.333333 L210.227642,223.498947 L162.060976,271.666667 L113.894309,223.498947 L113.894309,223.498947 Z M225.501053,335.105691 L177.333333,286.939024 L225.501053,238.772358 L273.666667,286.939024 L225.501053,335.105691 L225.501053,335.105691 Z M240.772358,223.498947 L288.937971,175.333333 L337.105691,223.498947 L288.937971,271.666667 L240.772358,223.498947 L240.772358,223.498947 Z" id="Fill-3" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
