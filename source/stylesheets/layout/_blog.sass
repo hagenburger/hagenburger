@@ -11,6 +11,27 @@
     background-image: image-url("footer-blog.png")
     padding-top: 100px
 
+  article
+    max-width: 740px
+    padding: 0 10px
+    width: auto
+
+  .posts .like,
+  .posts #like,
+  .post .like,
+  .post #like
+    max-width: 740px
+    width: auto
+    @media all and (max-width: 840px)
+      display: none
+
+  @media all and (max-width: 840px)
+    .layout--header
+      display: none
+
+    .layout--content
+      margin-bottom: -150px
+
 
 .blog-livingstyleguide-2
   .layout

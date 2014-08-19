@@ -29,6 +29,8 @@
   - if current_page.data.keywords
     %meta(name="keywords" content="#{current_page.data.keywords}")
   %meta(name="date" content="#{(@date || Time.now).strftime('%Y-%m-%d')}")
+  - if current_page.data.layout == 'blog'
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
   %meta(property="og:site_name" content="hagenburger.net")
   %meta(property="og:title" content="#{current_page.data.og_title || current_page.data.title}")
   %meta(property="og:image" content="#{current_page.data.og_image || asset_url('hagenburger.jpg')}")

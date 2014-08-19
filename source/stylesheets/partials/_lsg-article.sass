@@ -35,6 +35,11 @@ $livingstyleguide--highlight-border-radius: 3px
     font-size: 80px
     line-height: 90px
     text-align: center
+    @include ellipsis
+    white-space: normal
+    @media all and (max-width: 840px)
+      font-size: 40px
+      line-height: 60px
 
   .livingstyleguide--headline,
   .livingstyleguide--sub-headline
@@ -75,6 +80,7 @@ $livingstyleguide--highlight-border-radius: 3px
   .livingstyleguide--ordered-list-item
     .livingstyleguide--code
       color: inherit
+      white-space: normal
 
   .livingstyleguide--unordered-list-item,
   .livingstyleguide--ordered-list-item
@@ -89,4 +95,7 @@ $livingstyleguide--highlight-border-radius: 3px
     position: absolute
     right: 0
     top: 20px
+    @media all and (max-width: 740px)
+      position: relative
+      text-align: right
 
