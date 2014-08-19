@@ -10,6 +10,7 @@ require File.join(Dir.getwd, 'lib', 'string')
 require File.join(Dir.getwd, 'lib', 'markdown')
 require File.join(Dir.getwd, 'lib', 'highlighter', 'livingstyleguide')
 require File.join(Dir.getwd, 'lib', 'highlighter', 'markdown')
+require File.join(Dir.getwd, 'lib', 'highlighter', 'json')
 
 ::Compass.add_project_configuration('compass.rb')
 
