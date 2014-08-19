@@ -28,6 +28,9 @@ module MiniSyntax
           MiniSyntax.highlight(data, lang)
         elsif filter == 'javascript-before' or filter == 'javascript-after'
           MiniSyntax.highlight(data, :javascript)
+        elsif filter == 'data'
+          lang = arguments == 'yaml' ? :yaml : :javascript
+          MiniSyntax.highlight(data, lang)
         else
           data
         end
