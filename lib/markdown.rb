@@ -33,7 +33,7 @@ module ::Tilt
 
     private
     def convert_line_breaks(html)
-      html.gsub %r((<code class="livingstyleguide--code">)(.+?)(</code>))m do |match|
+      html.gsub %r((<pre class="livingstyleguide--code-block"><code class="livingstyleguide--code">)(.+?)(</code></pre>))m do |match|
         match.gsub("\n", '&#x000A;')
       end
     end
