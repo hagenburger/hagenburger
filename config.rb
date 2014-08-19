@@ -221,7 +221,7 @@ helpers do
   def facebook_like(url = nil)
     url ||= %Q(http://www.hagenburger.net/#{request.path})
     url = URI::encode(url)
-    %Q(<iframe class="like" src="http://www.facebook.com/plugins/like.php?href=#{url}&amp;width=420" scrolling="no" frameborder="0" allowTransparency="true"></iframe>)
+    %Q(<iframe class="like" src="http://www.facebook.com/plugins/like.php?href=#{url}&amp;width=720" scrolling="no" frameborder="0" allowTransparency="true"></iframe>)
   end
 
   def dribbble_shots
