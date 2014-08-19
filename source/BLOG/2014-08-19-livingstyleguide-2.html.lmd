@@ -1,0 +1,417 @@
+---
+title: What’s in Store for LivingStyleGuide 2
+description: Upcoming features and more flexible syntax to come in the LivingStyleGuide 2.0.0.
+layout: blog
+og_image: http://www.hagenburger.net/BLOG/2014-08-29/og.png
+---
+
+<h1 class="livingstyleguide--page-title">What’s in Store for LivingStyleGuide 2</h1>
+
+
+**Goal:** To get a consistent, easy to use syntax for settings and
+filters in the [LivingStyleGuide
+generator](https://github.com/hagenburger/livingstyleguide#readme) that is attractive
+to both the _JSON/SCSS/HTML/JavaScript_ and the _Ruby/YAML/Sass/Haml/Coffee-Script worlds._
+
+**More technically:** The `@filter` syntax used in examples will be extended to have content
+(e. g. for CSS, JSON, YAML, …); the configuration will switch from YAML/JSON to `@filter`
+to share the same code and make development more fun.
+
+
+# Filters
+
+Partials should be shared between the application and the style guide
+(if a user wants to have it this way). This requires:
+
+* Loading of external partials
+* Having local data to fill the partials
+
+
+## Current Use
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+<h1>Hello World</h1>
+\```
+```
+
+
+## Import HTML from External File
+
+@info views/partials/_hello-world.html
+``` html
+<h1>Hello World</h1>
+```
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+@import ../../views/partials/_hello-world.html
+\```
+```
+
+
+## Use a Template Language
+
+@info views/partials/_hello-world.haml
+``` haml
+%h1 Hello World
+```
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+@import ../../views/partials/_hello-world.haml
+\```
+```
+
+
+## Use Data
+
+@info views/partials/_hello-world.haml
+``` haml
+%h1 Hello #{name}
+%p= text
+```
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+@import ../../views/partials/_hello-world.haml
+@data yaml
+  name: Homer
+  text: Lorem ipsum
+\```
+```
+
+
+## Use Data With Inline Haml
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+@haml
+@data yaml
+  name: Homer
+  text: Lorem ipsum
+%h1 Hello #{name}
+%p= text
+\```
+```
+
+
+## Use Data With Inline Mustache
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+@mustache
+@data yaml
+  name: Homer
+  text: Lorem ipsum
+<h1>Hello {{name}}</h1>
+<p>{{text}}</p>
+\```
+```
+
+
+## JSON Data
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+@mustache
+@data {
+  "name": "Homer",
+  "text": "Lorem ipsum"
+}
+<h1>Hello {{name}}</h1>
+<p>{{text}}</p>
+\```
+```
+
+
+## External JSON Data
+
+@info stylesheets/components/_hello-world.json
+``` json
+{
+  "name": "Homer",
+  "text": "Lorem ipsum"
+}
+```
+
+@info stylesheets/components/_hello-world.md
+``` markdown
+\```
+@mustache
+@data hello-world.json
+<h1>Hello {{name}}</h1>
+<p>{{text}}</p>
+\```
+```
+
+
+## Inline CSS
+
+You might have an absolute positioned element and want to set the
+example box height:
+
+@info stylesheets/components/_popup.md
+``` markdown
+# Popup
+
+\```
+@css {
+  height: 100px;
+}
+<div class="popup">Hello World!</div>
+\```
+```
+
+Would result in:
+
+``` html
+<h2 id="popup">Popup</h2>
+
+<div class="livingstyleguide--example" id="***popup-example-1***">
+  <div class="popup">Hello World!</div>
+</div>
+```
+
+And this would be added to the documents global CSS:
+
+``` css
+***#popup-example-1*** {
+  height: 100px;
+}
+```
+
+Nesting—as well as any other Sass feature—is also supported:
+
+@info stylesheets/components/_columns.md
+``` markdown
+# Columns
+
+\```
+@css {
+  .column {
+    background: $my-color;
+    min-height: 50px;
+  }
+}
+<div class="column"></div>
+<div class="column"></div>
+\```
+```
+
+Would result in:
+
+``` html
+<h2 id="popup">Columns</h2>
+
+<div class="livingstyleguide--example" id="columns-example-1">
+  <div class="column"></div>
+  <div class="column"></div>
+</div>
+```
+
+And this would be added to the documents global CSS:
+
+``` css
+#columns-example-1 {
+  .columns {
+    background: $my-color; // variables defined in your Sass
+    min-height: 50px;
+  }
+}
+```
+
+Very often, a little CSS must be added to make examples be useful in the style guide. With scoping this won’t break anything else. This should also work with the Sass syntax (a [global setting to use Sass as default](#defaults) is available):
+
+@info styleguide.html.lsg
+``` markdown
+\```
+@css sass
+  .column
+    background: $my-color
+    min-height: 50px
+<div class="column"></div>
+<div class="column"></div>
+\```
+```
+
+
+# Configuration
+
+Currently the configuration is written in [YAML](http://yaml.org). For people like me, who have come up in a Ruby/Sass/Haml/CoffeeScript/YAML environment, this might be pretty normal. However, YAML is pretty complicated when it comes to the details:
+
+* YAML looks very close to CSS/Sass/SCSS, but can raise unexpected errors (who knows every details of the YAML specs?):
+  * `base-font: 'times new roman', times, serif` will break and would require additional quotes: `base-font: "'times new roman', times, serif"` (even CSS would not require the quotes around `times new roman`, many people might do so and understanding what’s happening might be a pain).
+  * `css: @media { … }` will break as `@` is part of the YAML spec. This would also require additional quotes
+* Multi-line content (starting with a `|`) is also a pain (I’ve never
+  seen it in any production code yet). It might be OK when you use Haml or Sass,
+  but looks like a mess with HTML or SCSS. People have to care a lot about indentation,
+  which might has been a reason not to use Haml or Sass.
+* The configuration also supports JSON instead of YAML.
+  But this doesn’t make things (multi-line content ins particular) any easier
+  except that more people are familiar with JSON.
+
+To that end, YAML is great and complex, but for the LivingStyleGuide
+there are too many edge cases and only some users are familiar with the
+special syntax.
+
+
+## Solution: Using Filters for the Configuration
+
+* Same syntax as in examples.
+* Filters can be shared between configuration and examples.
+* The filter syntax does not support many things, but does a pretty good job for the needs of a style guide.
+* Filters support both arguments and added content. For many filters we need to define a syntax and add the content; or distinguish between a file name and content.
+
+
+## CSS
+
+Current style with YAML syntax:
+
+@info styleguide.html.lsg
+``` yaml
+source: application.css.scss
+
+styleguide-scss: |
+  // It’s SCSS but you need to take care of indentation because YAML:
+  .header { background: $my-blue; }
+  .livingstyleguide--headline { border-bottom: 10px $my-blue solid; }
+
+styleguide-sass: |
+  .header
+    background: $my-blue
+  .livingstyleguide--headline
+    border-bottom: 10px $my-blue solid
+```
+
+New Style with fitler syntax:
+
+@info styleguide.html.lsg
+``` lsg
+// used to be `source: application.css.scss`:
+@css application.css.scss
+
+// you can load as many sources as needed (new!):
+@css logged-in.css.scss
+
+// style guide styling can be external (new!):
+@css _styleguide.scss
+
+@css {
+// no need to take care of indentation:
+  .header { background: $my-blue; }
+  .livingstyleguide--headline { border-bottom: 10px $my-blue solid; }
+}
+
+@css sass
+  .header
+    background: $my-blue
+  .livingstyleguide--headline
+    border-bottom: 10px $my-blue solid
+```
+
+
+## HTML
+
+@info styleguide.html.lsg
+``` yaml
+header: |
+  <div>
+    <h1>My Living Style Guide</h1>
+  </div>
+```
+
+@info styleguide.html.lsg
+``` lsg
+@header {
+<header>
+  <h1>My Living Style Guide</h1>
+</header>
+}
+
+@header haml
+  %header
+    %h1 My Living Style Guide
+```
+
+Hint: The new syntax would add to existing HTML; the old one would override it. Combined with loading default settings (e. g. for themes), this might be very useful.
+
+
+## JavaScript
+
+@info styleguide.html.lsg
+``` lsg
+@javascript-before /javascripts/modernizr.js
+
+@javascript-after http://code.jquery.com/jquery-2.1.0.min.js
+@javascript-after /javascripts/underscore-1.6.0.min.js
+@javascript-after /javascripts/my-application.js
+@javascript-after {
+  alert("Hello World!")
+}
+@javascript-after coffee-script
+  alert "Hello World!"
+```
+
+
+## Style
+
+Default settings for calculating the style guide design:
+
+@info styleguide.html.lsg
+``` lsg
+@style color: $my-color
+@style code-color: adjust-hue($base-color, 180deg)
+@style base-font: Helvetica Neue, Helvetica, Arial, sans-serif
+```
+
+
+## Defaults
+
+@info styleguide.html.lsg
+``` lsg
+@default data: yaml
+@default css: sass
+@default html: haml
+
+@header
+  %header
+    %h1 My Living Style Guide
+
+@css
+  header
+    background: $my-color
+```
+
+Allowed defaults (first item: fallback if not set):
+
+* `@default data: json | yaml`
+* `@default css: scss | sass | plain`
+* `@default html: plain | haml` (more to come)
+* `@default javascript: plain | coffee-script`
+
+
+# Conclusion
+
+The new syntax provides many advantages:
+
+* Allowing multi-line content/data to be passed to filters
+* Sharing filters between examples and the configuration with consistent syntax
+* Adds instead of overrides data
+* No indentation needed anymore
+* No syntax problems when Sass is written into YAML
+* Unified Sass/SCSS influenced syntax
+* Friendly to Sass/Haml friends and haters :)
+
+I hope you like it! Feedback is appreciated; please use [the
+corresponding Github
+issue](https://github.com/hagenburger/livingstyleguide/issues/87)
+(including the syntax specs) for comments.
+
