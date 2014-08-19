@@ -8,7 +8,7 @@ module MiniSyntax
           result << if /\A(?<filter_ws>\n*)^@(?<filter>[a-z\-]+)(?<arguments_whitespace> *(?<arguments>([^\{\n:]|:[^ ])*)?)((?<lead>: +)(?<data>[^\n]+?)$|(?<lead>\n)(?<data>(  .+?(\n|\Z))+)|(?<lead> +)(?<data>\{(.+?)\n\}$)|$)/m =~ code
             content_syntax = filter.to_s if %w(haml javascript coffee-script).include?(filter)
             data = sub_highlight(data, filter, arguments) if data
-            %Q(#{filter_ws}<b>@<em>#{filter}</em></b>#{arguments_whitespace}#{lead}#{"<q>#{data}</q>" if data})
+            %Q(<span class="code--filter">#{filter_ws}<b>@<em>#{filter}</em></b>#{arguments_whitespace}#{lead}#{"<q>#{data}</q>" if data}</span>)
           elsif /\A(?<comment_ws>\n*)^(?<comment>\/\/.+)$/ =~ code
             %Q(#{comment_ws}<i>#{comment}</i>)
           elsif /\A^(?<content_ws>\n*)(?<content>.+\Z)/m =~ code
