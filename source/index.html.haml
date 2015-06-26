@@ -47,4 +47,4 @@ description: I’m Nico Hagenburger. I’m doing websites with Ruby on Rails, HT
       %li.dribbble-shots--item
         %a(href="#{shot.link}")
           - image_url = shot.description.match(/src="(.+?)"/)[1]
-          = image_tag image_url, alt: shot.title, class: 'dribbble-shots--item-thumbnail'
+          = image_tag image_url, alt: shot.title.force_encoding(Encoding::UTF_8), class: 'dribbble-shots--item-thumbnail'

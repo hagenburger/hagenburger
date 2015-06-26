@@ -227,7 +227,8 @@ helpers do
   def dribbble_shots
     require 'simple-rss'
     require 'open-uri'
-    rss = SimpleRSS.parse(open('http://dribbble.com/hagenburger/shots.rss'))
+    source = open('https://dribbble.com/hagenburger/shots.rss').read
+    rss = SimpleRSS.parse(source)
     rss.channel.items
   rescue
     []
